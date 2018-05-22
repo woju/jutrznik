@@ -5,6 +5,28 @@
 
 \unprotect
 
+% fonty {{{1
+\definefontfeature[default][default][protrusion=quality,expansion=quality,script=latn]
+\enabletrackers[fonts.missing]
+\starttypescript[sans][futura]
+    % niestety, ciężko znaleźć dobrą futurę na githubie, więc zadowolimy się
+    % amerykańską podróbką futury, spartanem
+    \definefontsynonym[Futura-Bold][file:fonts/LeagueSpartan-Bold.otf]
+\stoptypescript
+\starttypescript[sans][futura][name]
+    \setups[font:fallback:sans]
+    \definefontsynonym[SansBold][Futura-Bold][features=default]
+    \definefontsynonym[SansCaps][Futura-Bold][features=smallcaps]
+\stoptypescript
+\starttypescript[jutrznik]
+    \definetypeface[jutrznik][rm][serif][libertine][default]
+    \definetypeface[jutrznik][ss][sans] [futura]   [default]
+%   \definetypeface[jutrznik][tt][mono] [iosevka]  [default]
+%   \definetypeface[jutrznik][mm][math] [junicode] [default]
+    \definefontsynonym[Serif][file:fonts/LinLibertine_R.otf]
+\stoptypescript
+
+% varia {{{1
 \directlua{dofile('breviarium.lua')}
 
 \setupdelimitedtext[quote:1][left=„,right=”]
@@ -12,7 +34,9 @@
 \setupdelimitedtext[quotation:1][left=«,right=»]
 \setupdelimitedtext[quotation:2][left=„,right=”]
 
-\def\rubrum#1{\doifmodeelse{bw}{#1}{\color[red]{#1}}}
+\def\rubrum#1{%
+    \doifmodeelse{bw}{#1}{\color[red]{#1}}%
+}
 \def\flexa{\rubrum{†}}
 \def\flexas{\flexa\space}
 \def\mediatio{\rubrum{*}}
@@ -23,6 +47,8 @@
 }{%
     \definestartstop[rubrica][style=\tfx,color=red,before={\blank[small]},after={\blank[small]}]%
 }
+
+% nagłówki {{{1
 
 % NUMBERED          UNNUMBERED
 % \part             -
@@ -42,10 +68,20 @@
 \definehead[hour][title]
 \definehead[hourpart][subject]
 
-\setuplabeltext[pl][day=Dzień~]
+\setuphead[booktitle][
+    align=middle,
+    style={\switchtobodyfont[48pt]\ss\bf},
+    deeptextcommand=\WORD,
+    page=no,
+]
+
+\setuplabeltext[pl][day=dzień~]
 \setuphead[day][
     sectionstopper=:,
     bodypartlabel=day,
+    style=\tfb\ss\bf,
+    align=middle,
+    header=empty,
 ]
 
 \setuphead[hour][
@@ -61,6 +97,18 @@
     page=no,
 ]
 \def\hourpartx#1#2{\rubrum{\sc #1} #2}
+
+% hymny {{{1
+\definelines[hymnusn][
+    option=packed,
+]
+\defineitemgroup[hymnus]
+\setupitemgroup[hymnus][1][n][
+    color=red,
+    stopper=,
+    before={\starthymnusn},
+    after={\stophymnusn},
+]
 
 % psalmy {{{1
 \newcount\psalmusverse
@@ -79,6 +127,8 @@ i Duchowi Świętemu.\pfin\par
 Jak była na początku, teraz i zawsze,\pmed\par
 i na wieki wieków. Amen.\pfin\stopnarrower\stoplines},
 ]
+\definehead[psalmusx][psalmus]
+\setuphead[psalmusx][beforesection=,aftersection=]
 
 \def\pflx{~†\page[no]}
 \def\pmed{~*\page[no]}
@@ -135,8 +185,8 @@ i na wieki wieków. Amen.\pfin\stopnarrower\stoplines},
         \startprosbaig[]
         \item\ignorespaces#2\par
         \stopprosbaig
+        {\it \getbuffer[aklamacja]}%
     }%
-    {\it \getbuffer[aklamacja]}%
     \blank[2.5mm]%
     \par
 }

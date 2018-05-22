@@ -1,3 +1,4 @@
+% {{{1 prefacja
 \usemodule[breviarium]
 \enableregime[utf]
 \mainlanguage[pl]
@@ -6,6 +7,8 @@
     title={Jutrznia w Oazie Nowego Życia 2°},
     author={Diecezjalna Diakonia Liturgiczna Archidiecezji Warszawskiej},
     state=start,
+    color=red,
+    style=,
 ]
 
 \setupbackend[
@@ -16,32 +19,98 @@
 
 \setupstructure[state=start,method=auto]
 \setuppapersize[A5]
-\setuplayout[location={middle,middle}]
-\setupbodyfont[10.5pt]
+\setuplayout[
+    location={middle,middle},
+    height=190mm,
+    topspace=10mm,
+    header=7mm,
+    footer=7mm,
+    headerdistance=0mm,
+    footerdistance=0mm,
+]
+%\showframe
+\setupbodyfont[jutrznik,10.5pt]
+\setuppagenumbering[location=footer,style=\tfx\bf\ss]
+\startsetups[header]
+\framed[frame=off,bottomframe=on,width=\makeupwidth]{%
+    \tfx\rubrum{dzień~\getmarking[daynumber]~\getmarking[day]}%
+}
+\stopsetups
+\setupheadertexts[\setups{header}]
 
+%}}}1
 
 \starttext
 
+% strona tytułowa %{{{1
+\setupheader[state=high]
+\setupfooter[state=high]
+\dontleavehmode{\vfill}
 \startbooktitle[title={Jutrznia}]
 
+\startalignment[middle]
+\switchtobodyfont[20pt]\ss\bf
+\blank[50mm]
+w~Oazie Nowego Życia 2°
+
+\blank[10mm]
+i~Oazie Rodzin 2°
+
+\vfill
+\switchtobodyfont[16pt]\rubrum{\uppercase{wersja robocza}}\blank[10mm]
+\switchtobodyfont[10pt]\ss\bf\uppercase{%
+Diecezjalna Diakonia Liturgiczna\crlf
+Archidiecezji Warszawskiej}
+\stopalignment
 \page[yes]
 
-\startday[title={Niewola}] % {{{1
+\startday[title={Niewola}] % 1 {{{1
 
-\starthour[title={Wezwanie}]
-
+\starthour[title={Wezwanie}] %{{{2
 \ant Uwielbiajmy Pana i~Króla,~/ który do nas przyjdzie.
 
+\pagereference[invit-ps95]%
+\input lib/invit-ps95
+
+\starthour[title={Jutrznia}] %{{{2
+
+\starthourpart[title={Hymn}]
+% http://brewiarz.pl/indeksy/pokaz.php3?id=3&nr=076
+% Adwent (przed 17 grudnia)
+% LG tom I, wydanie I (Pallottinum 1982), s. 128
+% LG tom I, wydanie II (Pallottinum 2006), s. 142
+% Skrócona LG (Pallottinum 1991), s. 44
+\starthymnus
+\item Otwórz się, niebo pokryte chmurami,
+I~Sprawiedliwy niech zejdzie z~obłoków
+Jak deszcz ożywczy, co zwilży pustynię
+Każdego serca.
+
+\item Otwórz się, ziemio, i~wydaj swój Owoc
+Zrodzony z~Ojca i~czystej Dziewicy,
+Gdyż On przyniesie zbawienie i~pokój
+Całemu światu.
+
+\item Przyjdź, Pojednanie, już więcej nie zwlekaj;
+Niech Twa obecność przywróci nam łaskę,
+I~wprowadź wszystkich znużonych wędrowców
+Do domu Ojca.
+
+\item Znak Twój na niebie zabłyśnie narodom
+Gdy znów nadejdziesz, by sądzić sumienia;
+Pamiętaj wtedy, żeś mieszkał wcielony
+Pomiędzy nami.
+
+\item Boży Baranku, czekamy na Ciebie
+I~pieśnią chwały wielbimy Twą dobroć;
+Sławimy również i~Ojca, i~Ducha
+W~jedności z~Tobą. Amen.\stophymnus
+
 \startrubrica
-Psalm Wezwania jak w~Częściach stałych, s.~FIXME.
+Albo piosenka dnia.
 \stoprubrica
 
-\starthour[title={Jutrznia}]
-
-\hourpartx{Hymn}{(piosenka dnia)}
-
 \starthourpart[title={Psalmodia}]
-
 \ant[n=1] Kiedy przyjdę~* i~ujrzę oblicze Boże?
 
 \startpsalmus[title={Psalm 42}]
@@ -151,9 +220,10 @@ Egipcjanina? Na te słowa Mojżesz uciekł i~żył jako cudzoziemiec w~ziemi Mad
 \ant[title={Ant. do pieśni Zachariasza}] Bóg przez wielką swą miłość, jaką nas
 ukochał,~* zesłał swego Syna w~ciele podobnym do ciała grzesznego.
 
-\startrubrica
-Pieśń Zachariasza w~Częściach stałych, s.~FIXME.
-\stoprubrica
+\pagereference[benedictus]
+\input lib/benedictus
+
+\antr
 
 \starthourpart[title={Prośby}]
 
@@ -186,14 +256,56 @@ w~jedności Ducha Świętego,~* Bóg, przez wszystkie wieki wieków.
 \endgroup
 
 
-\startday[title={Bóg Wybawiciel}] % {{{1
+\startday[title={Bóg Wybawiciel}] % 2 {{{1
 
-Wezwanie: Przyjdźcie, uwielbiajmy Pana, * który jest Pasterzem
-swojego ludu
-Hymn: piosenka dnia
-Psalmodia
-1 ant. Boże, Twoja droga jest święta, * nikt nie dorówna wielkością
-naszemu Bogu.
+\starthour[title={Wezwanie}] %{{{2
+\ant Przyjdźcie, uwielbiajmy Pana,~* który jest Pasterzem swojego ludu
+\startrubrica
+Psalm Wezwania jak jak na \at{stronie}[invit-ps95].
+\stoprubrica
+
+\starthour[title={Jutrznia}] %{{{2
+
+\starthourpart[title={Hymn}]
+% http://brewiarz.pl/indeksy/pokaz.php3?id=3&nr=083
+% Jutrznia: Adwent (po 17 grudnia)
+% LG tom I, wydanie I (Pallottinum 1982), s. 284
+% LG tom I, wydanie II (Pallottinum 2006), s. 291
+% Skrócona LG (Pallottinum 1991), s. 107
+\starthymnus
+\item Prorocy pełni natchnienia
+Zwiastują Bożą nowinę:
+Już wkrótce Chrystus nadejdzie,
+Zbawienie niosąc ludzkości.
+
+\item Dlatego światło poranka
+Przenika serca weselem,
+A~przyszłej chwały zapowiedź
+Już dźwięczy w~hymnie radosnym.
+
+\item Gdy pierwszy raz Jezus przyszedł,
+To nie dla sądu nad światem,
+Lecz aby rany uleczyć
+I~uratować ginących.
+
+\item A~drugie przyjście ostrzega,
+Że Pan do bramy kołacze;
+Nagrodzi wtedy wybranych
+Wiecznością swego królestwa.
+
+\item Szukamy Ciebie, o~Chryste,
+By ujrzeć Twoje oblicze,
+A~mając udział w~Twym szczęściu,
+Wysławiać Trójcę na wieki. Amen.\stophymnus
+
+\startrubrica
+Albo piosenka dnia.
+\stoprubrica
+
+\starthourpart[title={Psalmodia}]
+
+\ant[n=1] Boże, Twoja droga jest święta,~* nikt nie dorówna wielkością naszemu
+Bogu.
 
 \startpsalmus[title={Psalm 77}]
 Głos mój się wznosi do Boga, gdy wołam,\pmed
@@ -243,284 +355,354 @@ Wiodłeś Twój lud jak trzodę\pmed
 ręką Mojżesza i~Aarona.\pfin
 \stoppsalmus
 
-Ant. Boże, Twoja droga jest święta, / nikt nie dorówna wielkością
-naszemu Bogu.
-2 ant. Moje serce raduje się w Panu, * który poniża i wywyższa.
-Pieśń (1 Sm 2, 1-10)
-Moje serce raduje się w Panu, *
-dzięki Niemu moc moja wzrasta.
-Szeroko otwarłam usta przeciw moim wrogom, *
-bo cieszyć się mogę Twoją pomocą.
-Nikt nie jest tak święty jak Ty, Panie, q
-poza Tobą bowiem nie ma nikogo, *
-prócz naszego Boga nie ma innej ostoi.
-Nie powtarzajcie słów pełnych pychy, *
-niech mowa harda z ust waszych nie wychodzi,
-Gdyż Pan jest Bogiem wszechwiedzącym *
-i On ocenia uczynki.
-Łuk potężnych się łamie, *
-a mocą przepasują się słabi.
-Syci za chleb się najmują, *
-głodni zaś odpoczywają.
-Niepłodna rodzi siedmioro, *
-a matka wielu dzieci usycha.
-Pan daje śmierć i życie, *
-wtrąca do Otchłani i z niej wyprowadza.
-Pan czyni ubogim lub bogatym, *
-poniża i wywyższa.
-Biedaka z prochu podnosi, *
-z błota dźwiga nędzarza,
-By go wśród książąt posadzić *
-i dać mu tron chwały.
-Fundamenty ziemi należą do Pana *
-i na nich świat On położył.
-On strzeże kroków swoich wiernych, q
-grzesznicy zaś zginą w ciemnościach, *
-bo nie własną siłą człowiek zwycięża.
-Pan wniwecz opornych obraca *
-i przeciw nim grzmi na niebiosach.
-Pan sądzi krańce ziemi, q
-króla obdarza potęgą *
-i wywyższa moc swego pomazańca.
-Chwała Ojcu i Synowi, *
-i Duchowi Świętemu.
-Jak była na początku, teraz i zawsze, *
-i na wieki wieków. Amen.
-Ant. Moje serce raduje się w Panu, / który poniża i wywyższa.
-3 ant. Pan króluje, * wesel się, ziemio. q
-Psalm 97
-Pan króluje, wesel się, ziemio, *
-q radujcie się, liczne wyspy!
-Obłok i ciemność wokół Niego, *
-prawo i sprawiedliwość podstawą Jego tronu.
+\antr
 
+\ant[n=2] Moje serce raduje się w Panu,~* który poniża i~wywyższa.
 
+\startpsalmus[title={Pieśń (1 Sm 2, 1-10)}]
+Moje serce raduje się w~Panu,\pmed
+dzięki Niemu moc moja wzrasta.\pfin
+Szeroko otwarłam usta przeciw moim wrogom,\pmed
+bo cieszyć się mogę Twoją pomocą.\pfin
+Nikt nie jest tak święty jak Ty, Panie,\pflx
+poza Tobą bowiem nie ma nikogo,\pmed
+prócz naszego Boga nie ma innej ostoi.\pfin
+Nie powtarzajcie słów pełnych pychy,\pmed
+niech mowa harda z~ust waszych nie wychodzi,\pfin
+Gdyż Pan jest Bogiem wszechwiedzącym\pmed
+i~On ocenia uczynki.\pfin
+Łuk potężnych się łamie,\pmed
+a~mocą przepasują się słabi.\pfin
+Syci za chleb się najmują,\pmed
+głodni zaś odpoczywają.\pfin
+Niepłodna rodzi siedmioro,\pmed
+a~matka wielu dzieci usycha.\pfin
+Pan daje śmierć i~życie,\pmed
+wtrąca do Otchłani i~z~niej wyprowadza.\pfin
+Pan czyni ubogim lub bogatym,\pmed
+poniża i~wywyższa.\pfin
+Biedaka z~prochu podnosi,\pmed
+z~błota dźwiga nędzarza,\pfin
+By go wśród książąt posadzić\pmed
+i~dać mu tron chwały.\pfin
+Fundamenty ziemi należą do Pana\pmed
+i~na nich świat On położył.\pfin
+On strzeże kroków swoich wiernych,\pflx
+grzesznicy zaś zginą w~ciemnościach,\pmed
+bo nie własną siłą człowiek zwycięża.\pfin
+Pan wniwecz opornych obraca\pmed
+i~przeciw nim grzmi na niebiosach.\pfin
+Pan sądzi krańce ziemi,\pflx
+króla obdarza potęgą\pmed
+i~wywyższa moc swego pomazańca.\pfin
+\stoppsalmus
 
-Przed Jego obliczem idzie ogień *
-i dokoła pożera nieprzyjaciół Jego.
-Jego błyskawice wszechświat rozświetlają, *
-a ziemia drży na ten widok.
-Góry jak wosk topnieją przed obliczem Pana, *
-przed obliczem Władcy całej ziemi.
-Jego sprawiedliwość rozgłaszają niebiosa *
-i wszystkie ludy widzą Jego chwałę.
-Niech zawstydzą się wszyscy, którzy czczą posągi q
-i chlubią się bożkami. *
-Niech wszystkie bóstwa hołd Mu oddają!
-Słyszy o tym i cieszy się Syjon, q
-radują się miasta Judy *
-z Twoich wyroków, o Panie.
-Ponad całą ziemią Tyś bowiem wywyższony *
-i nieskończenie wyższy od wszystkich bogów.
-Pan tych miłuje, którzy zła nienawidzą, q
-On strzeże dusz świętych swoich, *
-wydziera je z rąk grzeszników.
-Światło wschodzi dla sprawiedliwego *
-i radość dla ludzi prawego serca.
-Weselcie się w Panu, sprawiedliwi, *
-i sławcie Jego święte imię.
-Chwała Ojcu i Synowi, *
-i Duchowi Świętemu.
-Jak była na początku, teraz i zawsze, *
-i na wieki wieków. Amen.
-Ant. Pan króluje, wesel się, ziemio.
-Czytanie: Wj 6,2-6
+\antr
+
+\ant[n=3] Pan króluje,~* wesel się, ziemio.~\flexa
+
+\startpsalmus[title={Psalm 97}]
+Pan króluje, wesel się, ziemio,\pmed
+\flexa~radujcie się, liczne wyspy!\pfin
+Obłok i~ciemność wokół Niego,\pmed
+prawo i~sprawiedliwość podstawą Jego tronu.\pfin
+Przed Jego obliczem idzie ogień\pmed
+i~dokoła pożera nieprzyjaciół Jego.\pfin
+Jego błyskawice wszechświat rozświetlają,\pmed
+a~ziemia drży na ten widok.\pfin
+Góry jak wosk topnieją przed obliczem Pana,\pmed
+przed obliczem Władcy całej ziemi.\pfin
+Jego sprawiedliwość rozgłaszają niebiosa\pmed
+i~wszystkie ludy widzą Jego chwałę.\pfin
+Niech zawstydzą się wszyscy, którzy czczą posągi\pflx
+i~chlubią się bożkami.\pmed
+Niech wszystkie bóstwa hołd Mu oddają!\pfin
+Słyszy o~tym i~cieszy się Syjon,\pflx
+radują się miasta Judy\pmed
+z~Twoich wyroków, o~Panie.\pfin
+Ponad całą ziemią Tyś bowiem wywyższony\pmed
+i~nieskończenie wyższy od wszystkich bogów.\pfin
+Pan tych miłuje, którzy zła nienawidzą,\pflx
+On strzeże dusz świętych swoich,\pmed
+wydziera je z~rąk grzeszników.\pfin
+Światło wschodzi dla sprawiedliwego\pmed
+i~radość dla ludzi prawego serca.\pfin
+Weselcie się w~Panu, sprawiedliwi,\pmed
+i~sławcie Jego święte imię.\pfin
+\stoppsalmus
+
+\antr
+
+\starthourpart[title={Czytanie\hfill\tf Wj 6,2-6}]
 Bóg rozmawiał z Mojżeszem i powiedział mu: Jam jest Jahwe. Ja objawiłem się Abrahamowi, Izaakowi i Jakubowi jako Bóg Wszechmocny, ale
 imienia mego, Jahwe, nie objawiłem im. Ponadto ustanowiłem też przymierze moje z nimi, że im dam kraj Kanaan, kraj ich wędrówek, gdzie przebywali jako przybysze. Ja także usłyszałem jęk Izraelitów, których Egipcjanie
 obciążyli robotami, i wspomniałem na moje przymierze. Przeto powiedz
 synom izraelskim: Ja jestem Pan! Uwolnię was od jarzma egipskiego i wybawię was z niewoli, i wyswobodzę was wyciągniętym ramieniem i przez
 surowe kary.
 
+\starthourpart[title={Pieśń Zachariasza}]
+\ant[title={Ant. do pieśni Zachariasza}] Gdy Elżbieta usłyszała pozdrowienie
+Maryi,~* wydała okrzyk i powiedziała:~/ A~skądże mi to, że Matka mojego Pana
+przychodzi do mnie.
+\startrubrica
+Pieśń Zachariasza jak na \at{stronie}[benedictus].
+\stoprubrica
 
+\starthourpart[title={Prośby}]
 
-Ant do pieśni Zachariasza:
-Gdy Elżbieta usłyszała pozdrowienie Maryi, * wydała okrzyk i powiedziała: /
-A skądże mi to, że Matka mojego Pana przychodzi do mnie.
-Prośby
-Oddając cześć naszemu Zbawicielowi, który narodził się z Maryi Dziewicy,
+Oddając cześć naszemu Zbawicielowi, który narodził się z~Maryi Dziewicy,
 zanośmy do Niego pokorne błagania:
-Niech Twoja Matka wstawia się za nami.
-Jezu, Słońce sprawiedliwości, Twoje przyjście poprzedziła Niepokalana
+
+\aklamacja Niech Twoja Matka wstawia się za nami.
+
+\prosba Jezu, Słońce sprawiedliwości, Twoje przyjście poprzedziła Niepokalana
 Dziewica, jak pełna blasku jutrzenka,
-– spraw, abyśmy zawsze żyli w promieniach Twojej światłości.
-Dozwól nam, Panie, naśladować Twoją Matkę, która obrała najlepszą cząstkę,
-– spraw, abyśmy za Jej przykładem szukali pokarmu dającego życie wieczne.
-Zbawicielu świata, Ty mocą swojego odkupienia zachowałeś Twoją Matkę
+--- spraw, abyśmy zawsze żyli w~promieniach Twojej światłości.
+
+\prosba Dozwól nam, Panie, naśladować Twoją Matkę, która obrała najlepszą cząstkę,
+--- spraw, abyśmy za Jej przykładem szukali pokarmu dającego życie wieczne.
+
+\prosba Zbawicielu świata, Ty mocą swojego odkupienia zachowałeś Twoją Matkę
 od wszelkiej zmazy grzechu,
-– zachowaj nas od skażenia grzechem.
-Nasz Odkupicielu, Ty sprawiłeś, że Maryja Dziewica stała się godnym Ciebie mieszkaniem i przybytkiem Ducha Świętego,
-– daj, abyśmy byli na wieki świątynią Twego Ducha.
+--- zachowaj nas od skażenia grzechem.
+
+\prosba Nasz Odkupicielu, Ty sprawiłeś, że Maryja Dziewica stała się godnym
+Ciebie mieszkaniem i~przybytkiem Ducha Świętego,
+--- daj, abyśmy byli na wieki świątynią Twego Ducha.
+
 Ojcze nasz.
-Modlitwa:
-Okaż swą potęgę, Panie, i przybądź, q niech Twoja opieka wyzwoli nas od
-i niebezpieczeństw grożących nam wskutek naszych grzechów, * a Twoja
-moc niech nas zbawi. Który żyjesz i królujesz z Bogiem Ojcem w jedności
-Ducha Świętego, * Bóg, przez wszystkie wieki wieków.
+
+\starthourpart[title={Modlitwa}]
+Okaż swą potęgę, Panie, i~przybądź,~\flexas niech Twoja opieka wyzwoli nas od
+i~niebezpieczeństw grożących nam wskutek naszych grzechów,~\mediatios a~Twoja
+moc niech nas zbawi. Który żyjesz i~królujesz z~Bogiem Ojcem w~jedności
+Ducha Świętego,~\mediatios Bóg, przez wszystkie wieki wieków.
 
 
 
-\startday[title={Bóg z~nami}] % {{{1
-Wezwanie: Chrystus nam się narodził, * uwielbiajmy Wcielone Słowo
-Hymn: piosenka dnia
-Psalmodia
-1 ant. Rano głosimy Twą łaskawość, Panie, * a wierność Twoją nocami.
-Psalm 92
-Dobrze jest dziękować Panu, *
-śpiewać Twojemu imieniu, Najwyższy,
-Rano głosić łaskawość Twoją, *
-a wierność Twoją nocami,
-Na harﬁe dziesięciostrunnej i lirze, *
-pieśnią przy dźwiękach cytry.
-Bo weselę się, Panie, Twoimi czynami, *
-raduję się dziełami rąk Twoich.
-Jak wielkie są dzieła Twoje, Panie, *
-i jakże głębokie Twe myśli!
-Nie zna ich człowiek nierozumny *
-i głupiec ich nie pojmuje.
-Chociaż występni się pienią jak zielsko, *
-a złoczyńcy jaśnieją przepychem,
-I tak pójdą na wieczną zagładę, *
-Ty zaś, Panie, na wieki jesteś wywyższony.
-Bo oto wrogowie Twoi, Panie, q
-bo oto wrogowie Twoi poginą, *
-rozproszą się wszyscy złoczyńcy.
-Dałeś mi siłę bawołu, *
-skropiłeś mnie świeżym olejkiem.
-Moje oko spogląda z góry na nieprzyjaciół, q
-a uszy me usłyszały o klęsce przeciwników, *
-tych, którzy na mnie powstają.
-Sprawiedliwy zakwitnie jak palma, *
-rozrośnie się jak cedr na Libanie.
-Zasadzeni w domu Pańskim *
-rozkwitną na dziedzińcach Boga naszego.
+\startday[title={Bóg z~nami}] % 3 {{{1
 
+\starthour[title={Wezwanie}] %{{{2
+\ant Chrystus nam się narodził,~* uwielbiajmy Wcielone Słowo
+\startrubrica
+Psalm Wezwania jak jak na \at{stronie}[invit-ps95].
+\stoprubrica
 
-Nawet i w starości wydadzą owoc, *
-zawsze pełni życiodajnych soków,
-Aby świadczyć, że Pan jest sprawiedliwy; *
-On moją Opoką i nie ma w Nim nieprawości.
-Chwała Ojcu i Synowi *
-i Duchowi Świętemu.
-Jak była na początku, teraz i zawsze, *
-i na wieki wieków. Amen.
-Ant. Rano głosimy Twą łaskawość, Panie, / a wierność Twoją nocami.
-2 ant. Uznajcie wielkość * naszego Boga.
-Pieśń (Pwt 32, 1-12)
-Uważajcie, niebiosa, na to, co powiem, *
-słuchaj, ziemio, głosu mojego.
-Jak deszcz niech spływa moje pouczenie, *
-jak rosa niech pada me słowo,
-Jak deszcz rzęsisty na zieleń, *
-jak deszcz życiodajny na trawę!
-Oto będę głosić imię Pana; *
-uznajcie wielkość naszego Boga!
-On jest Opoką, a Jego dzieło doskonałe, *
-wszystkie Jego drogi są słuszne.
-On jest Bogiem wiernym i nie zawodzi, *
-On sprawiedliwy i prawy.
-Przestali być Jego dziećmi, q
-bo grzech popełnili, *
-pokolenie przewrotne i zakłamane.
-Więc tak chcesz odpłacić Panu, *
-ludu głupi i bezrozumny?
-Czyż nie On jest twoim Ojcem i Stwórcą, *
-który cię uczynił i dał ci życie?
-Wspomnij na dni, które przeminęły, *
-rozważ lata poprzednich pokoleń.
-Zapytaj swego ojca, by cię pouczył, *
-i twoich starców, niech ci opowiedzą,
-Jak to Najwyższy obdarzał dziedzictwem narody *
-i rozdzielał synów człowieczych.
+\starthour[title={Jutrznia}] %{{{2
 
+\starthourpart[title={Hymn}]
+% http://brewiarz.pl/indeksy/pokaz.php3?id=3&nr=139
+% Godzina Czytań: Okres Narodzenia Pańskiego (do Objawienia Pańskiego)
+% 01.01. - uroczystość Świętej Bożej Rodzicielki Maryi
+% LG tom I, wydanie I (Pallottinum 1982), s. 424
+% LG tom I, wydanie II (Pallottinum 2006), s. 427
+% Skrócona LG (Pallottinum 1991), s. 176
+\starthymnus
+\item Zakwitnął korzeń Jessego,
+Różdżka wydała swój Owoc,
+Gdy Matka Syna zrodziła
+Nadal zostając Dziewicą.
 
+\item Przedwieczny Stwórca światłości
+W~żłobie pozwolił się złożyć,
+I~Ten, co niebo rozpostarł,
+Leży spowity w~pieluszki.
 
-Wtedy wytyczył granice dla ludów *
-według liczby synów Boga sprawiedliwego,
-Bo Jego lud jest własnością Pana, *
-Jakub Jego wyłącznym dziedzictwem.
-Znalazł go na ziemi pustynnej, *
-na odludziu, gdzie brzmiały tylko dzikie głosy.
-Opiekował się nim i pouczał, *
-strzegł jak źrenicy oka.
-Jak orzeł, który krąży nad gniazdem, *
-by z niego wywabić swe pisklęta,
-I bierze je na skrzydła rozpostarte, *
-niosąc je na samym sobie,
-Tak Pan go prowadził, *
-a nie było z nim obcego boga.
-Chwała Ojcu i Synowi, *
-i Duchowi Świętemu.
-Jak była na początku, teraz i zawsze, *
-i na wieki wieków. Amen.
+\item Obdarzył świat swoim prawem,
+Prawem dziesięciu przykazań,
+A~dziś, człowiekiem się stając,
+Sam jego mocy się poddał.
+
+\item Już wschodzi zorza zbawienia,
+Noc pierzcha, śmierć zwyciężona;
+Niech cała ziemia wysławia
+Bogarodzicę Maryję!
+
+\item O~Chryste, Synu Dziewicy,
+Tobie i~Ojcu Twojemu
+Z~ożywczym Duchem jedności
+Chwała niech będzie na wieki. Amen.\stophymnus
+
+\startrubrica
+Albo piosenka dnia.
+\stoprubrica
+
+\starthourpart[title={Psalmodia}]
+
+\ant[n=1] Rano głosimy Twą łaskawość, Panie, * a wierność Twoją nocami.
+
+\startpsalmus[title={Psalm 92}]
+Dobrze jest dziękować Panu,\pmed
+śpiewać Twojemu imieniu, Najwyższy,\pfin
+Rano głosić łaskawość Twoją,\pmed
+a~wierność Twoją nocami,\pfin
+Na harﬁe dziesięciostrunnej i~lirze,\pmed
+pieśnią przy dźwiękach cytry.\pfin
+Bo weselę się, Panie, Twoimi czynami,\pmed
+raduję się dziełami rąk Twoich.\pfin
+Jak wielkie są dzieła Twoje, Panie,\pmed
+i~jakże głębokie Twe myśli!\pfin
+Nie zna ich człowiek nierozumny\pmed
+i~głupiec ich nie pojmuje.\pfin
+Chociaż występni się pienią jak zielsko,\pmed
+a~złoczyńcy jaśnieją przepychem,\pfin
+I~tak pójdą na wieczną zagładę,\pmed
+Ty zaś, Panie, na wieki jesteś wywyższony.\pfin
+Bo oto wrogowie Twoi, Panie,\pflx
+bo oto wrogowie Twoi poginą,\pmed
+rozproszą się wszyscy złoczyńcy.\pfin
+Dałeś mi siłę bawołu,\pmed
+skropiłeś mnie świeżym olejkiem.\pfin
+Moje oko spogląda z~góry na nieprzyjaciół,\pflx
+a~uszy me usłyszały o~klęsce przeciwników,\pmed
+tych, którzy na mnie powstają.\pfin
+Sprawiedliwy zakwitnie jak palma,\pmed
+rozrośnie się jak cedr na Libanie.\pfin
+Zasadzeni w~domu Pańskim\pmed
+rozkwitną na dziedzińcach Boga naszego.\pfin
+Nawet i~w~starości wydadzą owoc,\pmed
+zawsze pełni życiodajnych soków,\pfin
+Aby świadczyć, że Pan jest sprawiedliwy;\pmed
+On moją Opoką i~nie ma w~Nim nieprawości.\pfin
+\stoppsalmus
+
+\antr
+
+\ant[n=2] Uznajcie wielkość~* naszego Boga.
+
+\startpsalmus[title={Pieśń (Pwt 32, 1-12)}]
+Uważajcie, niebiosa, na to, co powiem,\pmed
+słuchaj, ziemio, głosu mojego.\pfin
+Jak deszcz niech spływa moje pouczenie,\pmed
+jak rosa niech pada me słowo,\pfin
+Jak deszcz rzęsisty na zieleń,\pmed
+jak deszcz życiodajny na trawę!\pfin
+Oto będę głosić imię Pana;\pmed
+uznajcie wielkość naszego Boga!\pfin
+On jest Opoką, a~Jego dzieło doskonałe,\pmed
+wszystkie Jego drogi są słuszne.\pfin
+On jest Bogiem wiernym i~nie zawodzi,\pmed
+On sprawiedliwy i~prawy.\pfin
+Przestali być Jego dziećmi,\pflx
+bo grzech popełnili,\pmed
+pokolenie przewrotne i~zakłamane.\pfin
+Więc tak chcesz odpłacić Panu,\pmed
+ludu głupi i~bezrozumny?\pfin
+Czyż nie On jest twoim Ojcem i~Stwórcą,\pmed
+który cię uczynił i~dał ci życie?\pfin
+Wspomnij na dni, które przeminęły,\pmed
+rozważ lata poprzednich pokoleń.\pfin
+Zapytaj swego ojca, by cię pouczył,\pmed
+i~twoich starców, niech ci opowiedzą,\pfin
+Jak to Najwyższy obdarzał dziedzictwem narody\pmed
+i~rozdzielał synów człowieczych.\pfin
+Wtedy wytyczył granice dla ludów\pmed
+według liczby synów Boga sprawiedliwego,\pfin
+Bo Jego lud jest własnością Pana,\pmed
+Jakub Jego wyłącznym dziedzictwem.\pfin
+Znalazł go na ziemi pustynnej,\pmed
+na odludziu, gdzie brzmiały tylko dzikie głosy.\pfin
+Opiekował się nim i~pouczał,\pmed
+strzegł jak źrenicy oka.\pfin
+Jak orzeł, który krąży nad gniazdem,\pmed
+by z~niego wywabić swe pisklęta,\pfin
+I~bierze je na skrzydła rozpostarte,\pmed
+niosąc je na samym sobie,\pfin
+Tak Pan go prowadził,\pmed
+a~nie było z~nim obcego boga.\pfin
+\stoppsalmus
 Ant. Uznajcie wielkość naszego Boga.
 3 ant. Panie, jak przedziwne jest Twoje imię * na całej ziemi.
-Psalm 8
-O Panie, nasz Panie, q
-jak przedziwne jest Twoje imię na całej ziemi! *
-Tyś swój majestat wyniósł nad niebiosa.
-Sprawiłeś, że na przekór Twoim przeciwnikom q
-usta dzieci i niemowląt oddają Ci chwałę, *
-aby poskromić nieprzyjaciela i wroga.
-Gdy patrzę na Twe niebo, dzieło palców Twoich, *
-na księżyc i gwiazdy, któreś Ty utwierdził:
-Czym jest człowiek, że o nim pamiętasz, *
-czym syn człowieczy, że troszczysz się o niego?
-Uczyniłeś go niewiele mniejszym od aniołów, *
-uwieńczyłeś go czcią i chwałą.
-Obdarzyłeś go władzą nad dziełami rąk Twoich, *
-wszystko złożyłeś pod jego stopy:
-Owce i bydło wszelakie, *
-i dzikie zwierzęta,
+\startpsalmus[title={Psalm 8}]
+O~Panie, nasz Panie,\pflx
+jak przedziwne jest Twoje imię na całej ziemi!\pmed
+Tyś swój majestat wyniósł nad niebiosa.\pfin
+Sprawiłeś, że na przekór Twoim przeciwnikom\pflx
+usta dzieci i~niemowląt oddają Ci chwałę,\pmed
+aby poskromić nieprzyjaciela i~wroga.\pfin
+Gdy patrzę na Twe niebo, dzieło palców Twoich,\pmed
+na księżyc i~gwiazdy, któreś Ty utwierdził:\pfin
+Czym jest człowiek, że o~nim pamiętasz,\pmed
+czym syn człowieczy, że troszczysz się o~niego?\pfin
+Uczyniłeś go niewiele mniejszym od aniołów,\pmed
+uwieńczyłeś go czcią i~chwałą.\pfin
+Obdarzyłeś go władzą nad dziełami rąk Twoich,\pmed
+wszystko złożyłeś pod jego stopy:\pfin
+Owce i~bydło wszelakie,\pmed
+i~dzikie zwierzęta,\pfin
+Ptaki niebieskie i~ryby morskie,\pmed
+wszystko, co szlaki mórz przemierza.\pfin
+O~Panie, nasz Panie,\pmed
+jak przedziwne jest Twoje imię na całej ziemi!\pfin
+\stoppsalmus
 
-
-
-Ptaki niebieskie i ryby morskie, *
-wszystko, co szlaki mórz przemierza.
-O Panie, nasz Panie, *
-jak przedziwne jest Twoje imię na całej ziemi!
-Chwała Ojcu i Synowi, *
-i Duchowi Świętemu.
-Jak była na początku, teraz i zawsze, *
-i na wieki wieków. Amen.
 Ant. Panie, jak przedziwne jest Twoje imię / na całej ziemi.
-Czytanie: Mt 1,20-23
+\starthourpart[title={Czytanie\hfill\tf Mt 1,20-23}]
 Gdy Józef powziął tę myśl, oto anioł Pański ukazał mu się we śnie i rzekł:
 Józeﬁe, synu Dawida, nie bój się wziąć do siebie Maryi, twej Małżonki; albowiem z Ducha Świętego jest to, co się w Niej poczęło. Porodzi Syna,
 któremu nadasz imię Jezus, On bowiem zbawi swój lud od jego grzechów.
 A stało się to wszystko, aby się wypełniło słowo Pańskie powiedziane przez
 Proroka: Oto Dziewica pocznie i porodzi Syna, któremu nadadzą imię Emmanuel, to znaczy: Bóg z nami.
-Ant do pieśni Zachariasza:
-Chwała na wysokościach Bogu, * a na ziemi pokój ludziom, których umiłował,
-/ alleluja.
-Prośby
-Uwielbiajmy Słowo Boże, które istniejąc od wieków, w pełni czasów stało
-się ciałem i zamieszkało między nami. Z radością więc wołajmy do Niego:
-Głośmy z weselem: Bóg jest między nami.
-Chryste, Słowo Przedwieczne, Ty przychodząc na ziemię opromieniasz ją
+ 
+\starthourpart[title={Pieśń Zachariasza}]
+\ant[title={Ant do pieśni Zachariasza}] Chwała na wysokościach Bogu,~* a~na
+ziemi pokój ludziom, których umiłował,~/ alleluja.
+\startrubrica
+Pieśń Zachariasza jak na \at{stronie}[benedictus].
+\stoprubrica
+
+
+\starthourpart[title={Prośby}]
+
+Uwielbiajmy Słowo Boże, które istniejąc od wieków, w~pełni czasów stało
+się ciałem i~zamieszkało między nami. Z~radością więc wołajmy do Niego:
+
+\aklamacja Głośmy z~weselem: Bóg jest między nami.
+
+\prosba Chryste, Słowo Przedwieczne, Ty przychodząc na ziemię opromieniasz ją
 radością,
-– napełnij nasze serca łaską Twego nawiedzenia.
-Nasz Zbawicielu, Ty przez swe narodzenie objawiasz nam wierność Boga,
-– spraw, abyśmy wiernie dochowali przyrzeczeń chrztu świętego.
-Królu nieba i ziemi, Ty posłałeś aniołów, aby ludziom głosili pokój,
-– zachowaj nasze życie w Twoim pokoju.
-Panie, Ty przyszedłeś jako prawdziwy krzew winny dający nam życie,
-– spraw, abyśmy jak gałązki trwali zawsze w Tobie i przynosili obﬁte owoce.
+--- napełnij nasze serca łaską Twego nawiedzenia.
 
+\prosba Nasz Zbawicielu, Ty przez swe narodzenie objawiasz nam wierność Boga,
+--- spraw, abyśmy wiernie dochowali przyrzeczeń chrztu świętego.
 
+\prosba Królu nieba i~ziemi, Ty posłałeś aniołów, aby ludziom głosili pokój,
+--- zachowaj nasze życie w~Twoim pokoju.
+
+\prosba Panie, Ty przyszedłeś jako prawdziwy krzew winny dający nam życie,
+--- spraw, abyśmy jak gałązki trwali zawsze w~Tobie i~przynosili obﬁte owoce.
 
 Ojcze nasz.
-Modlitwa:
-Boże, Ty w przedziwny sposób stworzyłeś człowieka i w jeszcze cudowniejszy sposób odnowiłeś jego godność, q daj nam uczestniczyć w bóstwie
-Twojego Syna, * który przyjął naszą ludzką naturę. Który z Tobą żyje i króluje
-w jedności Ducha Świętego, * Bóg, przez wszystkie wieki wieków.
+
+\starthourpart[title={Modlitwa}]
+
+Boże, Ty w~przedziwny sposób stworzyłeś człowieka i~w~jeszcze cudowniejszy
+sposób odnowiłeś jego godność,~\flexas daj nam uczestniczyć w~bóstwie Twojego
+Syna,~\mediatios który przyjął naszą ludzką naturę. Który z~Tobą żyje i~króluje
+w~jedności Ducha Świętego,~\mediatios Bóg, przez wszystkie wieki wieków.
 
 
+\startday[title={Bóg wzywa}] % 4 {{{1
 
-\startday[title={Bóg wzywa}] % {{{1
+\starthour[title={Wezwanie}] %{{{2
+\ant Chrystus nam się objawił,~* pokłon Jemu oddajmy
+\startrubrica
+Psalm Wezwania jak jak na \at{stronie}[invit-ps95].
+\stoprubrica
 
-Wezwanie: Chrystus nam się objawił, * pokłon Jemu oddajmy
-Hymn: piosenka dnia
-Psalmodia:
+\starthour[title={Jutrznia}] %{{{2
+
+\starthourpart[title={Hymn}]
+%
+%\starthymnus
+%\stophymnus
+
+\startrubrica
+Albo piosenka dnia.
+\stoprubrica
+
+\starthourpart[title={Psalmodia}]
+
 1 ant. Gotowe jest serce moje, Boże, * gotowe jest serce moje,
 / zaśpiewam psalm i zagram. q
 
@@ -582,46 +764,41 @@ Wtedy zamieszkacie w~kraju,\pmed
 który dałem waszym przodkom,\pfin
 I~będziecie moim ludem,\pmed
 Ja zaś będę Bogiem waszym.\pfin
-Chwała Ojcu i~Synowi,\pmed
-i~Duchowi Świętemu.\pfin
-Jak była na początku, teraz i~zawsze,\pmed
-i~na wieki wieków. Amen.\pfin
 \stoppsalmus
 
 
 
 Ant. Dam wam serce nowe / i nowego ducha tchnę w wasze wnętrze.
 3 ant. Będę chwalił Pana * do końca mego życia.
-Psalm 146
-Chwal, duszo moja, Pana; q
-będę chwalił Pana do końca mego życia, *
-będę śpiewał mojemu Bogu, dopóki istnieję.
-Nie pokładajcie ufności w książętach *
-ani w człowieku, który zbawić nie może.
-Kiedy duch go opuści, znów w proch się obraca *
-i przepadają wszystkie jego zamiary.
-Szczęśliwy ten, kogo wspiera Bóg Jakuba, *
-kto pokłada nadzieję w Panu Bogu.
-On stworzył niebo i ziemię, i morze *
-ze wszystkim, co w nich istnieje.
-On wiary dochowuje na wieki, *
-uciśnionym sprawiedliwość wymierza,
-Chlebem karmi głodnych, *
-wypuszcza na wolność uwięzionych.
-Pan przywraca wzrok ociemniałym, q
-Pan dźwiga poniżonych, *
-Pan kocha sprawiedliwych.
-Pan strzeże przybyszów, q
-ochrania sierotę i wdowę, *
-lecz występnych kieruje na bezdroża.
-Pan króluje na wieki, *
-Bóg twój, Syjonie, przez pokolenia.
-Chwała Ojcu i Synowi, *
-i Duchowi Świętemu.
-Jak była na początku, teraz i zawsze,
-i na wieki wieków. Amen.
+
+\startpsalmus[title={Psalm 146}]
+Chwal, duszo moja, Pana;\pflx
+będę chwalił Pana do końca mego życia,\pmed
+będę śpiewał mojemu Bogu, dopóki istnieję.\pfin
+Nie pokładajcie ufności w~książętach\pmed
+ani w~człowieku, który zbawić nie może.\pfin
+Kiedy duch go opuści, znów w~proch się obraca\pmed
+i~przepadają wszystkie jego zamiary.\pfin
+Szczęśliwy ten, kogo wspiera Bóg Jakuba,\pmed
+kto pokłada nadzieję w~Panu Bogu.\pfin
+On stworzył niebo i~ziemię, i~morze\pmed
+ze wszystkim, co w~nich istnieje.\pfin
+On wiary dochowuje na wieki,\pmed
+uciśnionym sprawiedliwość wymierza,\pfin
+Chlebem karmi głodnych,\pmed
+wypuszcza na wolność uwięzionych.\pfin
+Pan przywraca wzrok ociemniałym,\pflx
+Pan dźwiga poniżonych,\pmed
+Pan kocha sprawiedliwych.\pfin
+Pan strzeże przybyszów,\pflx
+ochrania sierotę i~wdowę,\pmed
+lecz występnych kieruje na bezdroża.\pfin
+Pan króluje na wieki,\pmed
+Bóg twój, Syjonie, przez pokolenia.\pfin
+\stoppsalmus
+
 Ant. Będę chwalił Pana do końca mego życia.
-Czytanie: Wj 3,4
+\starthourpart[title={Czytanie\hfill\tf Wj 3,4}]
 Gdy zaś Pan ujrzał, że Mojżesz podchodził, żeby się przyjrzeć, zawołał Bóg
 do niego ze środka krzewu: Mojżeszu, Mojżeszu! On zaś odpowiedział: Oto
 jestem.
@@ -630,434 +807,560 @@ jestem.
 
 Antyfona do pieśni Zachariasza:
 Gdy rodzice wnosili do świątyni Dzieciątko Jezus, * Symeon wziął Je w objęcia i błogosławił Boga.
-Prośby
-Uwielbiajmy naszego Zbawiciela, który został oﬁarowany Bogu w świątyni,
-i zanośmy do Niego nasze prośby:
-Niech nasze oczy ujrzą Twe zbawienie.
-Jezu Chryste, Ty zechciałeś, aby zgodnie z Prawem oﬁarowano Cię w świątyni,
-– naucz nas samych siebie składać w oﬁerze Kościoła razem z Tobą.
-Jezu, Pociecho Izraela, sprawiedliwy Symeon przyszedł do świątyni na Twoje
-spotkanie,
-– spraw, abyśmy spotykali Ciebie w naszych braciach.
-Jezu, Nadziejo narodów, o Tobie prorokini Anna mówiła wszystkim, którzy
+
+\starthourpart[title={Prośby}]
+
+Uwielbiajmy naszego Zbawiciela, który został oﬁarowany Bogu w~świątyni,
+i~zanośmy do Niego nasze prośby:
+
+\aklamacja Niech nasze oczy ujrzą Twe zbawienie.
+
+\prosba Jezu Chryste, Ty zechciałeś, aby zgodnie z~Prawem oﬁarowano Cię w~świątyni,
+--- naucz nas samych siebie składać w~oﬁerze Kościoła razem z~Tobą.
+
+\prosba Jezu, Pociecho Izraela, sprawiedliwy Symeon przyszedł do świątyni na
+Twoje spotkanie,
+--- spraw, abyśmy spotykali Ciebie w~naszych braciach.
+
+\prosba Jezu, Nadziejo narodów, o~Tobie prorokini Anna mówiła wszystkim, którzy
 oczekiwali odkupienia Izraela,
-– naucz nas godnie o Tobie mówić do wszystkich ludzi.
-Jezu, kamieniu węgielny królestwa Bożego, Ty zostałeś postawiony jako znak
-sprzeciwu,
-– spraw, aby wszyscy ludzie przez wiarę i miłość osiągnęli z Tobą chwałę
+--- naucz nas godnie o~Tobie mówić do wszystkich ludzi.
+
+\prosba Jezu, kamieniu węgielny królestwa Bożego, Ty zostałeś postawiony jako
+znak sprzeciwu,
+--- spraw, aby wszyscy ludzie przez wiarę i~miłość osiągnęli z~Tobą chwałę
 zmartwychwstania.
+
 Ojcze nasz.
-Modlitwa:
-Boże, Ty kierujesz swoim ludem przez pasterzy, q ześlij na swój Kościół ducha pobożności i męstwa * i powołaj ludzi, którzy będą godnie pełnili służbę
-przy ołtarzu oraz mężnie i pokornie głosili Ewangelię. Przez naszego Pana
-Jezusa Chrystusa, Twojego Syna, q który z Tobą żyje i króluje w jedności
-Ducha Świętego, * Bóg, przez wszystkie wieki wieków.
+
+\starthourpart[title={Modlitwa}]
+Boże, Ty kierujesz swoim ludem przez pasterzy,~\flexas ześlij na swój Kościół
+ducha pobożności i~męstwa~\mediatios i~powołaj ludzi, którzy będą godnie
+pełnili służbę przy ołtarzu oraz mężnie i~pokornie głosili Ewangelię. Przez
+naszego Pana Jezusa Chrystusa, Twojego Syna,~\flexas który z~Tobą żyje
+i~króluje w~jedności Ducha Świętego,~\mediatios Bóg, przez wszystkie wieki
+wieków.
 
 
+\startday[title={Bóg posyła}] % 5 {{{1
+\starthour[title={Wezwanie}] %{{{2
+% XXX tu gdzieś kreska?
+\ant Uwielbiajmy Chrystusa, umiłowanego Syna Bożego, w~którym Ojciec upodobał
+sobie
+\startrubrica
+Psalm Wezwania jak jak na \at{stronie}[invit-ps95].
+\stoprubrica
 
-\startday[title={Bóg posyła}] % {{{1
-Wezwanie: Uwielbiajmy Chrystusa, umiłowanego Syna Bożego, w którym
-Ojciec upodobał sobie
-Hymn: piosenka dnia
-Psalmodia
+\starthour[title={Jutrznia}] %{{{2
+
+\starthourpart[title={Hymn}]
+% http://brewiarz.pl/indeksy/pokaz.php3?id=3&nr=038
+% Gdy Jan wypełniał swe zadanie
+% Godzina Czytań: Okres Narodzenia Pańskiego (po Objawieniu Pańskim)
+% święto Chrztu Pańskiego (niedziela po 6 stycznia)
+% II Nieszpory: Okres Narodzenia Pańskiego (po Objawieniu Pańskim)
+% święto Chrztu Pańskiego (niedziela po 6 stycznia)
+% LG tom I, wydanie I (Pallottinum 1982), s. 551, 561
+% LG tom I, wydanie II (Pallottinum 2006), s. 551, 561
+% Skrócona LG (Pallottinum 1991), s. 242
+\starthymnus
+\item Gdy Jan wypełniał swe zadanie,
+Wszedł do Jordanu Stwórca świata,
+By swym obmyciem w~jego wodach
+Czystość przywrócić nurtom rzeki.
+
+\item Nie potrzebował chrztu pokuty
+Ten, który zrodził się z~Dziewicy,
+Lecz przyjął go, by nasze grzechy
+Zgładzić przez własne zanurzenie.
+
+\item Obwieścił Ojciec głosem z~nieba:
+"Oto mój Syn umiłowany",
+A~Duch w~postaci gołębicy
+Przyszedł z~wysoka na Jezusa.
+
+\item Jaśnieje dzisiaj dla Kościoła
+Jego zbawienna tajemnica,
+Bo w~Trzech Osobach Bóg się jawi,
+Który jednością jest na wieki.
+
+\item Niech Tobie, Chryste, brzmi podzięka
+Za to, że ludziom objawiłeś
+Majestat swój i~chwałę równą
+Z~Ojcem i~Duchem Przenajświętszym. Amen.\stophymnus
+
+\startrubrica
+Albo piosenka dnia.
+\stoprubrica
+
+\starthourpart[title={Psalmodia}]
+
 1 ant. Tobie chcę śpiewać, o Panie, * będę szedł drogą nieskalaną.
 
-Psalm 101
-Będę śpiewał o sprawiedliwości i łasce, *
-Tobie chcę śpiewać, o Panie.
-Będę szedł drogą nieskalaną; *
-kiedyż Ty do mnie przyjdziesz?
-Będę chodził z sercem niewinnym *
-wewnątrz swojego domu.
-Nie będę zwracał oczu *
-ku sprawie niegodziwej.
-W nienawiści mam czyny przestępcy, *
-nie przylgną one do mnie.
-Przewrotne serce będzie ode mnie z daleka, *
-tego, co złe, nawet znać nie chcę.
-Zniszczę każdego, kto skrycie uwłacza bliźniemu, *
-pysznych oczu i serca nadętego nie zniosę.
-Oczy swe zwracam na wiernych tej ziemi, *
-aby ze mną zamieszkać mogli.
-Ten, który kroczy drogą nieskalaną, *
-będzie mi usługiwał.
-Kto knuje podstęp, nie zamieszka w mym domu, *
-nie ostoi się wobec mego wzroku, kto rozgłasza kłamstwa.
-Każdego dnia będę tępił wszystkich grzeszników ziemi, *
-wypędzę z miasta Pańskiego wszelkich złoczyńców.
-Chwała Ojcu i Synowi, *
-i Duchowi Świętemu.
-Jak była na początku, teraz i zawsze, *
-i na wieki wieków. Amen.
+\startpsalmus[title={Psalm 101}]
+Będę śpiewał o~sprawiedliwości i~łasce,\pmed
+Tobie chcę śpiewać, o~Panie.\pfin
+Będę szedł drogą nieskalaną;\pmed
+kiedyż Ty do mnie przyjdziesz?\pfin
+Będę chodził z~sercem niewinnym\pmed
+wewnątrz swojego domu.\pfin
+Nie będę zwracał oczu\pmed
+ku sprawie niegodziwej.\pfin
+W~nienawiści mam czyny przestępcy,\pmed
+nie przylgną one do mnie.\pfin
+Przewrotne serce będzie ode mnie z~daleka,\pmed
+tego, co złe, nawet znać nie chcę.\pfin
+Zniszczę każdego, kto skrycie uwłacza bliźniemu,\pmed
+pysznych oczu i~serca nadętego nie zniosę.\pfin
+Oczy swe zwracam na wiernych tej ziemi,\pmed
+aby ze mną zamieszkać mogli.\pfin
+Ten, który kroczy drogą nieskalaną,\pmed
+będzie mi usługiwał.\pfin
+Kto knuje podstęp, nie zamieszka w~mym domu,\pmed
+nie ostoi się wobec mego wzroku, kto rozgłasza kłamstwa.\pfin
+Każdego dnia będę tępił wszystkich grzeszników ziemi,\pmed
+wypędzę z~miasta Pańskiego wszelkich złoczyńców.\pfin
+\stoppsalmus
 
 
 Ant. Tobie chcę śpiewać, o Panie, / będę szedł drogą nieskalaną.
 2 ant. Nie odbieraj nam, Panie, * swego miłosierdzia.
-Pieśń (Dn 3,26-27. 29. 34-41)
-Błogosławiony jesteś, Panie, Boże naszych ojców, q
-i pełen chwały, *
-a Twoje imię jest błogosławione na wieki.
-Jesteś sprawiedliwy we wszystkim, coś uczynił z nami, *
-wszelkie Twoje dzieła są pełne prawdy.
-Twoje drogi są proste, *
-a wyroki najsłuszniejsze.
-Myśmy zgrzeszyli i popełnili nieprawość *
-odstępując od Ciebie.
-We wszystkim przewrotność okazaliśmy *
-i nie słuchaliśmy Twoich przykazań.
-Nie opuszczaj nas na zawsze q
-i ze względu na świętość Twego imienia *
-nie zrywaj Twojego przymierza.
-Nie odbieraj nam swego miłosierdzia *
-przez wzgląd na Abrahama, przyjaciela Twego,
-Twojego sługę, Izaaka, *
-i Twego świętego, Izraela.
-Im to przyrzekłeś, *
-że rozmnożysz ich potomstwo
-Jak gwiazdy na niebie *
-i jak piasek na morskim brzegu.
-Panie, oto jesteśmy najmniejsi *
-spośród wszystkich narodów.
-Oto dziś jesteśmy poniżeni na całej ziemi *
-z powodu naszych grzechów.
-Nie ma już władcy, proroka ani wodza, q
-ani całopalenia, ani oﬁar, *
-ani daru pokarmów, ani kadzenia.
-Nie ma gdzie złożyć Tobie daru z pierwszych płodów *
-i doświadczyć miłosierdzia Twego.
-Niech jednak dusza strapiona i duch uniżony *
-znajdą upodobanie u Ciebie.
-Tak jak całopalenia z baranów i cielców, *
-i tysięcy tłustych owiec,
 
-
-
-Niech się dziś stanie nasza oﬁara dla Ciebie *
-i spodoba się Tobie.
-Bo ci, którzy ufność pokładają w Tobie, *
-nie zaznają wstydu.
-Teraz zaś z całego serca idziemy za Tobą, q
-odczuwamy lęk wobec Ciebie *
-i szukamy Twojego oblicza.
-Chwała Ojcu i Synowi, *
-i Duchowi Świętemu.
-Jak była na początku, teraz i zawsze, *
-i na wieki wieków. Amen.
+\startpsalmus[title={Pieśń (Dn 3,26-27. 29. 34-41)}]
+Błogosławiony jesteś, Panie, Boże naszych ojców,\pflx
+i~pełen chwały,\pmed
+a~Twoje imię jest błogosławione na wieki.\pfin
+Jesteś sprawiedliwy we wszystkim, coś uczynił z~nami,\pmed
+wszelkie Twoje dzieła są pełne prawdy.\pfin
+Twoje drogi są proste,\pmed
+a~wyroki najsłuszniejsze.\pfin
+Myśmy zgrzeszyli i~popełnili nieprawość\pmed
+odstępując od Ciebie.\pfin
+We wszystkim przewrotność okazaliśmy\pmed
+i~nie słuchaliśmy Twoich przykazań.\pfin
+Nie opuszczaj nas na zawsze\pflx
+i~ze względu na świętość Twego imienia\pmed
+nie zrywaj Twojego przymierza.\pfin
+Nie odbieraj nam swego miłosierdzia\pmed
+przez wzgląd na Abrahama, przyjaciela Twego,\pfin
+Twojego sługę, Izaaka,\pmed
+i~Twego świętego, Izraela.\pfin
+Im to przyrzekłeś,\pmed
+że rozmnożysz ich potomstwo\pfin
+Jak gwiazdy na niebie\pmed
+i~jak piasek na morskim brzegu.\pfin
+Panie, oto jesteśmy najmniejsi\pmed
+spośród wszystkich narodów.\pfin
+Oto dziś jesteśmy poniżeni na całej ziemi\pmed
+z~powodu naszych grzechów.\pfin
+Nie ma już władcy, proroka ani wodza,\pflx
+ani całopalenia, ani oﬁar,\pmed
+ani daru pokarmów, ani kadzenia.\pfin
+Nie ma gdzie złożyć Tobie daru z~pierwszych płodów\pmed
+i~doświadczyć miłosierdzia Twego.\pfin
+Niech jednak dusza strapiona i~duch uniżony\pmed
+znajdą upodobanie u~Ciebie.\pfin
+Tak jak całopalenia z~baranów i~cielców,\pmed
+i~tysięcy tłustych owiec,\pfin
+Niech się dziś stanie nasza oﬁara dla Ciebie\pmed
+i~spodoba się Tobie.\pfin
+Bo ci, którzy ufność pokładają w~Tobie,\pmed
+nie zaznają wstydu.\pfin
+Teraz zaś z~całego serca idziemy za Tobą,\pflx
+odczuwamy lęk wobec Ciebie\pmed
+i~szukamy Twojego oblicza.\pfin
+\stoppsalmus
 Ant. Nie odbieraj nam, Panie, swego miłosierdzia.
 3 ant. Boże, będę Ci śpiewał * pieśń nową.
-Psalm 144,1-10
-Błogosławiony Pan, Opoka moja, q
-On moje ręce zaprawia do walki, *
-moje palce do bitwy.
-On mocą i warownią moją, *
-osłoną moją i moim wybawcą,
-Moją tarczą i schronieniem, *
-On, który mi poddaje ludy.
-Panie, czym jest człowiek, że troszczysz się o niego, *
-czym syn człowieczy, że Ty o nim myślisz?
-Do tchnienia wiatru podobny jest człowiek, *
-dni jego jak cień przemijają.
-Nachyl swych niebios i zstąp po nich, Panie, *
-gór dotknij, aby zadymiły.
-Rozprosz ich uderzeniem pioruna, *
-wypuść swe strzały, by ich porazić.
-Wyciągnij swą rękę z wysoka, *
-wybaw mnie z wód ogromnych.
-Uwolnij z rąk cudzoziemców, q
-tych, których usta mówią kłamliwie, *
-a prawica wznosi się do fałszywej przysięgi.
-Boże, będę Ci śpiewał pieśń nową, *
-grać Ci będę na harﬁe o dziesięciu strunach.
-
-
-
-Ty królom dajesz zwycięstwo, *
-Tyś wyzwolił Dawida, swego sługę.
-Chwała Ojcu i Synowi, *
-i Duchowi Świętemu.
-Jak była na początku, teraz i zawsze, *
-i na wieki wieków. Amen.
+\startpsalmus[title={Psalm 144,1-10}]
+Błogosławiony Pan, Opoka moja,\pflx
+On moje ręce zaprawia do walki,\pmed
+moje palce do bitwy.\pfin
+On mocą i~warownią moją,\pmed
+osłoną moją i~moim wybawcą,\pfin
+Moją tarczą i~schronieniem,\pmed
+On, który mi poddaje ludy.\pfin
+Panie, czym jest człowiek, że troszczysz się o~niego,\pmed
+czym syn człowieczy, że Ty o~nim myślisz?\pfin
+Do tchnienia wiatru podobny jest człowiek,\pmed
+dni jego jak cień przemijają.\pfin
+Nachyl swych niebios i~zstąp po nich, Panie,\pmed
+gór dotknij, aby zadymiły.\pfin
+Rozprosz ich uderzeniem pioruna,\pmed
+wypuść swe strzały, by ich porazić.\pfin
+Wyciągnij swą rękę z~wysoka,\pmed
+wybaw mnie z~wód ogromnych.\pfin
+Uwolnij z~rąk cudzoziemców,\pflx
+tych, których usta mówią kłamliwie,\pmed
+a~prawica wznosi się do fałszywej przysięgi.\pfin
+Boże, będę Ci śpiewał pieśń nową,\pmed
+grać Ci będę na harﬁe o~dziesięciu strunach.\pfin
+Ty królom dajesz zwycięstwo,\pmed
+Tyś wyzwolił Dawida, swego sługę.\pfin
+\stoppsalmus
 Ant. Boże, będę Ci śpiewał pieśń nową.
-Czytanie: Iz 6,8-9a
+\starthourpart[title={Czytanie\hfill\tf Iz 6,8-9a}]
 I usłyszałem głos Pana mówiącego: Kogo mam posłać? Kto by Nam poszedł? Odpowiedziałem: Oto ja, poślij mnie! I rzekł mi: Idź i mów do tego
 ludu.
 Ant do pieśni Zachariasza:
 Chrystus chrztem swoim uświęcił świat cały, * udzielił nam odpuszczenia
 grzechów / i przez wodę i Ducha oczyścił nas wszystkich.
-Prośby
-Błagajmy naszego Odkupiciela, który zechciał przyjąć chrzest z rąk Jana
-w Jordanie, i wołajmy do Niego:
-Panie, zmiłuj się nad nami!
-Chryste, Ty przez swe objawienie opromieniłeś nas swoim światłem,
-– spraw, abyśmy je dziś nieśli spotykanym ludziom.
-Chryste, Ty przyjmując chrzest od swojego sługi, uniżyłeś się, aby dać nam
-przykład pokory,
-– spraw, byśmy umieli pokornie służyć braciom.
-Chryste, Ty przez swój chrzest obmyłeś nas z wszelkiego grzechu i przywróciłeś nam godność dzieci Twojego Ojca,
-– udziel ducha przybrania wszystkim, którzy Cię szukają.
-Chryste, Ty przez swój chrzest uświęciłeś całe stworzenie i otworzyłeś
+\starthourpart[title={Prośby}]
+
+Błagajmy naszego Odkupiciela, który zechciał przyjąć chrzest z~rąk Jana
+w~Jordanie, i~wołajmy do Niego:
+
+\aklamacja Panie, zmiłuj się nad nami!
+
+\prosba Chryste, Ty przez swe objawienie opromieniłeś nas swoim światłem,
+--- spraw, abyśmy je dziś nieśli spotykanym ludziom.
+
+\prosba Chryste, Ty przyjmując chrzest od swojego sługi, uniżyłeś się, aby dać
+nam przykład pokory,
+--- spraw, byśmy umieli pokornie służyć braciom.
+
+\prosba Chryste, Ty przez swój chrzest obmyłeś nas z~wszelkiego grzechu
+i~przywróciłeś nam godność dzieci Twojego Ojca,
+--- udziel ducha przybrania wszystkim, którzy Cię szukają.
+
+\prosba Chryste, Ty przez swój chrzest uświęciłeś całe stworzenie i~otworzyłeś
 ochrzczonym bramę nawrócenia,
-– spraw, abyśmy byli w świecie sługami Twojej Ewangelii.
-Chryste, Ty przez swój chrzest objawiłeś nam Trójcę Świętą,
-– odnów ducha przybranych dzieci w kapłańskim ludzie ochrzczonych.
+--- spraw, abyśmy byli w~świecie sługami Twojej Ewangelii.
 
-
+\prosba Chryste, Ty przez swój chrzest objawiłeś nam Trójcę Świętą,
+--- odnów ducha przybranych dzieci w~kapłańskim ludzie ochrzczonych.
 
 Ojcze nasz.
-Modlitwa:
-Boże, Ty chcesz, aby wszyscy ludzie zostali zbawieni i doszli do poznania
-prawdy, q wejrzyj na swoje wielkie żniwo i poślij na nie robotników, aby
-głosili Ewangelię wszelkiemu stworzeniu, * niech Twój lud zgromadzony
-przez Słowo Życia i pokrzepiony mocą sakramentów kroczy drogą zbawienia i miłości. Przez naszego Pana Jezusa Chrystusa, Twojego Syna który
-z Tobą żyje i króluje w jedności Ducha Świętego, * Bóg, przez wszystkie
-wieki wieków.
+
+\starthourpart[title={Modlitwa}]
+Boże, Ty chcesz, aby wszyscy ludzie zostali zbawieni i~doszli do poznania
+prawdy,~\flexas wejrzyj na swoje wielkie żniwo i~poślij na nie robotników, aby
+głosili Ewangelię wszelkiemu stworzeniu,~\mediatios niech Twój lud zgromadzony
+przez Słowo Życia i~pokrzepiony mocą sakramentów kroczy drogą zbawienia
+i~miłości. Przez naszego Pana Jezusa Chrystusa, Twojego Syna który z~Tobą żyje
+i~króluje w~jedności Ducha Świętego,~\mediatios Bóg, przez wszystkie wieki
+wieków.
 
 
+\startday[title={Bóg walczy}] % 6 {{{1
+\starthour[title={Wezwanie}] %{{{2
+% XXX kreska?
+\ant Uwielbiajmy Chrystusa Pana, który dla nas był kuszony i~ukrzyżowany
+\startrubrica
+Psalm Wezwania jak jak na \at{stronie}[invit-ps95].
+\stoprubrica
 
-\startday[title={Bóg walczy}] % {{{1
-Wezwanie: Uwielbiajmy Chrystusa Pana, który dla nas był kuszony
-i ukrzyżowany
-Hymn: piosenka dnia
-Psalmodia
+\starthour[title={Jutrznia}] %{{{2
+
+\starthourpart[title={Hymn}]
+% http://brewiarz.pl/indeksy/pokaz.php3?id=3&nr=153
+% Nieszpory: Wielki Post
+% w oficjum dni powszednich
+% LG tom II (Pallottinum 1984), s. 36
+% Skrócona LG (Pallottinum 1991), s. 246
+\starthymnus
+
+\item Dałeś nam przykład, o~Jezu,
+Czterdziestu dni umartwienia;
+Aby w~nas ducha odnowić,
+Wymagasz postu i~skruchy.
+
+\item Stań więc pośrodku Kościoła
+I~spójrz na jego pokutę;
+Ciebie pokornie prosimy,
+Byś przez nią z~grzechu nas obmył.
+
+\item Zło popełnione w~przeszłości
+Niech Twoja łaska zniweczy;
+Chroń nas od dalszych upadków
+I~otocz swoją opieką.
+
+\item Daj przez doroczną pokutę
+Dostąpić win odpuszczenia,
+Byśmy z~radością czekali
+Na światło Nocy Paschalnej.
+
+\item W~Trójcy Jedyny nasz Boże,
+Niech Ciebie wszechświat wysławia;
+Pieśń nową Tobie śpiewamy
+Za odrodzenie przez łaskę. Amen.\stophymnus
+
+\startrubrica
+Albo piosenka dnia.
+\stoprubrica
+
+\starthourpart[title={Psalmodia}]
+
 1 ant. Budzą się moje oczy jeszcze przed świtem, * aby rozważać
 Twoje słowo, Panie.
-Psalm 119,145-152
-Z całego serca wołam, wysłuchaj mnie, Panie, *
-zachować chcę Twoje ustawy
-Wołam do Ciebie, a Ty mnie wybaw, *
-będę strzegł Twoich napomnień.
-Przychodzę o świcie i wołam, *
-pokładam ufność w Twoich słowach.
-Budzą się moje oczy jeszcze przed świtem, *
-aby rozważać Twoje słowo.
-W dobroci swej, Panie, słuchaj głosu mego *
-i daj mi życie zgodne z Twoim przykazaniem.
-Zbliżają się niegodziwi moi prześladowcy, *
-dalecy są oni od Twojego Prawa.
-Jesteś blisko, Panie, *
-i wszystkie Twe przykazania są prawdą.
-Od dawna wiem z Twoich napomnień, *
-że ustaliłeś je na wieki.
-Chwała Ojcu i Synowi, *
-i Duchowi Świętemu
-Jak była na początku, teraz i zawsze, *
-i na wieki wieków. Amen.
+\startpsalmus[title={Psalm 119,145-152}]
+Z~całego serca wołam, wysłuchaj mnie, Panie,\pmed
+zachować chcę Twoje ustawy\pfin
+Wołam do Ciebie, a~Ty mnie wybaw,\pmed
+będę strzegł Twoich napomnień.\pfin
+Przychodzę o~świcie i~wołam,\pmed
+pokładam ufność w~Twoich słowach.\pfin
+Budzą się moje oczy jeszcze przed świtem,\pmed
+aby rozważać Twoje słowo.\pfin
+W~dobroci swej, Panie, słuchaj głosu mego\pmed
+i~daj mi życie zgodne z~Twoim przykazaniem.\pfin
+Zbliżają się niegodziwi moi prześladowcy,\pmed
+dalecy są oni od Twojego Prawa.\pfin
+Jesteś blisko, Panie,\pmed
+i~wszystkie Twe przykazania są prawdą.\pfin
+Od dawna wiem z~Twoich napomnień,\pmed
+że ustaliłeś je na wieki.\pfin
+\stoppsalmus
+
 Ant. Budzą się moje oczy jeszcze przed świtem, / aby rozważać Twoje
 słowo, Panie.
 2 ant. Pan jest moją mocą i źródłem męstwa, * Jemu zawdzięczam
 moje ocalenie.
 
 
-Pieśń (Wj 15, 1b-13.17-18)
-Zaśpiewam na cześć Pana, który okrył się sławą, *
-gdy konia i jeźdźca pogrążył w morskiej toni.
-Pan jest moją mocą i źródłem męstwa, *
-Jemu zawdzięczam moje ocalenie.
-On Bogiem moim, uwielbiać Go będę, *
-On Bogiem mego ojca, będę Go wywyższać.
-Pan, wojownik potężny, *
-«Ten, który jest», brzmi Jego imię.
-Rzucił w morze rydwany faraona i wojska jego, *
-wybrani wodzowie legli w Morzu Czerwonym.
-Ogarnęły ich przepaści, *
-jak głaz runęli w głębinę.
-Okazała się wtedy potęga Twej prawicy, Panie, *
-prawica Twoja, Panie, zmiażdżyła nieprzyjaciół.
-Pełen mocy zniszczyłeś swoich wrogów, *
-wybuchnąłeś gniewem, co spalił ich jak słomę.
-Od Twojego tchnienia spiętrzyły się wody, q
-jak wał stanęły ogromne fale, *
-w pośrodku morza zakrzepły otchłanie.
-Mówił nieprzyjaciel: „Będę ścigał, dopadnę, q
-rozdzielę łupy i nasycę mą duszę, *
-dobędę miecza, moja ręka ich zniszczy!”
-Lecz Tyś posłał swój wicher i przykryło ich morze, *
-zatonęli jak ołów wśród gwałtownych wirów.
-Któż spomiędzy bogów równy Tobie, Panie, q
-kto blaskiem świętości podobny do Ciebie, *
-straszliwy w czynach, sprawiający cuda?
-Wyciągnąłeś prawicę *
-i wchłonęła ich ziemia.
-Ty zaś wiodłeś swą łaską lud oswobodzony q
-i doprowadziłeś go Twoją mocą*
-do swego mieszkania świętego.
-Wprowadziłeś ich i osadziłeś na górze Twojego dziedzictwa, *
-w miejscu, któreś uczynił swoim mieszkaniem,
-W świątyni zbudowanej Twoimi rękami; *
-Pan jest Królem na zawsze i na wieki.
-Chwała Ojcu i Synowi, *
-i Duchowi Świętemu.
-Jak była na początku, teraz i zawsze, *
-i na wieki wieków. Amen.
+\startpsalmus[title={Pieśń (Wj 15, 1b-13.17-18)}]
+Zaśpiewam na cześć Pana, który okrył się sławą,\pmed
+gdy konia i~jeźdźca pogrążył w~morskiej toni.\pfin
+Pan jest moją mocą i~źródłem męstwa,\pmed
+Jemu zawdzięczam moje ocalenie.\pfin
+On Bogiem moim, uwielbiać Go będę,\pmed
+On Bogiem mego ojca, będę Go wywyższać.\pfin
+Pan, wojownik potężny,\pmed
+«Ten, który jest», brzmi Jego imię.\pfin
+Rzucił w~morze rydwany faraona i~wojska jego,\pmed
+wybrani wodzowie legli w~Morzu Czerwonym.\pfin
+Ogarnęły ich przepaści,\pmed
+jak głaz runęli w~głębinę.\pfin
+Okazała się wtedy potęga Twej prawicy, Panie,\pmed
+prawica Twoja, Panie, zmiażdżyła nieprzyjaciół.\pfin
+Pełen mocy zniszczyłeś swoich wrogów,\pmed
+wybuchnąłeś gniewem, co spalił ich jak słomę.\pfin
+Od Twojego tchnienia spiętrzyły się wody,\pflx
+jak wał stanęły ogromne fale,\pmed
+w~pośrodku morza zakrzepły otchłanie.\pfin
+Mówił nieprzyjaciel: \startquote Będę ścigał, dopadnę,\pflx
+rozdzielę łupy i~nasycę mą duszę,\pmed
+dobędę miecza, moja ręka ich zniszczy!\stopquote\pfin
+Lecz Tyś posłał swój wicher i~przykryło ich morze,\pmed
+zatonęli jak ołów wśród gwałtownych wirów.\pfin
+Któż spomiędzy bogów równy Tobie, Panie,\pflx
+kto blaskiem świętości podobny do Ciebie,\pmed
+straszliwy w~czynach, sprawiający cuda?\pfin
+Wyciągnąłeś prawicę\pmed
+i~wchłonęła ich ziemia.\pfin
+Ty zaś wiodłeś swą łaską lud oswobodzony\pflx
+i~doprowadziłeś go Twoją mocą*\pfin
+do swego mieszkania świętego.\pfin
+Wprowadziłeś ich i~osadziłeś na górze Twojego dziedzictwa,\pmed
+w~miejscu, któreś uczynił swoim mieszkaniem,\pfin
+W~świątyni zbudowanej Twoimi rękami;\pmed
+Pan jest Królem na zawsze i~na wieki.\pfin
+\stoppsalmus
 
 
 Ant. Pan jest moją mocą i źródłem męstwa, / Jemu zawdzięczam moje
 ocalenie.
 3 ant. Chwalcie Pana, * wszystkie narody. q
-Psalm 117
-Chwalcie Pana, wszystkie narody, *
-q wysławiajcie Go, wszystkie ludy!
-Bo potężna nad nami Jego łaska, *
-a wierność Pana trwa na wieki.
-Chwała Ojcu i Synowi, *
-i Duchowi Świętemu.
-Jak była na początku, teraz i zawsze, *
-i na wieki wieków. Amen.
+\startpsalmus[title={Psalm 117}]
+Chwalcie Pana, wszystkie narody,\pmed
+q~wysławiajcie Go, wszystkie ludy!\pfin
+Bo potężna nad nami Jego łaska,\pmed
+a~wierność Pana trwa na wieki.\pfin
+\stoppsalmus
 Ant. Chwalcie Pana, wszystkie narody.
-Czytanie: Wj 14,13-14
+\starthourpart[title={Czytanie\hfill\tf Wj 14,13-14}]
 Mojżesz odpowiedział ludowi: Nie bójcie się! Pozostańcie na swoim miejscu, a zobaczycie zbawienie od Pana, jakie zgotuje nam dzisiaj. Egipcjan,
 których widzicie teraz, nie będziecie już nigdy oglądać. Pan będzie walczył
 za was, a wy będziecie spokojni.
 Ant. do pieśni Zachariasza:
 Duch wyprowadził Jezusa na pustynię, * aby był kuszony przez diabła.
 / A gdy przepościł czterdzieści dni i nocy, / głód potem odczuwał.
-Prośby
+
+\starthourpart[title={Prośby}]
+
 Błogosławmy naszego Odkupiciela, który łaskawie wysłużył nam ten czas
-zbawienia. Z pokorą zanośmy do Niego nasze prośby:
-Stwórz w nas, o Panie, nowego ducha.
-Chryste, nasze życie, Ty zechciałeś, abyśmy przez chrzest zostali pogrzebani z Tobą w śmierci i z Tobą zostali wskrzeszeni,
-– dopomóż nam dzisiaj postępować w nowości życia.
-Panie, Ty wszystkim dobrze czyniłeś,
-– spraw, abyśmy troszczyli się o wspólne dobro wszystkich ludzi.
-Daj, abyśmy zgodnie współpracowali w doczesnej społeczności,
-– a zarazem zdążali do wiecznej ojczyzny.
+zbawienia. Z~pokorą zanośmy do Niego nasze prośby:
 
+\aklamacja Stwórz w~nas, o~Panie, nowego ducha.
 
+\prosba Chryste, nasze życie, Ty zechciałeś, abyśmy przez chrzest zostali
+pogrzebani z~Tobą w~śmierci i~z~Tobą zostali wskrzeszeni,
+--- dopomóż nam dzisiaj postępować w~nowości życia.
 
-Chryste, lekarzu ciał i dusz, ulecz rany naszego serca,
-– abyśmy stale korzystali z Twej pomocy na drodze świętości.
+\prosba Panie, Ty wszystkim dobrze czyniłeś,
+--- spraw, abyśmy troszczyli się o~wspólne dobro wszystkich ludzi.
+
+\prosba Daj, abyśmy zgodnie współpracowali w~doczesnej społeczności,
+--- a~zarazem zdążali do wiecznej ojczyzny.
+
+\prosba Chryste, lekarzu ciał i~dusz, ulecz rany naszego serca,
+--- abyśmy stale korzystali z~Twej pomocy na drodze świętości.
+
 Ojcze nasz.
-Modlitwa:
-Wszechmogący, wieczny Boże, wejrzyj na naszą słabość w walce z mocami
-ciemności * i wyciągnij w naszej obronie swoją potężną prawicę. Przez naszego Pana Jezusa Chrystusa, Twojego Syna, q który z Tobą żyje i króluje
-w jedności Ducha Świętego, * Bóg, przez wszystkie wieki wieków.
+
+\starthourpart[title={Modlitwa}]
+
+Wszechmogący, wieczny Boże, wejrzyj na naszą słabość w~walce z~mocami
+ciemności~\mediatios i~wyciągnij w~naszej obronie swoją potężną prawicę. Przez
+naszego Pana Jezusa Chrystusa, Twojego Syna,~\flexas który z~Tobą żyje
+i~króluje w~jedności Ducha Świętego,~\mediatios Bóg, przez wszystkie wieki
+wieków.
 
 
+\startday[title={Plagi}] % 7 {{{1
 
-\startday[title={Plagi}] % {{{1
-Wezwanie: Jeśli głos Pana usłyszycie, nie zatwardzajcie serc waszych
-Hymn: piosenka dnia
-Psalmodia
+\starthour[title={Wezwanie}] %{{{2
+% XXX kreska?
+\ant Jeśli głos Pana usłyszycie, nie zatwardzajcie serc waszych
+\startrubrica
+Psalm Wezwania jak jak na \at{stronie}[invit-ps95].
+\stoprubrica
+
+\starthour[title={Jutrznia}] %{{{2
+
+\starthourpart[title={Hymn}]
+% http://brewiarz.pl/indeksy/pokaz.php3?id=3&nr=205
+% Jutrznia: Wielki Post
+% w oficjum niedzielnym
+% LG tom II (Pallottinum 1984), s. 39
+% Skrócona LG (Pallottinum 1991), s. 249
+\starthymnus
+\item Padnijmy twarzą na ziemię,
+Błagajmy Boga ze skruchą,
+Przed Sędzią łzy wylewajmy,
+By Jego gniew się uśmierzył.
+
+\item Tak często, Ojcze najlepszy,
+Grzechami Cię obrażamy,
+Lecz Ty się zmiłuj nad nami
+I~ześlij swe przebaczenie.
+
+\item Bo chociaż bardzo niegodni,
+Jesteśmy Twoim stworzeniem,
+Więc wspomnij na to i~pomóż
+Wysławiać życiem Twe imię.
+
+\item Od zła nas wyzwól dawnego,
+A~dobro pomnóż swą łaską,
+I~uczyń Tobie miłymi
+Już dziś i~w~całej wieczności.
+
+\item Niech Tobie, w~Trójcy Jedyny,
+Majestat będzie i~chwała,
+A~Ty nam udziel owoców
+Zbawczego czasu pokuty. Amen.\stophymnus
+
+\startrubrica
+Albo piosenka dnia.
+\stoprubrica
+
+\starthourpart[title={Psalmodia}]
+
 1 ant. O świcie * napełnia nas, Panie, Twoja łaska.
-Psalm 90
-Panie, Ty dla nas byłeś ucieczką *
-z pokolenia na pokolenie.
-Zanim narodziły się góry, q
-nim powstał świat i ziemia, *
-od wieku po wiek Ty jesteś Bogiem.
-Obracasz w proch człowieka, *
-i mówisz: „Wracajcie, synowie ludzcy”.
-Bo tysiąc lat w Twoich oczach q
-jest jak wczorajszy dzień, który minął, *
-albo straż nocna.
-Porywasz ich, stają się niby sen poranny, *
-jak trawa, która rośnie:
-Rankiem zielona i kwitnąca, *
-wieczorem więdnie i usycha.
-Zaprawdę, Twój gniew nas niszczy, *
-trwoży nas Twoje oburzenie.
-Położyłeś przed sobą nasze grzechy, *
-nasze skryte winy w świetle Twojego oblicza.
-Wszystkie nasze dni mijają w Twoim gniewie, *
-nasze lata dobiegają końca jak westchnienie.
-Miarą naszego życia jest lat siedemdziesiąt, *
-osiemdziesiąt, gdy jesteśmy mocni.
-A większość z nich, to trud i marność, *
-bo szybko mijają, my zaś odlatujemy.
-Któż może poznać siłę Twego gniewu *
-i kto znieść zdoła moc Twego oburzenia?
-Naucz nas liczyć dni nasze, *
-byśmy zdobyli mądrość serca.
 
-
-Powróć, Panie, jak długo będziesz zwlekał? *
-Bądź litościwy dla sług Twoich.
-Nasyć nas o świcie swoją łaską, *
-abyśmy przez wszystkie dni nasze mogli się radować i cieszyć.
-Daj radość w zamian za dni Twego ucisku, *
-za lata, w których zaznaliśmy niedoli.
-Niech sługom Twoim ukaże się Twe dzieło, *
-a Twoja chwała nad ich synami.
-Dobroć Pana, Boga naszego, niech będzie nad nami q
-i wspieraj pracę rąk naszych, *
-dzieło rąk naszych wspieraj!
-Chwała Ojcu i Synowi, *
-i Duchowi Świętemu.
-Jak była na początku, teraz i zawsze, *
-i na wieki wieków. Amen.
+\startpsalmus[title={Psalm 90}]
+Panie, Ty dla nas byłeś ucieczką\pmed
+z~pokolenia na pokolenie.\pfin
+Zanim narodziły się góry,\pflx
+nim powstał świat i~ziemia,\pmed
+od wieku po wiek Ty jesteś Bogiem.\pfin
+Obracasz w~proch człowieka,\pmed
+i~mówisz: \startquote Wracajcie, synowie ludzcy\stopquote.\pfin
+Bo tysiąc lat w~Twoich oczach\pflx
+jest jak wczorajszy dzień, który minął,\pmed
+albo straż nocna.\pfin
+Porywasz ich, stają się niby sen poranny,\pmed
+jak trawa, która rośnie:\pfin
+Rankiem zielona i~kwitnąca,\pmed
+wieczorem więdnie i~usycha.\pfin
+Zaprawdę, Twój gniew nas niszczy,\pmed
+trwoży nas Twoje oburzenie.\pfin
+Położyłeś przed sobą nasze grzechy,\pmed
+nasze skryte winy w~świetle Twojego oblicza.\pfin
+Wszystkie nasze dni mijają w~Twoim gniewie,\pmed
+nasze lata dobiegają końca jak westchnienie.\pfin
+Miarą naszego życia jest lat siedemdziesiąt,\pmed
+osiemdziesiąt, gdy jesteśmy mocni.\pfin
+A~większość z~nich, to trud i~marność,\pmed
+bo szybko mijają, my zaś odlatujemy.\pfin
+Któż może poznać siłę Twego gniewu\pmed
+i~kto znieść zdoła moc Twego oburzenia?\pfin
+Naucz nas liczyć dni nasze,\pmed
+byśmy zdobyli mądrość serca.\pfin
+Powróć, Panie, jak długo będziesz zwlekał?\pmed
+Bądź litościwy dla sług Twoich.\pfin
+Nasyć nas o~świcie swoją łaską,\pmed
+abyśmy przez wszystkie dni nasze mogli się radować i~cieszyć.\pfin
+Daj radość w~zamian za dni Twego ucisku,\pmed
+za lata, w~których zaznaliśmy niedoli.\pfin
+Niech sługom Twoim ukaże się Twe dzieło,\pmed
+a~Twoja chwała nad ich synami.\pfin
+Dobroć Pana, Boga naszego, niech będzie nad nami\pflx
+i~wspieraj pracę rąk naszych,\pmed
+dzieło rąk naszych wspieraj!\pfin
+\stoppsalmus
 Ant. O świcie napełnia nas, Panie, Twoja łaska.
 2 ant. Wszystkie krańce ziemi * głoszą chwałę Pana.
-Pieśń (Iz 42, 10-16)
-Śpiewajcie Panu pieśń nową, *
-Jego chwała aż po krańce ziemi.
-Niech sławi Go morze i to, co je napełnia, *
-i wyspy razem z tymi, którzy tam mieszkają.
-Niech woła pustynia i miasta, *
-osiedla plemienia Kedar.
-Mieszkańcy Sela niech wznoszą okrzyki, *
-ze szczytów gór niech wołają radośnie.
-Niech Panu oddają chwałę, *
-Jego cześć niech głoszą na wyspach.
-Jak mocarz Pan kroczy, *
-jak wojownik pobudza odwagę;
-Rzuca hasło, okrzyk wydaje wojenny, *
-nieprzyjaciół męstwem przewyższa.
-„Długo milczałem, *
-powstrzymywałem siebie w spokoju,
-Teraz jak rodząca zakrzyknę, *
-będę dyszał gniewem, aż tchu mi zabraknie.
-Wypalę góry i pagórki, *
-sprawię, że wyschnie cała ich zieleń,
-
-
-Rzeki w stawy przemienię, *
-i osuszę jeziora.
-Uczynię, że niewidomi pójdą po nieznanej drodze, *
-powiodę ich ścieżkami, których nie znają;
-W światło zamienię ich ciemności, *
-a miejsca wyboiste w równinę”.
-Chwała Ojcu i Synowi, *
-i Duchowi Świętemu.
-Jak była na początku, teraz i zawsze, *
-i na wieki wieków. Amen.
+\startpsalmus[title={Pieśń (Iz 42, 10-16)}]
+Śpiewajcie Panu pieśń nową,\pmed
+Jego chwała aż po krańce ziemi.\pfin
+Niech sławi Go morze i~to, co je napełnia,\pmed
+i~wyspy razem z~tymi, którzy tam mieszkają.\pfin
+Niech woła pustynia i~miasta,\pmed
+osiedla plemienia Kedar.\pfin
+Mieszkańcy Sela niech wznoszą okrzyki,\pmed
+ze szczytów gór niech wołają radośnie.\pfin
+Niech Panu oddają chwałę,\pmed
+Jego cześć niech głoszą na wyspach.\pfin
+Jak mocarz Pan kroczy,\pmed
+jak wojownik pobudza odwagę;\pfin
+Rzuca hasło, okrzyk wydaje wojenny,\pmed
+nieprzyjaciół męstwem przewyższa.\pfin
+\startquote Długo milczałem,\pmed
+powstrzymywałem siebie w~spokoju,\pfin
+Teraz jak rodząca zakrzyknę,\pmed
+będę dyszał gniewem, aż tchu mi zabraknie.\pfin
+Wypalę góry i~pagórki,\pmed
+sprawię, że wyschnie cała ich zieleń,\pfin
+Rzeki w~stawy przemienię,\pmed
+i~osuszę jeziora.\pfin
+Uczynię, że niewidomi pójdą po nieznanej drodze,\pmed
+powiodę ich ścieżkami, których nie znają;\pfin
+W~światło zamienię ich ciemności,\pmed
+a~miejsca wyboiste w~równinę\stopquote.\pfin
+\stoppsalmus
 Ant. Wszystkie krańce ziemi głoszą chwałę Pana.
 3 ant. Chwalcie imię Pana, * wy, co stoicie w Jego domu.
-Psalm 135, 1-12
-Chwalcie imię Pana, *
-chwalcie, Pańscy słudzy,
-Którzy stoicie w domu Pana, *
-na dziedzińcach domu Boga naszego.
-Chwalcie Pana, bo Pan jest dobry, *
-śpiewajcie Jego imieniu, bo jest łaskawy.
-Pan bowiem wybrał sobie Jakuba, *
-na własność wyłączną wybrał Izraela.
-Wiem, że Pan jest wielki, *
-że nasz Pan jest nad wszystkimi bogami.
-Cokolwiek spodoba się Panu, q
-uczyni na niebie i na ziemi, *
-na morzu i na wszystkich głębinach.
-Z krańców ziemi sprowadza chmury, q
-wywołuje deszcz błyskawicami *
-i dobywa wiatr ze swoich komór.
-Poraził pierworodnych w Egipcie, *
-wśród ludzi i wśród zwierząt.
-W tobie, kraju egipski, zdziałał znaki i cuda *
-przeciw faraonowi i wszystkim jego sługom.
-Poraził wiele narodów *
-i zgładził potężnych królów:
-Amoryckiego króla Sichona i Oga, króla Baszanu, *
-i wszystkich królów kananejskich,
-
-
-
-A ziemię ich dał w posiadanie, *
-w posiadanie Izraela, swego narodu.
-Chwała Ojcu i Synowi, *
-i Duchowi Świętemu
-Jak była na początku, teraz i zawsze, *
-i na wieki wieków. Amen.
+\startpsalmus[title={Psalm 135, 1-12}]
+Chwalcie imię Pana,\pmed
+chwalcie, Pańscy słudzy,\pfin
+Którzy stoicie w~domu Pana,\pmed
+na dziedzińcach domu Boga naszego.\pfin
+Chwalcie Pana, bo Pan jest dobry,\pmed
+śpiewajcie Jego imieniu, bo jest łaskawy.\pfin
+Pan bowiem wybrał sobie Jakuba,\pmed
+na własność wyłączną wybrał Izraela.\pfin
+Wiem, że Pan jest wielki,\pmed
+że nasz Pan jest nad wszystkimi bogami.\pfin
+Cokolwiek spodoba się Panu,\pflx
+uczyni na niebie i~na ziemi,\pmed
+na morzu i~na wszystkich głębinach.\pfin
+Z~krańców ziemi sprowadza chmury,\pflx
+wywołuje deszcz błyskawicami\pmed
+i~dobywa wiatr ze swoich komór.\pfin
+Poraził pierworodnych w~Egipcie,\pmed
+wśród ludzi i~wśród zwierząt.\pfin
+W~tobie, kraju egipski, zdziałał znaki i~cuda\pmed
+przeciw faraonowi i~wszystkim jego sługom.\pfin
+Poraził wiele narodów\pmed
+i~zgładził potężnych królów:\pfin
+Amoryckiego króla Sichona i~Oga, króla Baszanu,\pmed
+i~wszystkich królów kananejskich,\pfin
+A~ziemię ich dał w~posiadanie,\pmed
+w~posiadanie Izraela, swego narodu.\pfin
+\stoppsalmus
 Ant. Chwalcie imię Pana, / wy, co stoicie w Jego domu.
-Czytanie: Wj 4, 21-23
+\starthourpart[title={Czytanie\hfill\tf Wj 4,21-23}]
 Pan rzekł do Mojżesza: Gdy będziesz zbliżał się do Egiptu, pamiętaj o władzy czynienia wszelkich cudów, jaką ci dałem do ręki, i okaż ją przed faraonem. Ja zaś uczynię upartym jego serce, że nie zechce zezwolić na wyjście
 ludu. A ty wtedy powiesz do faraona: To mówi Pan: Synem moim pierworodnym jest Izrael. Mówię ci: Wypuść mojego syna, aby mi cześć oddawał;
 bo jeśli zwlekać będziesz z wypuszczeniem go, to Ja ześlę śmierć na twego
@@ -1065,172 +1368,202 @@ syna pierworodnego.
 Antyfona do pieśni Zachariasza:
 Bóg jest duchem, * potrzeba więc, by Jego czciciele / oddawali Mu cześć
 w Duchu i prawdzie.
-Prośby
+
+\starthourpart[title={Prośby}]
+
 Błogosławmy naszego Odkupiciela, który łaskawie wysłużył nam ten czas
-zbawienia. Z pokorą zanośmy do Niego nasze prośby:
-Stwórz w nas, o Panie, nowego ducha.
-Chryste, nasze życie, Ty zechciałeś, abyśmy przez chrzest zostali pogrzebani z Tobą w śmierci i z Tobą zostali wskrzeszeni,
-– dopomóż nam dzisiaj postępować w nowości życia.
-Panie, Ty wszystkim dobrze czyniłeś,
-– spraw, abyśmy troszczyli się o wspólne dobro wszystkich ludzi.
-Daj, abyśmy zgodnie współpracowali w doczesnej społeczności,
-– a zarazem zdążali do wiecznej ojczyzny.
-Chryste, lekarzu ciał i dusz, ulecz rany naszego serca,
-– abyśmy stale korzystali z Twej pomocy na drodze świętości.
+zbawienia. Z~pokorą zanośmy do Niego nasze prośby:
 
+\aklamacja Stwórz w~nas, o~Panie, nowego ducha.
 
+\prosba Chryste, nasze życie, Ty zechciałeś, abyśmy przez chrzest zostali
+pogrzebani z~Tobą w~śmierci i~z~Tobą zostali wskrzeszeni,
+--- dopomóż nam dzisiaj postępować w~nowości życia.
+
+\prosba Panie, Ty wszystkim dobrze czyniłeś,
+--- spraw, abyśmy troszczyli się o~wspólne dobro wszystkich ludzi.
+
+\prosba Daj, abyśmy zgodnie współpracowali w~doczesnej społeczności,
+--- a~zarazem zdążali do wiecznej ojczyzny.
+
+\prosba Chryste, lekarzu ciał i~dusz, ulecz rany naszego serca,
+--- abyśmy stale korzystali z~Twej pomocy na drodze świętości.
 
 Ojcze nasz.
-Modlitwa:
-Wszechmogący Boże, wejrzyj na zgromadzenie Twoich wiernych q i spraw,
-aby nasze dusze oczyszczone przez umartwienie ciała * jaśniały pragnieniem posiadania Ciebie. Przez naszego Pana Jezusa Chrystusa Twojego
-Syna, q który z Tobą żyje i króluje w jedności Ducha Świętego, * Bóg, przez
+
+\starthourpart[title={Modlitwa}]
+Wszechmogący Boże, wejrzyj na zgromadzenie Twoich wiernych~\flexas i~spraw, aby
+nasze dusze oczyszczone przez umartwienie ciała~\mediatios jaśniały pragnieniem
+posiadania Ciebie. Przez naszego Pana Jezusa Chrystusa Twojego Syna,~\flexas
+który z~Tobą żyje i~króluje w~jedności Ducha Świętego,~\mediatios Bóg, przez
 wszystkie wieki wieków.
 
 
+\startday[title={Obłok}] % 8 {{{1
 
-\startday[title={Obłok}] % {{{1
-Wezwanie: Uwielbiajmy Pana, * którego oblicze jaśnieje nad nami
-Hymn: piosenka dnia
-Psalmodia
+\starthour[title={Wezwanie}] %{{{2
+\ant Uwielbiajmy Pana,~* którego oblicze jaśnieje nad nami
+\startrubrica
+Psalm Wezwania jak jak na \at{stronie}[invit-ps95].
+\stoprubrica
+
+\starthour[title={Jutrznia}] %{{{2
+
+\starthourpart[title={Hymn}]
+% http://brewiarz.pl/indeksy/pokaz.php3?id=3&nr=211
+% Jutrznia: Wielki Post
+% w oficjum dni powszednich
+% LG tom II (Pallottinum 1984), s. 40
+% Skrócona LG (Pallottinum 1991), s. 250
+\starthymnus
+\item Przed Tobą, Ojcze, stajemy skruszeni
+I~obciążeni winami,
+A~niosąc w~sobie bezsilną samotność,
+Szukamy Twojej pomocy.
+
+\item Bo przecież jesteś troskliwym pasterzem
+I~nie chcesz śmierci grzesznika,
+Lecz by się zwrócił do Ciebie w~pokorze,
+A~przez to życie otrzymał.
+
+\item W~tym świętym czasie powrotu do Ciebie,
+Gdy dajesz łaskę pokuty,
+O~miłosierdzie błagamy z~nadzieją
+I~zło naprawić pragniemy.
+
+\item Potężne światło, jaśniejsze od słońca,
+Którego tarcza już wschodzi,
+Wielbimy Ciebie, nasz Boże i~Panie,
+W~Najświętszej Trójcy Jedyny. Amen.\stophymnus
+
+\startrubrica
+Albo piosenka dnia.
+\stoprubrica
+
+\starthourpart[title={Psalmodia}]
+
 1 ant. Boże, Twoja droga jest święta, * nikt nie dorówna wielkością
 naszemu Bogu.
-Psalm 77
-Głos mój się wznosi do Boga, gdy wołam, *
-głos mój wznoszę do Boga, aby mnie usłyszał.
-W dniu mej niedoli szukam Pana, *
-w nocy niestrudzenie wyciągam rękę.
-Dusza moja jest niepocieszona, q
-jęczę, kiedy wspomnę Boga, *
-słabnie mój duch, gdy rozmyślam.
-Ty spędzasz sen z moich powiek, *
-z niepokoju mówić nie potraﬁę.
-Rozpamiętuję dni, które dawno minęły, *
-i lata poprzednie wspominam.
-Rozmyślam nocą w swym sercu, *
-rozważam, a duch mój docieka:
-„Czy Bóg odrzuci na wieki *
-i już nie będzie łaskawy?
-Czy Jego łaskawość ustała na zawsze *
-i słowo zamilkło na pokolenia?
-Czy Bóg zapomniał o litości, *
-czy w gniewie powstrzymał swe miłosierdzie?”
-I mówię: „Jakże to bolesne, *
-że odwróciła się ode mnie prawica Najwyższego”.
-Wspominam dzieła Pana, *
-oto wspominam Twoje dawne cuda.
-Rozmyślam o wszystkich Twych dziełach *
-i czyny Twoje wspominam.
-Boże, Twoja droga jest święta, *
-który z bogów dorówna wielkością naszemu Bogu?
 
-
-Ty jesteś Bogiem działającym cuda, *
-ludziom objawiłeś swą potęgę.
-Ramieniem swoim Twój lud wybawiłeś, *
-synów Jakuba i Józefa.
-Boże, ujrzały Cię wody, q
-ujrzały Cię wody i zadrżały, *
-wzburzyły się ich odmęty.
-Chmury wylały wody, q
-zahuczały chmury *
-i Twoje strzały się posypały.
-Głos Twego grzmotu jak łoskot wozu, q
-pioruny świat rozjaśniły, *
-ziemia poruszyła się i zatrzęsła.
-Twoja droga wiodła przez wody, q
-Twoja ścieżka przez wodne obszary *
-i nie znać było Twych śladów.
-Wiodłeś Twój lud jak trzodę *
-ręką. Mojżesza i Aarona.
-Chwała Ojcu i Synowi, *
-i Duchowi Świętemu
-Jak była na początku, teraz i zawsze, *
-i na wieki wieków. Amen.
+\startpsalmus[title={Psalm 77}]
+Głos mój się wznosi do Boga, gdy wołam,\pmed
+głos mój wznoszę do Boga, aby mnie usłyszał.\pfin
+W~dniu mej niedoli szukam Pana,\pmed
+w~nocy niestrudzenie wyciągam rękę.\pfin
+Dusza moja jest niepocieszona,\pflx
+jęczę, kiedy wspomnę Boga,\pmed
+słabnie mój duch, gdy rozmyślam.\pfin
+Ty spędzasz sen z~moich powiek,\pmed
+z~niepokoju mówić nie potraﬁę.\pfin
+Rozpamiętuję dni, które dawno minęły,\pmed
+i~lata poprzednie wspominam.\pfin
+Rozmyślam nocą w~swym sercu,\pmed
+rozważam, a~duch mój docieka:\pfin
+\startquote Czy Bóg odrzuci na wieki\pmed
+i~już nie będzie łaskawy?\pfin
+Czy Jego łaskawość ustała na zawsze\pmed
+i~słowo zamilkło na pokolenia?\pfin
+Czy Bóg zapomniał o~litości,\pmed
+czy w~gniewie powstrzymał swe miłosierdzie?\stopquote\pfin
+I~mówię: \startquote Jakże to bolesne,\pmed
+że odwróciła się ode mnie prawica Najwyższego\stopquote.\pfin
+Wspominam dzieła Pana,\pmed
+oto wspominam Twoje dawne cuda.\pfin
+Rozmyślam o~wszystkich Twych dziełach\pmed
+i~czyny Twoje wspominam.\pfin
+Boże, Twoja droga jest święta,\pmed
+który z~bogów dorówna wielkością naszemu Bogu?\pfin
+Ty jesteś Bogiem działającym cuda,\pmed
+ludziom objawiłeś swą potęgę.\pfin
+Ramieniem swoim Twój lud wybawiłeś,\pmed
+synów Jakuba i~Józefa.\pfin
+Boże, ujrzały Cię wody,\pflx
+ujrzały Cię wody i~zadrżały,\pmed
+wzburzyły się ich odmęty.\pfin
+Chmury wylały wody,\pflx
+zahuczały chmury\pmed
+i~Twoje strzały się posypały.\pfin
+Głos Twego grzmotu jak łoskot wozu,\pflx
+pioruny świat rozjaśniły,\pmed
+ziemia poruszyła się i~zatrzęsła.\pfin
+Twoja droga wiodła przez wody,\pflx
+Twoja ścieżka przez wodne obszary\pmed
+i~nie znać było Twych śladów.\pfin
+Wiodłeś Twój lud jak trzodę\pmed
+ręką. Mojżesza i~Aarona.\pfin
+\stoppsalmus
 Ant. Boże, Twoja droga jest święta, / nikt nie dorówna wielkością Bogu.
 2 ant. Moje serce raduje się w Panu, * który poniża i wywyższa.
-Pieśń (1 Sm 2, 1-10)
-Moje serce raduje się w Panu, *
-dzięki Niemu moc moja wzrasta.
-Szeroko otwarłam usta przeciw moim wrogom, *
-bo cieszyć się mogę Twoją pomocą.
-Nikt nie jest tak święty jak Ty, Panie, q
-poza Tobą bowiem nie ma nikogo, *
-prócz naszego Boga nie ma innej ostoi.
-Nie powtarzajcie słów pełnych pychy, *
-niech mowa harda z ust waszych nie wychodzi,
-Gdyż Pan jest Bogiem wszechwiedzącym *
-i On ocenia uczynki.
-
-
-
-Łuk potężnych się łamie, *
-a mocą przepasują się słabi.
-Syci za chleb się najmują, *
-głodni zaś odpoczywają.
-Niepłodna rodzi siedmioro, *
-a matka wielu dzieci usycha.
-Pan daje śmierć i życie, *
-wtrąca do Otchłani i z niej wyprowadza.
-Pan czyni ubogim lub bogatym, *
-poniża i wywyższa.
-Biedaka z prochu podnosi, *
-z błota dźwiga nędzarza,
-By go wśród książąt posadzić *
-i dać mu tron chwały.
-Fundamenty ziemi należą do Pana *
-i na nich świat On położył.
-On strzeże kroków swoich wiernych, q
-grzesznicy zaś zginą w ciemnościach, *
-bo nie własną siłą człowiek zwycięża.
-Pan wniwecz opornych obraca *
-i przeciw nim grzmi na niebiosach.
-Pan sądzi krańce ziemi, q
-króla obdarza potęgą *
-i wywyższa moc swego pomazańca.
-Chwała Ojcu i Synowi, *
-i Duchowi Świętemu.
-Jak była na początku, teraz i zawsze, *
-i na wieki wieków. Amen.
+\startpsalmus[title={Pieśń (1 Sm 2, 1-10)}]
+Moje serce raduje się w~Panu,\pmed
+dzięki Niemu moc moja wzrasta.\pfin
+Szeroko otwarłam usta przeciw moim wrogom,\pmed
+bo cieszyć się mogę Twoją pomocą.\pfin
+Nikt nie jest tak święty jak Ty, Panie,\pflx
+poza Tobą bowiem nie ma nikogo,\pmed
+prócz naszego Boga nie ma innej ostoi.\pfin
+Nie powtarzajcie słów pełnych pychy,\pmed
+niech mowa harda z~ust waszych nie wychodzi,\pfin
+Gdyż Pan jest Bogiem wszechwiedzącym\pmed
+i~On ocenia uczynki.\pfin
+Łuk potężnych się łamie,\pmed
+a~mocą przepasują się słabi.\pfin
+Syci za chleb się najmują,\pmed
+głodni zaś odpoczywają.\pfin
+Niepłodna rodzi siedmioro,\pmed
+a~matka wielu dzieci usycha.\pfin
+Pan daje śmierć i~życie,\pmed
+wtrąca do Otchłani i~z~niej wyprowadza.\pfin
+Pan czyni ubogim lub bogatym,\pmed
+poniża i~wywyższa.\pfin
+Biedaka z~prochu podnosi,\pmed
+z~błota dźwiga nędzarza,\pfin
+By go wśród książąt posadzić\pmed
+i~dać mu tron chwały.\pfin
+Fundamenty ziemi należą do Pana\pmed
+i~na nich świat On położył.\pfin
+On strzeże kroków swoich wiernych,\pflx
+grzesznicy zaś zginą w~ciemnościach,\pmed
+bo nie własną siłą człowiek zwycięża.\pfin
+Pan wniwecz opornych obraca\pmed
+i~przeciw nim grzmi na niebiosach.\pfin
+Pan sądzi krańce ziemi,\pflx
+króla obdarza potęgą\pmed
+i~wywyższa moc swego pomazańca.\pfin
+\stoppsalmus
 Ant. Moje serce raduje się w Panu, / który poniża i wywyższa.
 3 ant. Pan króluje, * wesel się, ziemio. q
-Psalm 97
-Pan króluje, wesel się, ziemio, *
-q radujcie się, liczne wyspy!
-Obłok i ciemność wokół Niego, *
-prawo i sprawiedliwość podstawą Jego tronu.
-Przed Jego obliczem idzie ogień *
-i dokoła pożera nieprzyjaciół Jego.
-
-
-
-Jego błyskawice wszechświat rozświetlają, *
-a ziemia drży na ten widok.
-Góry jak wosk topnieją przed obliczem Pana, *
-przed obliczem Władcy całej ziemi.
-Jego sprawiedliwość rozgłaszają niebiosa *
-i wszystkie ludy widzą Jego chwałę.
-Niech zawstydzą się wszyscy, którzy czczą posągi q
-i chlubią się bożkami. *
-Niech wszystkie bóstwa hołd Mu oddają!
-Słyszy o tym i cieszy się Syjon, q
-radują się miasta Judy *
-z Twoich wyroków, o Panie.
-Ponad całą ziemią Tyś bowiem wywyższony *
-i nieskończenie wyższy od wszystkich bogów.
-Pan tych miłuje, którzy zła nienawidzą, q
-On strzeże dusz świętych swoich, *
-wydziera je z rąk grzeszników.
-Światło wschodzi dla sprawiedliwego *
-i radość dla ludzi prawego serca.
-Weselcie się w Panu, sprawiedliwi, *
-i sławcie Jego święte imię.
-Chwała Ojcu i Synowi, *
-i Duchowi Świętemu.
-Jak była na początku, teraz i zawsze, *
-i na wieki wieków. Amen.
+\startpsalmus[title={Psalm 97}]
+Pan króluje, wesel się, ziemio,\pmed
+q~radujcie się, liczne wyspy!\pfin
+Obłok i~ciemność wokół Niego,\pmed
+prawo i~sprawiedliwość podstawą Jego tronu.\pfin
+Przed Jego obliczem idzie ogień\pmed
+i~dokoła pożera nieprzyjaciół Jego.\pfin
+Jego błyskawice wszechświat rozświetlają,\pmed
+a~ziemia drży na ten widok.\pfin
+Góry jak wosk topnieją przed obliczem Pana,\pmed
+przed obliczem Władcy całej ziemi.\pfin
+Jego sprawiedliwość rozgłaszają niebiosa\pmed
+i~wszystkie ludy widzą Jego chwałę.\pfin
+Niech zawstydzą się wszyscy, którzy czczą posągi\pflx
+i~chlubią się bożkami.\pmed
+Niech wszystkie bóstwa hołd Mu oddają!\pfin
+Słyszy o~tym i~cieszy się Syjon,\pflx
+radują się miasta Judy\pmed
+z~Twoich wyroków, o~Panie.\pfin
+Ponad całą ziemią Tyś bowiem wywyższony\pmed
+i~nieskończenie wyższy od wszystkich bogów.\pfin
+Pan tych miłuje, którzy zła nienawidzą,\pflx
+On strzeże dusz świętych swoich,\pmed
+wydziera je z~rąk grzeszników.\pfin
+Światło wschodzi dla sprawiedliwego\pmed
+i~radość dla ludzi prawego serca.\pfin
+Weselcie się w~Panu, sprawiedliwi,\pmed
+i~sławcie Jego święte imię.\pfin
+\stoppsalmus
 Ant. Pan króluje, wesel się, ziemio.
-Czytanie: Lb 9, 15-16
+\starthourpart[title={Czytanie\hfill\tf Lb 9,15-16}]
 W dniu, kiedy ustawiono przybytek, okrył go wraz z Namiotem Świadectwa obłok, i od wieczora aż do rana pozostawał nad przybytkiem na kształt
 ognia. I tak działo się zawsze: obłok okrywał go w dzień, a w nocy – jakby
 blask ognia.
@@ -1239,7 +1572,7 @@ Nigdy nie słyszano, * aby ktoś przywrócił wzrok niewidomemu od urodzenia; / 
 
 
 
-Prośby:
+\starthourpart[title={Prośby}]
 Uwielbiajmy Boga nieskończonej dobroci i błagajmy Go przez Jezusa Chrystusa, który zawsze żyje, aby się wstawiać za nami:
 Zapal w nas Panie, ogień swej miłości.
 Spraw, miłosierny Boże, abyśmy pełnili dzisiaj liczne dzieła miłości
@@ -1251,7 +1584,7 @@ Daj, abyśmy nie poprzestawali na karmieniu się tylko chlebem,
 Pomóż nam usuwać spośród nas wszelką niezgodę,
 – daj, abyśmy się radowali pokojem i miłością.
 Ojcze nasz.
-Modlitwa:
+\starthourpart[title={Modlitwa}]
 Boże, nasz Ojcze, przez paschalne misterium swojego Syna dokonałeś naszego odkupienia, q dlatego w sakramentalnych znakach głosimy śmierć
 i zmartwychwstanie Chrystusa, * spraw, abyśmy stale doznawali wzrostu
 Twojej łaski. Przez naszegp Pana Jezusa Chrystusa, Twojego Syna, q który
@@ -1260,134 +1593,162 @@ wieki wieków.
 
 
 
-\startday[title={Baranek}] % {{{1
-Wezwanie: Uwielbiajmy Chrystusa Króla, * który dla nas został
-podwyższony na krzyżu.
-Hymn: piosenka dnia
-Psalmodia
+\startday[title={Baranek}] % 9 {{{1
+
+\starthour[title={Wezwanie}] %{{{2
+\ant Uwielbiajmy Chrystusa Króla,~* który dla nas został podwyższony na krzyżu.
+\startrubrica
+Psalm Wezwania jak jak na \at{stronie}[invit-ps95].
+\stoprubrica
+
+\starthour[title={Jutrznia}] %{{{2
+
+\starthourpart[title={Hymn}]
+% http://brewiarz.pl/indeksy/pokaz.php3?id=3&nr=020
+% Kompleta: Części stałe
+% LG tom I, wydanie II (Pallottinum 2006), s. 929
+% LG tom II (Pallottinum 1984), s. 1205
+% LG tom III (Pallottinum 1987), s. 1015
+% LG tom IV (Pallottinum 1988), s. 971
+% LG tom dodatkowy (tzw. wakacyjny; Pallottinum 2002), s. 1041
+% Skrócona LG (Pallottinum 1991), s. 1167
+\starthymnus
+\item Chryste, Tyś dniem pełnym blasku,
+Rozpraszasz nocne ciemności,
+W~Tobie początek jest światła
+I~nim obdarzasz wybranych.
+
+\item Teraz więc Ciebie prosimy,
+Byś strzegł nas w~mrocznych godzinach,
+W~swoim pokoju zachował
+I~przyniósł ulgę znużonym.
+
+\item Kiedy już sen nas ogarnie,
+Niech serce czuwa przy Tobie;
+Tych, którzy Ciebie miłują,
+Osłaniaj swoją prawicą.
+
+\item Wejrzyj, Obrońco nasz, Boże,
+I~wrogie oddal zasadzki,
+Kieruj Twoimi wiernymi,
+Boś własną Krwią ich odkupił.
+
+\item Chryste, łagodny nasz Królu,
+Niech Ciebie z~Ojcem i~Duchem
+Wszystko, co żyje, wysławia
+Przez całą wieczność bez końca. Amen.\stophymnus
+
+\startrubrica
+Albo piosenka dnia.
+\stoprubrica
+
+\starthourpart[title={Psalmodia}]
+
 1 ant. Pokornym i skruszonym sercem * Ty, Boże, nie gardzisz.
-Psalm 51
-Zmiłuj się nade mną, Boże, w łaskawości swojej, *
-w ogromie swej litości zgładź nieprawość moją.
-Obmyj mnie zupełnie z mojej winy *
-i oczyść mnie z grzechu mojego.
-Uznaję bowiem nieprawość moją, *
-a grzech mój jest zawsze przede mną.
-Przeciwko Tobie samemu zgrzeszyłem *
-i uczyniłem, co złe jest przed Tobą,
-Abyś okazał się sprawiedliwy w swym wyroku *
-i prawy w swoim sądzie.
-Oto urodziłem się obciążony winą *
-i jako grzesznika poczęła mnie matka.
-A Ty masz upodobanie w ukrytej prawdzie, *
-naucz mnie tajemnic mądrości.
-Pokrop mnie hizopem, a stanę się czysty, *
-obmyj mnie, a nad śnieg wybieleję.
-Spraw, abym usłyszał radość i wesele, *
-niech się radują kości, które skruszyłeś.
-Odwróć swe oblicze od moich grzechów *
-i zmaż wszystkie moje przewinienia.
-Stwórz, Boże, we mnie serce czyste *
-i odnów we mnie moc ducha.
-Nie odrzucaj mnie od swego oblicza *
-i nie odbieraj mi świętego ducha swego.
-Przywróć mi radość Twojego zbawienia *
-i wzmocnij mnie duchem oﬁarnym
-
-
-
-Będę nieprawych nauczał dróg Twoich *
-i wrócą do Ciebie grzesznicy.
-Uwolnij mnie, Boże, od kary za krew przelaną, q
-Boże, mój Zbawco, *
-niech sławi mój język sprawiedliwość Twoją.
-Panie, otwórz wargi moje, *
-a usta moje będą głosić Twoją chwałę.
-Oﬁarą bowiem Ty się nie radujesz *
-a całopalenia, choćbym dał, nie przyjmiesz.
-Boże, moją oﬁarą jest duch skruszony, *
-pokornym i skruszonym sercem Ty, Boże, nie gardzisz.
-Panie, okaż Syjonowi łaskę w Twej dobroci, *
-odbuduj mury Jeruzalem.
-Wtedy przyjmiesz prawe oﬁary: dary i całopalenia, *
-wtedy składać będą cielce na Twoim ołtarzu.
-Chwała Ojcu i Synowi, *
-i Duchowi Świętemu.
-Jak była na początku, teraz i zawsze, *
-i na wieki wieków. Amen.
+\startpsalmus[title={Psalm 51}]
+Zmiłuj się nade mną, Boże, w~łaskawości swojej,\pmed
+w~ogromie swej litości zgładź nieprawość moją.\pfin
+Obmyj mnie zupełnie z~mojej winy\pmed
+i~oczyść mnie z~grzechu mojego.\pfin
+Uznaję bowiem nieprawość moją,\pmed
+a~grzech mój jest zawsze przede mną.\pfin
+Przeciwko Tobie samemu zgrzeszyłem\pmed
+i~uczyniłem, co złe jest przed Tobą,\pfin
+Abyś okazał się sprawiedliwy w~swym wyroku\pmed
+i~prawy w~swoim sądzie.\pfin
+Oto urodziłem się obciążony winą\pmed
+i~jako grzesznika poczęła mnie matka.\pfin
+A~Ty masz upodobanie w~ukrytej prawdzie,\pmed
+naucz mnie tajemnic mądrości.\pfin
+Pokrop mnie hizopem, a~stanę się czysty,\pmed
+obmyj mnie, a~nad śnieg wybieleję.\pfin
+Spraw, abym usłyszał radość i~wesele,\pmed
+niech się radują kości, które skruszyłeś.\pfin
+Odwróć swe oblicze od moich grzechów\pmed
+i~zmaż wszystkie moje przewinienia.\pfin
+Stwórz, Boże, we mnie serce czyste\pmed
+i~odnów we mnie moc ducha.\pfin
+Nie odrzucaj mnie od swego oblicza\pmed
+i~nie odbieraj mi świętego ducha swego.\pfin
+Przywróć mi radość Twojego zbawienia\pmed
+i~wzmocnij mnie duchem oﬁarnym\pfin
+Będę nieprawych nauczał dróg Twoich\pmed
+i~wrócą do Ciebie grzesznicy.\pfin
+Uwolnij mnie, Boże, od kary za krew przelaną,\pflx
+Boże, mój Zbawco,\pmed
+niech sławi mój język sprawiedliwość Twoją.\pfin
+Panie, otwórz wargi moje,\pmed
+a~usta moje będą głosić Twoją chwałę.\pfin
+Oﬁarą bowiem Ty się nie radujesz\pmed
+a~całopalenia, choćbym dał, nie przyjmiesz.\pfin
+Boże, moją oﬁarą jest duch skruszony,\pmed
+pokornym i~skruszonym sercem Ty, Boże, nie gardzisz.\pfin
+Panie, okaż Syjonowi łaskę w~Twej dobroci,\pmed
+odbuduj mury Jeruzalem.\pfin
+Wtedy przyjmiesz prawe oﬁary: dary i~całopalenia,\pmed
+wtedy składać będą cielce na Twoim ołtarzu.\pfin
+\stoppsalmus
 Ant. Pokornym i skruszonym sercem / Ty, Boże, nie gardzisz.
 2 ant. Gdy się gniewasz, Panie, * wspomnij na swe miłosierdzie.
-Pieśń (Ha 3, 2-4. 13a. 15-19)
-Usłyszałem, Panie, Twoje orędzie, *
-zobaczyłem, Panie, Twoje dzieło.
-Gdy czas nadejdzie, niech ono odżyje, q
-pozwól nam je poznać, gdy zbliży się pora, *
-w gniewnym zapale wspomnij na swą litość!
-Bóg przychodzi z Temanu, *
-Święty z góry Paran.
-Jego majestat okrywa niebiosa, *
-a Jego chwały pełna jest ziemia.
-Jego wspaniałość podobna do światła, q
-z Jego rąk tryskają promienie, *
-moc Jego w nich jest ukryta.
-Wyszedłeś, aby lud swój ocalić *
-i wybawić Twego pomazańca.
-
-
-
-Konie bezbożnika wdeptałeś w morze, *
-w kipiącą topiel wód ogromnych.
-Usłyszałem, i me serce struchlało, *
-na ten głos moje wargi zadrżały,
-Moje kości przeniknęła trwoga, *
-zachwiały się moje kroki.
-Jednak w spokoju czekam na klęskę, *
-która spotka lud naszych gnębicieli.
-Choć drzewo ﬁgowe nie rozwija pąków *
-i winnice nie wydają plonów,
-Chociaż zawiodły zbiory oliwek, *
-a pola nie przynoszą żywności,
-Choć stada owiec znikają z owczarni *
-i nie ma wołów w zagrodach,
-Ja się jednak rozraduję w Panu *
-i rozweselę w Bogu, moim Zbawicielu.
-Pan, który jest moją siłą, q
-uczyni me nogi jak nogi jelenia *
-i na wyżyny mnie wyprowadzi.
-Chwała Ojcu i Synowi, *
-i Duchowi Świętemu.
-Jak była na początku, teraz i zawsze, *
-i na wieki wieków. Amen.
+\startpsalmus[title={Pieśń (Ha 3, 2-4. 13a. 15-19)}]
+Usłyszałem, Panie, Twoje orędzie,\pmed
+zobaczyłem, Panie, Twoje dzieło.\pfin
+Gdy czas nadejdzie, niech ono odżyje,\pflx
+pozwól nam je poznać, gdy zbliży się pora,\pmed
+w~gniewnym zapale wspomnij na swą litość!\pfin
+Bóg przychodzi z~Temanu,\pmed
+Święty z~góry Paran.\pfin
+Jego majestat okrywa niebiosa,\pmed
+a~Jego chwały pełna jest ziemia.\pfin
+Jego wspaniałość podobna do światła,\pflx
+z~Jego rąk tryskają promienie,\pmed
+moc Jego w~nich jest ukryta.\pfin
+Wyszedłeś, aby lud swój ocalić\pmed
+i~wybawić Twego pomazańca.\pfin
+Konie bezbożnika wdeptałeś w~morze,\pmed
+w~kipiącą topiel wód ogromnych.\pfin
+Usłyszałem, i~me serce struchlało,\pmed
+na ten głos moje wargi zadrżały,\pfin
+Moje kości przeniknęła trwoga,\pmed
+zachwiały się moje kroki.\pfin
+Jednak w~spokoju czekam na klęskę,\pmed
+która spotka lud naszych gnębicieli.\pfin
+Choć drzewo ﬁgowe nie rozwija pąków\pmed
+i~winnice nie wydają plonów,\pfin
+Chociaż zawiodły zbiory oliwek,\pmed
+a~pola nie przynoszą żywności,\pfin
+Choć stada owiec znikają z~owczarni\pmed
+i~nie ma wołów w~zagrodach,\pfin
+Ja się jednak rozraduję w~Panu\pmed
+i~rozweselę w~Bogu, moim Zbawicielu.\pfin
+Pan, który jest moją siłą,\pflx
+uczyni me nogi jak nogi jelenia\pmed
+i~na wyżyny mnie wyprowadzi.\pfin
+\stoppsalmus
 Ant. Gdy się gniewasz, Panie, / wspomnij na swe miłosierdzie.
 3 ant. Chwal, Jeruzalem, * Pana. q
-Psalm 147 B
-Chwal, Jeruzalem, Pana, *
-q wysławiaj twego Boga, Syjonie!
-Umacnia bowiem zawory bram twoich *
-i błogosławi synom twoim w tobie.
-Zapewnia pokój twoim granicom *
-i wyborną pszenicą ciebie darzy.
-Zsyła na ziemię swoje polecenia, *
-a szybko mknie Jego słowo.
-On prószy śniegiem jak wełną *
-i szron jak popiół rozsypuje.
-
-
-
-On grad rozrzuca jak okruchy chleba, *
-od Jego mrozu ścinają się wody.
-Posyła słowo, i lód topnieje, *
-powieje wiatrem, i rzeki płyną.
-Oznajmił swoje słowo Jakubowi, *
-Izraelowi ustawy swe i wyroki
-Nie uczynił tego dla innych narodów, *
-nie oznajmił im swoich wyroków.
-Chwała Ojcu i Synowi, *
-i Duchowi Świętemu.
-Jak była na początku, teraz i zawsze, *
-i na wieki wieków. Amen.
+\startpsalmus[title={Psalm 147 B}]
+Chwal, Jeruzalem, Pana,\pmed
+q~wysławiaj twego Boga, Syjonie!\pfin
+Umacnia bowiem zawory bram twoich\pmed
+i~błogosławi synom twoim w~tobie.\pfin
+Zapewnia pokój twoim granicom\pmed
+i~wyborną pszenicą ciebie darzy.\pfin
+Zsyła na ziemię swoje polecenia,\pmed
+a~szybko mknie Jego słowo.\pfin
+On prószy śniegiem jak wełną\pmed
+i~szron jak popiół rozsypuje.\pfin
+On grad rozrzuca jak okruchy chleba,\pmed
+od Jego mrozu ścinają się wody.\pfin
+Posyła słowo, i~lód topnieje,\pmed
+powieje wiatrem, i~rzeki płyną.\pfin
+Oznajmił swoje słowo Jakubowi,\pmed
+Izraelowi ustawy swe i~wyroki\pfin
+Nie uczynił tego dla innych narodów,\pmed
+nie oznajmił im swoich wyroków.\pfin
+\stoppsalmus
 Ant. Chwal, Jeruzalem, Pana.
-Czytanie: Wj 12, 21-23
+\starthourpart[title={Czytanie\hfill\tf Wj 12,21-23}]
 Mojżesz zwołał wszystkich starszych Izraela i rzekł do nich: Odłączcie i weźcie baranka dla waszych rodzin i zabijcie jako paschę. Weźcie gałązkę hizopu i zanurzcie ją we krwi, która jest w naczyniu, i krwią z naczynia skropcie
 próg i oba odrzwia. Aż do rana nie powinien nikt z was wychodzić przed
 drzwi swego domu. A gdy Pan będzie przechodził, aby porazić Egipcjan,
@@ -1395,7 +1756,7 @@ a zobaczy krew na progu i na odrzwiach, to ominie Pan takie drzwi i nie
 pozwoli Niszczycielowi wejść do tych domów, aby was zabijał.
 Antyfona do pieśni Zachariasza:
 Łazarz, przyjaciel nasz, zasnął, * lecz idę, aby go obudzić.
-Prośby
+\starthourpart[title={Prośby}]
 Błogosławmy naszego Odkupiciela, który łaskawie wysłużył nam ten czas
 zbawienia. Z pokorą zanośmy do Niego nasze prośby:
 Stwórz w nas, o Panie, nowego ducha.
@@ -1405,13 +1766,10 @@ Panie, Ty wszystkim dobrze czyniłeś,
 – spraw, abyśmy troszczyli się o wspólne dobro wszystkich ludzi.
 Daj, abyśmy zgodnie współpracowali w doczesnej społeczności,
 – a zarazem zdążali do wiecznej ojczyzny.
-
-
-
 Chryste, lekarzu ciał i dusz, ulecz rany naszego serca,
 – abyśmy stale korzystali z Twej pomocy na drodze świętości.
 Ojcze nasz.
-Modlitwa:
+\starthourpart[title={Modlitwa}]
 Prosimy Cię, Panie, nasz Boże, q udziel nam łaski, abyśmy gorliwie naśladowali miłość Twojego Syna, * który oddał własne życie za zbawienie
 świata. Przez naszego Pana, Jezusa Chrystusa, Twojego Syna, q który
 z Tobą żyje i króluje w jedności Ducha Świętego, * Bóg, przez wszystkie
@@ -1419,11 +1777,59 @@ wieki wieków.
 
 
 
-\startday[title={Pascha}] % {{{1
-Wezwanie: Uwielbiajmy Chrystusa Syna Bożego, * który nas odkupił
-krwią swoją
-Hymn: piosenka dnia
-Psalmodia
+\startday[title={Pascha}] % 10 {{{1
+
+\starthour[title={Wezwanie}] %{{{2
+\ant Uwielbiajmy Chrystusa Syna Bożego,~* który nas odkupił krwią swoją
+\startrubrica
+Psalm Wezwania jak jak na \at{stronie}[invit-ps95].
+\stoprubrica
+
+\starthour[title={Jutrznia}] %{{{2
+
+\starthourpart[title={Hymn}]
+% http://brewiarz.pl/indeksy/pokaz.php3?id=3&nr=240
+% Jutrznia: Triduum Paschalne
+% Wielka Sobota
+% LG tom II (Pallottinum 1984), s. 388
+% Skrócona LG (Pallottinum 1991), s. 423
+\starthymnus
+\item Zbawicielu wszystkich ludzi,
+Przyjmij śpiewy pełne żalu;
+Zmiłuj się nad nami, Panie,
+Przebacz ufającym Tobie.
+
+\item Pradawnego wroga moce
+Zniweczyłeś swoim krzyżem,
+Który stał się znakiem wiary
+Na wyznawców Twoich czole.
+
+\item Już na zawsze nas uwolnij
+Z~panowania zła i~grzechu,
+Aby szatan nie mógł szkodzić
+Odkupionym krwią najświętszą.
+
+\item Ty ze względu na nas, Jezu,
+Zejść raczyłeś do Otchłani
+I~dłużników gorzkiej śmierci
+Obdarzyłeś życiem wiecznym.
+
+\item Gdy na rozkaz Twój wszechmocny
+Świat osiągnie kres istnienia,
+Znowu przyjdziesz w~blasku chwały,
+By nagrodzić sprawiedliwych.
+
+\item Ciebie więc prosimy, Chryste,
+Byś uleczył nasze rany,
+Ty, co z~Ojcem Twym i~Duchem
+Godzien jesteś uwielbienia. Amen.\stophymnus
+
+\startrubrica
+Albo piosenka dnia.
+\stoprubrica
+
+\starthourpart[title={Psalmodia}]
+
 1 ant. Chwalcie Pana, * bo Jego łaska na wieki.
 Psalm 136
 I
@@ -1445,10 +1851,6 @@ Słońce, by dniem władało, *
 bo Jego łaska na wieki.
 Księżyc i gwiazdy, by władały nocą, *
 bo Jego łaska na wieki
-Chwała Ojcu i Synowi, *
-i Duchowi Świętemu.
-Jak była na początku, teraz i zawsze, *
-i na wieki wieków. Amen.
 Ant. Chwalcie Pana, bo Jego łaska na wieki.
 
 
@@ -1490,53 +1892,41 @@ On pokarm daje każdemu ciału, *
 bo Jego łaska na wieki.
 Chwalcie Boga, niebiosa, *
 bo Jego łaska na wieki.
-Chwała Ojcu i Synowi, *
-i Duchowi Świętemu.
-
-
-
-Jak była na początku, teraz i zawsze, *
-i na wieki wieków. Amen.
 Ant. Wielkie i godne podziwu są dzieła Twoje, / Panie, Boże
 wszechmogący.
 3 ant. Pan mówi / Błogosławieństwem mój lud się nasyci.
-Pieśń (Jr 31, 10-14)
-Słuchajcie, narody, słowa Pańskiego, *
-głoście je na wyspach odległych i mówcie:
-„Ten, który rozproszył Izraela, znów go zgromadzi *
-i będzie nad nim czuwał jak pasterz nad swym stadem”.
-Pan bowiem uwolni Jakuba, *
-wybawi go z ręki silniejszych od niego.
-Przyjdą z weselem na szczyt Syjonu q
-i rozradują się błogosławieństwem Pana: *
-zbożem, winem, oliwą, owcami i wołami.
-Ich życie stanie się podobne do zroszonego ogrodu *
-i już nigdy więcej sił im nie zabraknie.
-Wtedy dziewica rozweseli się w tańcu, *
-a młodzieńcy i starcy cieszyć się będą. *
-Smutek ich bowiem w radość zamienię, *
-pocieszę i rozweselę po ich troskach.
-Tłuszczem z oﬁar obﬁcie obdarzę kapłanów, *
-i błogosławieństwem mój lud się nasyci.
-Chwała Ojcu i Synowi, *
-i Duchowi Świętemu.
-Jak była na początku, teraz i zawsze, *
-i na wieki wieków. Amen.
+
+\startpsalmus[title={Pieśń (Jr 31, 10-14)}]
+Słuchajcie, narody, słowa Pańskiego,\pmed
+głoście je na wyspach odległych i~mówcie:\pfin
+\startquote Ten, który rozproszył Izraela, znów go zgromadzi\pmed
+i~będzie nad nim czuwał jak pasterz nad swym stadem\stopquote.\pfin
+Pan bowiem uwolni Jakuba,\pmed
+wybawi go z~ręki silniejszych od niego.\pfin
+Przyjdą z~weselem na szczyt Syjonu\pflx
+i~rozradują się błogosławieństwem Pana:\pmed
+zbożem, winem, oliwą, owcami i~wołami.\pfin
+Ich życie stanie się podobne do zroszonego ogrodu\pmed
+i~już nigdy więcej sił im nie zabraknie.\pfin
+Wtedy dziewica rozweseli się w~tańcu,\pmed
+a~młodzieńcy i~starcy cieszyć się będą.\pmed
+Smutek ich bowiem w~radość zamienię,\pmed
+pocieszę i~rozweselę po ich troskach.\pfin
+Tłuszczem z~oﬁar obﬁcie obdarzę kapłanów,\pmed
+i~błogosławieństwem mój lud się nasyci.\pfin
+\stoppsalmus
 Ant. Pan mówi: / Błogosławieństwem mój lud się nasyci.
-Czytanie: Wj 12,11-14
+\starthourpart[title={Czytanie\hfill\tf Wj 12,11-14}]
 Tak zaś spożywać będziecie baranka: Biodra wasze będą przepasane, sandały na waszych nogach i laska w waszym ręku. Spożywać będziecie pośpiesznie, gdyż jest to Pascha na cześć Pana. Tej nocy przejdę przez Egipt,
 zabiję wszystko pierworodne w ziemi egipskiej od człowieka aż do bydła
 i odbędę sąd nad wszystkimi bogami Egiptu – Ja, Pan. Krew będzie wam
 służyła do oznaczenia domów, w których będziecie przebywać. Gdy ujrzę
-
-
-
 krew, przejdę obok i nie będzie pośród was plagi niszczycielskiej, gdy będę
 karał ziemię egipską. Dzień ten będzie dla was dniem pamiętnym i obchodzić go będziecie jako święto dla uczczenia Pana. Po wszystkie pokolenia
 – na zawsze w tym dniu świętować będziecie.
 Antyfona do pieśni Zachariasza:
 Gorąco pragnąłem * spożyć tę Paschę z wami, / zanim będę cierpiał.
-Prośby
+\starthourpart[title={Prośby}]
 Zanośmy pokorne błagania do Chrystusa, Wiecznego Kapłana, którego Ojciec namaścił Duchem Świętym, aby więźniom głosił wyzwolenie:
 Panie, zmiłuj się nad nami.
 Panie, ty udałeś się do Jerozolimy, aby podjąć mękę i wejść do chwały,
@@ -1548,151 +1938,189 @@ Panie, Twój krzyż stał się drzewem życia,
 Chryste, Ty wisząc na drzewie krzyża, przebaczyłeś pokutującemu łotrowi,
 – odpuść nam, grzesznym, nasze winy.
 Ojcze nasz.
-Modlitwa:
+\starthourpart[title={Modlitwa}]
 Boże, Ty przez mękę Chrystusa, Twojego Syna a naszego Pana, zniweczyłeś śmierć, która wynikła z grzechu pierworodnego i jako dziedzictwo
 przeszła na wszystkie pokolenia, q spraw, abyśmy wszczepieni w Chrystusa i uświęceni przez łaskę nosili w sobie podobieństwo do Niego, * jak
 z konieczności natury nosiliśmy podobieństwo do Adama. Przez naszego
 Pana Jezusa Chrystusa, Twojego Syna, q który z Tobą żyje i króluje w jedności Ducha Świętego, * Bóg, przez wszystkie wieki wieków.
 
 
-\startday[title={Zwycięstwo}] % {{{1
-\startday[title={Manna}] % {{{1
-Wezwanie: Alleluja, uwielbiajmy Chrystusa Pana, * który wstępuje
-do nieba, / alleluja
-Hymn: piosenka dnia
-Psalmodia
+\startday[title={Zwycięstwo}] % 11 {{{1
+\starthour[title={Jutrznia}] %{{{2
+
+\starthourpart[title={Hymn}]
+% http://brewiarz.pl/indeksy/pokaz.php3?id=3&nr=181
+% Jutrznia: Okres Wielkanocny
+% w oficjum dni powszednich
+% LG tom II (Pallottinum 1984), s. 427
+% Skrócona LG (Pallottinum 1991), s. 451
+\starthymnus
+
+\item Minęły cienie i~mroki nocy,
+Światło jaśnieje nowego życia,
+Bo Dobry Pasterz, zabity dla nas,
+Wyszedł promienny ze swego grobu.
+
+\item Przecierpiał mękę na drzewie krzyża,
+Obmył grzeszników we krwi i~wodzie,
+Co wypłynęła jak zdrój ożywczy
+Z~serca przez włócznię ugodzonego.
+
+\item Jak lud wybrany po przejściu morza
+Dotarł do ziemi obietnic Boga,
+Tak my, zrodzeni w~paschalnym źródle,
+Naszą ojczyznę znajdziemy w~niebie.
+
+\item Niech zmartwychwstanie Bożego Syna
+Będzie nadzieją dla wszystkich ludzi,
+Nastało bowiem królestwo łaski,
+W~którym Zbawiciel obdarza szczęściem.
+
+\item Radosnym hymnem sławimy, Panie,
+Twoje zwycięstwo nad złem i~śmiercią;
+Niech będzie chwała przez wszystkie wieki
+Ojcu i~Tobie w~jedności Ducha. Amen.\stophymnus
+
+\startrubrica
+Albo piosenka dnia.
+\stoprubrica
+\startday[title={Manna}] % 12 {{{1
+
+\starthour[title={Wezwanie}] %{{{2
+\ant Alleluja, uwielbiajmy Chrystusa Pana,~* który wstępuje do nieba,~/
+\startrubrica
+Psalm Wezwania jak jak na \at{stronie}[invit-ps95].
+\stoprubrica
+alleluja
+
+\starthour[title={Jutrznia}] %{{{2
+
+\starthourpart[title={Hymn}]
+%
+%\starthymnus
+%\stophymnus
+
+\startrubrica
+Albo piosenka dnia.
+\stoprubrica
+
+\starthourpart[title={Psalmodia}]
+
 1 ant. Wzbudź swą potęgę, Panie, * i przyjdź nam z pomocą.
-Psalm 80
-Usłysz, Pasterzu Izraela, q
-Ty, który jak trzodę prowadzisz ród Józefa, *
-Ty, który zasiadasz nad cherubami!
-Ukaż się przed Efraimem, Beniaminem i Manassesem, *
-wzbudź swą potęgę i przyjdź nam z pomocą.
-Odnów nas, Boże, q
-i rozjaśnij nad nami swoje oblicze, *
-a będziemy zbawieni.
-Panie, Boże Zastępów, jak długo gniewać się będziesz *
-pomimo modłów Twojego ludu?
-Nakarmiłeś go chlebem płaczu, *
-obﬁcie napoiłeś łzami.
-Uczyniłeś nas przyczyną zwady sąsiadów, *
-a wrogowie nasi z nas szydzą.
-Odnów nas, Boże Zastępów, q
-i rozjaśnij nad nami swoje oblicze, *
-a będziemy zbawieni.
-Przeniosłeś winorośl z Egiptu *
-i zasadziłeś ją wygnawszy pogan.
-Przygotowałeś dla niej glebę, *
-a ona zapuściła korzenie i napełniła ziemię.
-W jej cieniu skryły się góry, *
-jej gałęzie okryły potężne cedry.
-Rozpostarła swe pędy aż do Morza, *
-aż do Rzeki swoje latorośle.
-Dlaczego zburzyłeś jej ogrodzenie *
-i każdy przechodzień zrywa jej grona?
-
-
-Niszczy ją dzik leśny *
-i obgryzają polne zwierzęta.
-Powróć, Boże Zastępów, *
-wejrzyj z nieba, spójrz i nawiedź tę winorośl.
-Chroń to, co zasadziła Twoja prawica, *
-latorośl, którą umocniłeś dla siebie.
-A ci, którzy ją spalili i wycięli, *
-niech zginą od grozy Twojego oblicza.
-Wyciągnij rękę nad mężem Twej prawicy,
-nad synem człowieczym, którego umocniłeś w swej służbie.
-Już więcej nie odwrócimy się od Ciebie, *
-daj nam nowe życie, a będziemy Cię chwalili.
-Odnów nas, Panie, Boże Zastępów, q
-i rozjaśnij nad nami swoje oblicze, *
-a będziemy zbawieni.
-Chwała Ojcu i Synowi, *
-i Duchowi Świętemu.
-Jak była na początku, teraz i zawsze, *
-i na wieki wieków. Amen.
+\startpsalmus[title={Psalm 80}]
+Usłysz, Pasterzu Izraela,\pflx
+Ty, który jak trzodę prowadzisz ród Józefa,\pmed
+Ty, który zasiadasz nad cherubami!\pfin
+Ukaż się przed Efraimem, Beniaminem i~Manassesem,\pmed
+wzbudź swą potęgę i~przyjdź nam z~pomocą.\pfin
+Odnów nas, Boże,\pflx
+i~rozjaśnij nad nami swoje oblicze,\pmed
+a~będziemy zbawieni.\pfin
+Panie, Boże Zastępów, jak długo gniewać się będziesz\pmed
+pomimo modłów Twojego ludu?\pfin
+Nakarmiłeś go chlebem płaczu,\pmed
+obﬁcie napoiłeś łzami.\pfin
+Uczyniłeś nas przyczyną zwady sąsiadów,\pmed
+a~wrogowie nasi z~nas szydzą.\pfin
+Odnów nas, Boże Zastępów,\pflx
+i~rozjaśnij nad nami swoje oblicze,\pmed
+a~będziemy zbawieni.\pfin
+Przeniosłeś winorośl z~Egiptu\pmed
+i~zasadziłeś ją wygnawszy pogan.\pfin
+Przygotowałeś dla niej glebę,\pmed
+a~ona zapuściła korzenie i~napełniła ziemię.\pfin
+W~jej cieniu skryły się góry,\pmed
+jej gałęzie okryły potężne cedry.\pfin
+Rozpostarła swe pędy aż do Morza,\pmed
+aż do Rzeki swoje latorośle.\pfin
+Dlaczego zburzyłeś jej ogrodzenie\pmed
+i~każdy przechodzień zrywa jej grona?\pfin
+Niszczy ją dzik leśny\pmed
+i~obgryzają polne zwierzęta.\pfin
+Powróć, Boże Zastępów,\pmed
+wejrzyj z~nieba, spójrz i~nawiedź tę winorośl.\pfin
+Chroń to, co zasadziła Twoja prawica,\pmed
+latorośl, którą umocniłeś dla siebie.\pfin
+A~ci, którzy ją spalili i~wycięli,\pmed
+niech zginą od grozy Twojego oblicza.\pfin
+Wyciągnij rękę nad mężem Twej prawicy,\pfin
+nad synem człowieczym, którego umocniłeś w~swej służbie.\pfin
+Już więcej nie odwrócimy się od Ciebie,\pmed
+daj nam nowe życie, a~będziemy Cię chwalili.\pfin
+Odnów nas, Panie, Boże Zastępów,\pflx
+i~rozjaśnij nad nami swoje oblicze,\pmed
+a~będziemy zbawieni.\pfin
+\stoppsalmus
 Ant. Wzbudź swą potęgę, Panie, / i przyjdź nam z pomocą.
 2 ant. Pan czynów wspaniałych dokonał * i cała ziemia niech
 o tym się dowie.
-Pieśń (Iz 12, 1-6)
-Wysławiam Cię, Panie, *
-bo rozgniewałeś się na mnie,
-Lecz Twój gniew się uśmierzył *
-i dałeś mi pociechę.
-Oto Bóg jest moim zbawieniem, *
-Jemu zaufam i bać się nie będę.
-Pan jest moją pieśnią i mocą *
-i On się stał moim zbawieniem.
-Wy zaś z weselem czerpać będziecie *
-wodę ze zdrojów zbawienia.
-Jeszcze w owym dniu powiecie: *
-Chwalcie Pana, wzywajcie Jego imienia!
-Ukażcie narodom Jego dzieła, *
-przypominajcie, że Jego imię jest chwalebne.
-
-
-
-Śpiewajcie Panu, bo czynów wspaniałych dokonał *
-i cała ziemia niech o tym się dowie.
-Wznoś okrzyki i wołaj radośnie, mieszkanko Syjonu, *
-bo wielki jest wśród ciebie Święty Izraela.
-Chwała Ojcu i Synowi, *
-i Duchowi Świętemu.
-Jak była na początku, teraz i zawsze, *
-i na wieki wieków. Amen.
+\startpsalmus[title={Pieśń (Iz 12, 1-6)}]
+Wysławiam Cię, Panie,\pmed
+bo rozgniewałeś się na mnie,\pfin
+Lecz Twój gniew się uśmierzył\pmed
+i~dałeś mi pociechę.\pfin
+Oto Bóg jest moim zbawieniem,\pmed
+Jemu zaufam i~bać się nie będę.\pfin
+Pan jest moją pieśnią i~mocą\pmed
+i~On się stał moim zbawieniem.\pfin
+Wy zaś z~weselem czerpać będziecie\pmed
+wodę ze zdrojów zbawienia.\pfin
+Jeszcze w~owym dniu powiecie:\pmed
+Chwalcie Pana, wzywajcie Jego imienia!\pfin
+Ukażcie narodom Jego dzieła,\pmed
+przypominajcie, że Jego imię jest chwalebne.\pfin
+Śpiewajcie Panu, bo czynów wspaniałych dokonał\pmed
+i~cała ziemia niech o~tym się dowie.\pfin
+Wznoś okrzyki i~wołaj radośnie, mieszkanko Syjonu,\pmed
+bo wielki jest wśród ciebie Święty Izraela.\pfin
+\stoppsalmus
 Ant. Pan czynów wspaniałych dokonał / i cała ziemia niech
 o tym się dowie.
 3 ant. Radośnie śpiewajcie Bogu, * który jest naszą mocą. q
-Psalm 81
-Radośnie śpiewajcie Bogu, który jest naszą mocą, *
-q wykrzykujcie na cześć Boga Jakuba!
-Zacznijcie śpiewać i w bęben uderzcie, *
-w cytrę słodko dźwięczącą i lirę.
-Zadmijcie w róg w czas nowiu, *
-w czas pełni, w nasz dzień uroczysty.
-Bo tak ustanowiono w Izraelu *
-przykazania Boga Jakuba.
-Ustanowił to prawo dla Józefa, *
-gdy wyruszał z ziemi egipskiej.
-Słyszę słowa nieznane: q
-„Uwolniłem od brzemienia jego barki, *
-jego ręce porzuciły kosze.
-Wołałeś w ucisku, a Ja cię ocaliłem, q
-odpowiedziałem ci z grzmiącej chmury, *
-doświadczyłem cię przy wodach Meriba.
-Słuchaj, mój ludu, chcę cię napomnieć; *
-obyś Mnie posłuchał, Izraelu!
-Nie będziesz miał obcego boga, *
-cudzemu bogu nie będziesz się kłaniał.
-Jam jest Pan, Bóg twój, q
-który cię wywiódł z ziemi egipskiej, *
-szeroko otwórz usta, abym je napełnił.
-Lecz mój lud nie posłuchał mego głosu, *
-Izrael nie był Mi posłuszny.
-
-
-
-Zostawiłem ich przeto ich twardym sercom, *
-niech postępują według swych zamysłów.
-Gdyby mój lud Mnie posłuchał, *
-a Izrael kroczył moimi drogami,
-Natychmiast bym zgniótł ich wrogów *
-i obrócił rękę na ich przeciwników.
-Schlebialiby Panu ci, którzy Go nienawidzą, *
-a kara ich trwałaby na wieki.
-A jego bym karmił wyborną pszenicą *
-i sycił miodem z opoki”.
-Chwała Ojcu i Synowi, *
-i Duchowi Świętemu.
-Jak była na początku, teraz i zawsze, *
-i na wieki wieków. Amen.
+\startpsalmus[title={Psalm 81}]
+Radośnie śpiewajcie Bogu, który jest naszą mocą,\pmed
+q~wykrzykujcie na cześć Boga Jakuba!\pfin
+Zacznijcie śpiewać i~w~bęben uderzcie,\pmed
+w~cytrę słodko dźwięczącą i~lirę.\pfin
+Zadmijcie w~róg w~czas nowiu,\pmed
+w~czas pełni, w~nasz dzień uroczysty.\pfin
+Bo tak ustanowiono w~Izraelu\pmed
+przykazania Boga Jakuba.\pfin
+Ustanowił to prawo dla Józefa,\pmed
+gdy wyruszał z~ziemi egipskiej.\pfin
+Słyszę słowa nieznane:\pflx
+\startquote Uwolniłem od brzemienia jego barki,\pmed
+jego ręce porzuciły kosze.\pfin
+Wołałeś w~ucisku, a~Ja cię ocaliłem,\pflx
+odpowiedziałem ci z~grzmiącej chmury,\pmed
+doświadczyłem cię przy wodach Meriba.\pfin
+Słuchaj, mój ludu, chcę cię napomnieć;\pmed
+obyś Mnie posłuchał, Izraelu!\pfin
+Nie będziesz miał obcego boga,\pmed
+cudzemu bogu nie będziesz się kłaniał.\pfin
+Jam jest Pan, Bóg twój,\pflx
+który cię wywiódł z~ziemi egipskiej,\pmed
+szeroko otwórz usta, abym je napełnił.\pfin
+Lecz mój lud nie posłuchał mego głosu,\pmed
+Izrael nie był Mi posłuszny.\pfin
+Zostawiłem ich przeto ich twardym sercom,\pmed
+niech postępują według swych zamysłów.\pfin
+Gdyby mój lud Mnie posłuchał,\pmed
+a~Izrael kroczył moimi drogami,\pfin
+Natychmiast bym zgniótł ich wrogów\pmed
+i~obrócił rękę na ich przeciwników.\pfin
+Schlebialiby Panu ci, którzy Go nienawidzą,\pmed
+a~kara ich trwałaby na wieki.\pfin
+A~jego bym karmił wyborną pszenicą\pmed
+i~sycił miodem z~opoki\stopquote.\pfin
+\stoppsalmus
 Ant. Radośnie śpiewajcie Bogu, / który jest naszą mocą.
-Czytanie: Mdr 16, 20
+\starthourpart[title={Czytanie\hfill\tf Mdr 16,20}]
 Lud swój żywiłeś pokarmem anielskim i dałeś im bez ich wysiłków gotowy
 chleb z nieba, zdolny dać wszelką rozkosz i wszelki smak zaspokoić.
 Antyfona do pieśni Zachariasza:
 Wstępuję do Ojca mojego i Ojca waszego, * Boga mojego i Boga waszego.
-Prośby
+\starthourpart[title={Prośby}]
 Nasz Pan, Jezus Chrystus, wywyższony nad ziemię, wszystkich pociągnął
 do siebie. Wzywajmy Go z radością i wołajmy:
 Tyś Królem chwały, Jezu Chryste.
@@ -1705,14 +2133,11 @@ się wstawiać za nami,
 Ty po swej męce ukazałeś się żywy i przez czterdzieści dni objawiałeś się
 uczniom,
 – umocnij dzisiaj naszą wiarę.
-
-
-
 Ty w dniu dzisiejszym obiecałeś Apostołom zesłać Ducha Świętego, aby
 byli Twoimi świadkami aż po krańce ziemi,
 – mocą Ducha utwierdzaj nasze świadectwo.
 Ojcze nasz.
-Modlitwa:
+\starthourpart[title={Modlitwa}]
 Wszechmogący Boże, wierzymy, że nasz Zbawiciel zasiada w chwale po
 Twojej prawicy, q wysłuchaj nasze błagania * i spraw, abyśmy zgodnie
 z Jego obietnicą odczuwali, że pozostaje z nami aż do skończenia świata. Przez naszego Pana Jezusa Chrystusa, Twojego Syna, q który z Tobą
@@ -1720,125 +2145,131 @@ z Jego obietnicą odczuwali, że pozostaje z nami aż do skończenia świata. Pr
 wieków.
 
 
-\startday[title={Przymierze}] % {{{1
-\startday[title={Ziemia obiecana}] % {{{1
-Wezwanie: Uwielbiajmy Pana, * który otworzył nam bramy nieba
-Hymn: piosenka dnia
-Psalmodia
+\startday[title={Przymierze}] % 13 {{{1
+\startday[title={Ziemia obiecana}] % 14 {{{1
+
+\starthour[title={Wezwanie}] %{{{2
+\ant Uwielbiajmy Pana,~* który otworzył nam bramy nieba
+\startrubrica
+Psalm Wezwania jak jak na \at{stronie}[invit-ps95].
+\stoprubrica
+
+\starthour[title={Jutrznia}] %{{{2
+
+\starthourpart[title={Hymn}]
+%
+%\starthymnus
+%\stophymnus
+
+\startrubrica
+Albo piosenka dnia.
+\stoprubrica
+
+\starthourpart[title={Psalmodia}]
+
 1 ant. Szczęśliwi, którzy mieszkają * w domu Twoim, Panie.
-Psalm 84
-Jak miłe są Twoje przybytki, *
-Panie Zastępów!
-Dusza moja stęskniona pragnie przedsionków Pańskich, *
-serce moje i ciało radośnie wołają do Boga żywego.
-Nawet wróbel znajduje swój dom, a jaskółka gniazdo, q
-gdzie złoży swe pisklęta: *
-przy ołtarzach Twoich, Panie Zastępów, Królu mój i Boże!
-Szczęśliwi, którzy mieszkają w domu Twoim, Panie, *
-nieustannie wielbiąc Ciebie.
-Szczęśliwi, których moc jest w Tobie, *
-którzy zachowują ufność w swym sercu.
-Przechodząc suchą doliną, w źródła ją zamieniają, *
-a wczesny deszcz błogosławieństwem ją okryje.
-Mocy im będzie przybywać, *
-ujrzą na Syjonie Boga nad bogami
-Panie Zastępów, usłysz modlitwę moją, *
-nakłoń ucho, Boże Jakuba.
-Spójrz, Boże, tarczo nasza, *
-wejrzyj na twarz Twojego pomazańca.
-Doprawdy, dzień jeden w przybytkach Twoich *
-lepszy jest niż innych tysiące.
-Wolę stać w progu domu mojego Boga, *
-niż mieszkać w namiotach grzeszników.
-Bo Pan Bóg jest słońcem i tarczą, q
-On hojnie darzy łaską i chwałą, *
-nie odmawia dobrodziejstw żyjącym nienagannie.
-Panie Zastępów, *
-szczęśliwy człowiek, który ufa Tobie!
-
-
-Chwała Ojcu i Synowi, *
-i Duchowi Świętemu.
-Jak była na początku, teraz i zawsze, *
-i na wieki wieków. Amen.
+\startpsalmus[title={Psalm 84}]
+Jak miłe są Twoje przybytki,\pmed
+Panie Zastępów!\pfin
+Dusza moja stęskniona pragnie przedsionków Pańskich,\pmed
+serce moje i~ciało radośnie wołają do Boga żywego.\pfin
+Nawet wróbel znajduje swój dom, a~jaskółka gniazdo,\pflx
+gdzie złoży swe pisklęta:\pmed
+przy ołtarzach Twoich, Panie Zastępów, Królu mój i~Boże!\pfin
+Szczęśliwi, którzy mieszkają w~domu Twoim, Panie,\pmed
+nieustannie wielbiąc Ciebie.\pfin
+Szczęśliwi, których moc jest w~Tobie,\pmed
+którzy zachowują ufność w~swym sercu.\pfin
+Przechodząc suchą doliną, w~źródła ją zamieniają,\pmed
+a~wczesny deszcz błogosławieństwem ją okryje.\pfin
+Mocy im będzie przybywać,\pmed
+ujrzą na Syjonie Boga nad bogami\pfin
+Panie Zastępów, usłysz modlitwę moją,\pmed
+nakłoń ucho, Boże Jakuba.\pfin
+Spójrz, Boże, tarczo nasza,\pmed
+wejrzyj na twarz Twojego pomazańca.\pfin
+Doprawdy, dzień jeden w~przybytkach Twoich\pmed
+lepszy jest niż innych tysiące.\pfin
+Wolę stać w~progu domu mojego Boga,\pmed
+niż mieszkać w~namiotach grzeszników.\pfin
+Bo Pan Bóg jest słońcem i~tarczą,\pflx
+On hojnie darzy łaską i~chwałą,\pmed
+nie odmawia dobrodziejstw żyjącym nienagannie.\pfin
+Panie Zastępów,\pmed
+szczęśliwy człowiek, który ufa Tobie!\pfin
+\stoppsalmus
 Ant. Szczęśliwi, którzy mieszkają w domu Twoim, Panie.
 2 ant. Chodźcie, wejdźmy na górę Pana, * do świątyni naszego Boga.
-Pieśń (Iz 2, 2-5)
-Stanie się na końcu czasów, *
-że góra świątyni Pańskiej
-Mocno osiądzie na górskich szczytach *
-i ponad pagórki się wzniesie.
-Nadciągną do niej wszystkie narody, *
-liczne plemiona pójdą wołając:
-„Chodźcie, wejdźmy na górę Pana, *
-do świątyni Boga Jakuba!
-Niech On nas pouczy o swoich drogach, *
-byśmy kroczyli Jego ścieżkami,
-Bo Prawo wyjdzie ze Syjonu *
-i z Jeruzalem słowo Pana”.
-On będzie rozjemcą pomiędzy ludami, *
-osądzi sprawy rozlicznych narodów.
-Wtedy swe miecze przekują na pługi, *
-a włócznie swoje na sierpy.
-Naród przeciw narodowi nie wzniesie już oręża *
-i nie będą się więcej ćwiczyć do wojny.
-Chodźcie, domu Jakuba, *
-postępujmy w światłości Pana!
-Chwała Ojcu i Synowi, *
-i Duchowi Świętemu.
-Jak była na początku, teraz i zawsze, *
-i na wieki wieków. Amen.
+\startpsalmus[title={Pieśń (Iz 2, 2-5)}]
+Stanie się na końcu czasów,\pmed
+że góra świątyni Pańskiej\pfin
+Mocno osiądzie na górskich szczytach\pmed
+i~ponad pagórki się wzniesie.\pfin
+Nadciągną do niej wszystkie narody,\pmed
+liczne plemiona pójdą wołając:\pfin
+\startquote Chodźcie, wejdźmy na górę Pana,\pmed
+do świątyni Boga Jakuba!\pfin
+Niech On nas pouczy o~swoich drogach,\pmed
+byśmy kroczyli Jego ścieżkami,\pfin
+Bo Prawo wyjdzie ze Syjonu\pmed
+i~z~Jeruzalem słowo Pana\stopquote.\pfin
+On będzie rozjemcą pomiędzy ludami,\pmed
+osądzi sprawy rozlicznych narodów.\pfin
+Wtedy swe miecze przekują na pługi,\pmed
+a~włócznie swoje na sierpy.\pfin
+Naród przeciw narodowi nie wzniesie już oręża\pmed
+i~nie będą się więcej ćwiczyć do wojny.\pfin
+Chodźcie, domu Jakuba,\pmed
+postępujmy w~światłości Pana!\pfin
+\stoppsalmus
 Ant. Chodźcie, wejdźmy na górę Pana, / do świątyni naszego Boga.
 3 ant. Śpiewajcie Panu, * sławcie Jego imię.
 
 
 
-Psalm 96
-Śpiewajcie Panu pieśń nową, *
-śpiewaj Panu, ziemio cała.
-Śpiewajcie Panu, sławcie Jego imię, *
-każdego dnia głoście Jego zbawienie.
-Głoście Jego chwałę wśród wszystkich narodów, *
-rozgłaszajcie cuda Jego pośród wszystkich ludów.
-Wielki jest Pan, godzien wszelkiej chwały, *
-budzi trwogę najwyższą, większą niż inni bogowie.
-Bo wszyscy bogowie pogan są tylko ułudą, *
-Pan zaś stworzył niebiosa.
-Przed Nim kroczą majestat i piękno, *
-a potęga i blask w Jego przybytku.
-Oddajcie Panu, rodziny narodów, *
-oddajcie Panu chwałę i uznajcie Jego potęgę.
-Oddajcie Panu chwałę należną Jego imieniu, *
-przynieście dary i wejdźcie na Jego dziedzińce.
-Uwielbiajcie Pana w świętym przybytku; *
-zadrżyj, ziemio cała, przed Jego obliczem.
-Głoście wśród ludów, że Pan jest królem, q
-On świat tak utwierdził, że się nie zachwieje, *
-będzie sprawiedliwie sądził ludy.
-Niech się radują niebiosa i ziemia weseli, *
-niech szumi morze i wszystko, co je napełnia.
-Niech się cieszą pola i wszystko, co na nich rośnie, *
-niech wszystkie drzewa w lasach wykrzykują z radości.
-Przed obliczem Pana, który już się zbliża, *
-który już się zbliża, by osądzić ziemię.
-On będzie świat sądził sprawiedliwie, *
-a ludy według swej prawdy.
-Chwała Ojcu i Synowi, *
-i Duchowi Świętemu.
-Jak była na początku, teraz i zawsze, *
-i na wieki wieków. Amen.
+\startpsalmus[title={Psalm 96}]
+Śpiewajcie Panu pieśń nową,\pmed
+śpiewaj Panu, ziemio cała.\pfin
+Śpiewajcie Panu, sławcie Jego imię,\pmed
+każdego dnia głoście Jego zbawienie.\pfin
+Głoście Jego chwałę wśród wszystkich narodów,\pmed
+rozgłaszajcie cuda Jego pośród wszystkich ludów.\pfin
+Wielki jest Pan, godzien wszelkiej chwały,\pmed
+budzi trwogę najwyższą, większą niż inni bogowie.\pfin
+Bo wszyscy bogowie pogan są tylko ułudą,\pmed
+Pan zaś stworzył niebiosa.\pfin
+Przed Nim kroczą majestat i~piękno,\pmed
+a~potęga i~blask w~Jego przybytku.\pfin
+Oddajcie Panu, rodziny narodów,\pmed
+oddajcie Panu chwałę i~uznajcie Jego potęgę.\pfin
+Oddajcie Panu chwałę należną Jego imieniu,\pmed
+przynieście dary i~wejdźcie na Jego dziedzińce.\pfin
+Uwielbiajcie Pana w~świętym przybytku;\pmed
+zadrżyj, ziemio cała, przed Jego obliczem.\pfin
+Głoście wśród ludów, że Pan jest królem,\pflx
+On świat tak utwierdził, że się nie zachwieje,\pmed
+będzie sprawiedliwie sądził ludy.\pfin
+Niech się radują niebiosa i~ziemia weseli,\pmed
+niech szumi morze i~wszystko, co je napełnia.\pfin
+Niech się cieszą pola i~wszystko, co na nich rośnie,\pmed
+niech wszystkie drzewa w~lasach wykrzykują z~radości.\pfin
+Przed obliczem Pana, który już się zbliża,\pmed
+który już się zbliża, by osądzić ziemię.\pfin
+On będzie świat sądził sprawiedliwie,\pmed
+a~ludy według swej prawdy.\pfin
+\stoppsalmus
 Ant. Śpiewajcie Panu, sławcie Jego imię.
 
 
 
-Czytanie: Ap 11,19 i 12,1
+\starthourpart[title={Czytanie\hfill\tf Ap 11,19 i 12,1}]
 Potem Świątynia Boga w niebie się otwarła, i Arka Jego Przymierza ukazała
 się w Jego Świątyni, a nastąpiły błyskawice, głosy, gromy, trzęsienie ziemi
 i wielki grad. Potem wielki znak się ukazał na niebie: Niewiasta obleczona
 w słońce i księżyc pod jej stopami, a na jej głowie wieniec z gwiazd dwunastu.
 Antyfona do pieśni Zachariasza:
 Piękna i pełna blasku jesteś, Maryjo, * jak jutrzenka wznosisz się do nieba.
-Prośby
+\starthourpart[title={Prośby}]
 Oddając cześć naszemu Zbawicielowi, który narodził się z Maryi Dziewicy,
 zanośmy do Niego pokorne błagania:
 Niech Wniebowzięta wstawia się za nami
@@ -1853,7 +2284,7 @@ Panie nieba i ziemi, Ty zechciałeś, aby Maryja jako Królowa stała po Twojej
 prawicy,
 – daj, abyśmy zasłużyli na udział w Jej chwale.
 Ojcze nasz.
-Modlitwa:
+\starthourpart[title={Modlitwa}]
 Boże, Ty wejrzałeś na pokorę Najświętszej Maryi Panny i wyniosłeś Ją do
 godności Matki Twojego Jedynego Syna, [a w dniu dzisiejszym] uwieńczyłeś ją najwyższą chwałą, q spraw, abyśmy zbawieni przez śmierć i zmartwychwstanie Jezusa Chrystusa, * przez Jej prośby mogli wejść do wiecznej chwały. Przez naszego Pana Jezusa Chrystusa, Twojego Syna, q który
 z Tobą żyje i króluje w jedności Ducha Świętego, * Bóg, przez wszystkie
@@ -1861,128 +2292,130 @@ wieki wieków.
 
 
 
-\startday[title={Droga przez pustynię}] % {{{1
-Wezwanie: Uwielbiajmy Pana, * który kieruje narodami na ziemi
-Hymn: piosenka dnia
-Psalmodia
+\startday[title={Droga przez pustynię}] % 15 {{{1
+
+\starthour[title={Wezwanie}] %{{{2
+\ant Uwielbiajmy Pana,~* który kieruje narodami na ziemi
+\startrubrica
+Psalm Wezwania jak jak na \at{stronie}[invit-ps95].
+\stoprubrica
+
+\starthour[title={Jutrznia}] %{{{2
+
+\starthourpart[title={Hymn}]
+%
+%\starthymnus
+%\stophymnus
+
+\startrubrica
+Albo piosenka dnia.
+\stoprubrica
+
+\starthourpart[title={Psalmodia}]
+
 1 ant. Opowiedzieli nam nasi ojcowie o potędze Pana * i o cudach,
 których On dokonał. / Alleluja.
-Psalm 78, 1-39
-Słuchaj, mój ludu, nauki mojej, *
-nakłońcie wasze uszy na słowa ust moich;
-Do przypowieści otworzę me usta, *
-wyjawię tajemnice zamierzchłego czasu.
-Tego, cośmy usłyszeli i poznali q
-i co nam opowiedzieli nasi ojcowie, *
-nie będziemy ukrywać przed ich synami.
-Opowiemy przyszłemu pokoleniu q
-chwałę Pana i Jego potęgę *
-i cuda, których dokonał.
-Albowiem nadał w Jakubie przykazania *
-i ustanowił Prawo w Izraelu,
-Aby to, co zlecił naszym ojcom, *
-przekazali swym synom.
-O tym ma wiedzieć przyszłe pokolenie, *
-synowie, którzy się narodzą,
-Że mają pokładać nadzieję w Bogu q
-i nie zapominać dzieł Bożych, *
-lecz strzec Jego poleceń.
-A niech nie będą jak ich ojcowie *
-pokoleniem opornych buntowników,
-Pokoleniem, którego serce jest niestałe, *
-a duch nie dochowuje wierności Bogu.
-Synowie Efraima, uzbrojeni w łuki, *
-zostali rozproszeni w dniu bitwy.
-Nie zachowali przymierza z Bogiem *
-i nie chcieli postępować według Jego Prawa.
 
-
-Zapomnieli o Jego dziełach *
-i o cudach, które im okazał.
-Na oczach ich ojców uczynił cuda, *
-w ziemi egipskiej, na polach Soanu.
-Morze rozdzielił, by ich przeprowadzić, *
-wody ustawił jak groble.
-We dnie prowadził ich obłokiem, *
-a przez całą noc blaskiem ognia.
-Rozłupał skały w pustyni *
-i jak wodną głębiną obﬁcie ich napoił.
-I wydobył ze skały strumienie, *
-sprawił, że wody spłynęły jak rzeki.
-Chwała Ojcu i Synowi, *
-i Duchowi Świętemu.
-Jak była na początku, teraz i zawsze, *
-i na wieki wieków. Amen.
+\startpsalmus[title={Psalm 78, 1-39}]
+Słuchaj, mój ludu, nauki mojej,\pmed
+nakłońcie wasze uszy na słowa ust moich;\pfin
+Do przypowieści otworzę me usta,\pmed
+wyjawię tajemnice zamierzchłego czasu.\pfin
+Tego, cośmy usłyszeli i~poznali\pflx
+i~co nam opowiedzieli nasi ojcowie,\pmed
+nie będziemy ukrywać przed ich synami.\pfin
+Opowiemy przyszłemu pokoleniu\pflx
+chwałę Pana i~Jego potęgę\pmed
+i~cuda, których dokonał.\pfin
+Albowiem nadał w~Jakubie przykazania\pmed
+i~ustanowił Prawo w~Izraelu,\pfin
+Aby to, co zlecił naszym ojcom,\pmed
+przekazali swym synom.\pfin
+O~tym ma wiedzieć przyszłe pokolenie,\pmed
+synowie, którzy się narodzą,\pfin
+Że mają pokładać nadzieję w~Bogu\pflx
+i~nie zapominać dzieł Bożych,\pmed
+lecz strzec Jego poleceń.\pfin
+A~niech nie będą jak ich ojcowie\pmed
+pokoleniem opornych buntowników,\pfin
+Pokoleniem, którego serce jest niestałe,\pmed
+a~duch nie dochowuje wierności Bogu.\pfin
+Synowie Efraima, uzbrojeni w~łuki,\pmed
+zostali rozproszeni w~dniu bitwy.\pfin
+Nie zachowali przymierza z~Bogiem\pmed
+i~nie chcieli postępować według Jego Prawa.\pfin
+Zapomnieli o~Jego dziełach\pmed
+i~o~cudach, które im okazał.\pfin
+Na oczach ich ojców uczynił cuda,\pmed
+w~ziemi egipskiej, na polach Soanu.\pfin
+Morze rozdzielił, by ich przeprowadzić,\pmed
+wody ustawił jak groble.\pfin
+We dnie prowadził ich obłokiem,\pmed
+a~przez całą noc blaskiem ognia.\pfin
+Rozłupał skały w~pustyni\pmed
+i~jak wodną głębiną obﬁcie ich napoił.\pfin
+I~wydobył ze skały strumienie,\pmed
+sprawił, że wody spłynęły jak rzeki.\pfin
+\stoppsalmus
 Ant. Opowiedzieli nam nasi ojcowie o potędze Pana / i o cudach,
 których On dokonał. / Alleluja.
 2 ant. Wysławiajcie Pana, Boga naszego, * pokłon Mu oddajcie
 w Jego świątyni.
-Psalm 99
-Pan jest Królem, drżą narody, *
-zasiada na tronie z cherubów, a ziemia się trzęsie.
-Wielki jest Pan na Syjonie, *
-wywyższony ponad wszystkie ludy.
-Niech wielbią imię Twoje, wielkie i straszliwe, *
-ono jest święte.
-I króluje Potężny, który sprawiedliwość kocha: q
-Tyś ład ustanowił, *
-wymierzasz sprawiedliwość i prawo w Jakubie.
-Wysławiajcie Pana, naszego Boga, q
-padajcie przed podnóżkiem stóp Jego, *
-bo On jest święty.
-Wśród Jego kapłanów są Mojżesz i Aaron q
-i Samuel wśród tych, którzy wzywali Jego imienia, *
-wzywali Pana, a On ich wysłuchał.
-
-
-
-Przemawiał do nich w słupie obłoku, *
-a oni strzegli przykazań i prawa, które im nadał.
-Boże, nasz Panie, Tyś ich wysłuchał, *
-łaskę im okazałeś, lecz karałeś występki.
-Wysławiajcie Pana, Boga naszego, q
-pokłon oddajcie Jego świętej górze, *
-bo Pan nasz i Bóg jest święty.
-Chwała Ojcu i Synowi, *
-i Duchowi Świętemu.
-Jak była na początku, teraz i zawsze, *
-i na wieki wieków. Amen.
+\startpsalmus[title={Psalm 99}]
+Pan jest Królem, drżą narody,\pmed
+zasiada na tronie z~cherubów, a~ziemia się trzęsie.\pfin
+Wielki jest Pan na Syjonie,\pmed
+wywyższony ponad wszystkie ludy.\pfin
+Niech wielbią imię Twoje, wielkie i~straszliwe,\pmed
+ono jest święte.\pfin
+I~króluje Potężny, który sprawiedliwość kocha:\pflx
+Tyś ład ustanowił,\pmed
+wymierzasz sprawiedliwość i~prawo w~Jakubie.\pfin
+Wysławiajcie Pana, naszego Boga,\pflx
+padajcie przed podnóżkiem stóp Jego,\pmed
+bo On jest święty.\pfin
+Wśród Jego kapłanów są Mojżesz i~Aaron\pflx
+i~Samuel wśród tych, którzy wzywali Jego imienia,\pmed
+wzywali Pana, a~On ich wysłuchał.\pfin
+Przemawiał do nich w~słupie obłoku,\pmed
+a~oni strzegli przykazań i~prawa, które im nadał.\pfin
+Boże, nasz Panie, Tyś ich wysłuchał,\pmed
+łaskę im okazałeś, lecz karałeś występki.\pfin
+Wysławiajcie Pana, Boga naszego,\pflx
+pokłon oddajcie Jego świętej górze,\pmed
+bo Pan nasz i~Bóg jest święty.\pfin
+\stoppsalmus
 Ant. Wysławiajcie Pana, Boga naszego, / pokłon Mu oddajcie
 w Jego świątyni.
 3 ant. Ich głos się rozchodzi po całej ziemi, * ich słowa aż po krańce
 świata.
-Psalm 19 A, 2-7
-Niebiosa głoszą chwałę Boga, *
-dzieło rąk Jego obwieszcza nieboskłon.
-Dzień opowiada dniowi, *
-noc nocy wiadomość przekazuje.
-Nie są to słowa ani nie jest to mowa, *
-których by dźwięku nie usłyszano.
-Ich głos się rozchodzi po całej ziemi, *
-ich słowa aż po krańce świata.
-Tam słońcu namiot postawił, q
-a ono jak oblubieniec wychodzi ze swej komnaty, *
-cieszy się jak siłacz ruszający do biegu.
-Ono wschodzi na krańcu nieba q
-i biegnie aż po drugi kraniec, *
-a nic przed jego żarem się nie schroni.
-Chwała Ojcu i Synowi, *
-i Duchowi Świętemu.
-Jak była na początku, teraz i zawsze, *
-i na wieki wieków. Amen.
+\startpsalmus[title={Psalm 19 A, 2-7}]
+Niebiosa głoszą chwałę Boga,\pmed
+dzieło rąk Jego obwieszcza nieboskłon.\pfin
+Dzień opowiada dniowi,\pmed
+noc nocy wiadomość przekazuje.\pfin
+Nie są to słowa ani nie jest to mowa,\pmed
+których by dźwięku nie usłyszano.\pfin
+Ich głos się rozchodzi po całej ziemi,\pmed
+ich słowa aż po krańce świata.\pfin
+Tam słońcu namiot postawił,\pflx
+a~ono jak oblubieniec wychodzi ze swej komnaty,\pmed
+cieszy się jak siłacz ruszający do biegu.\pfin
+Ono wschodzi na krańcu nieba\pflx
+i~biegnie aż po drugi kraniec,\pmed
+a~nic przed jego żarem się nie schroni.\pfin
+\stoppsalmus
 Ant. Ich głos się rozchodzi po całej ziemi, * ich słowa aż po krańce
 świata.
 
-
-
-Czytanie: Mt 5, 14-16
+\starthourpart[title={Czytanie\hfill\tf Mt 5,14-16}]
 Wy jesteście światłem świata. Nie może się ukryć miasto położone na górze. Nie zapala się też światła i nie stawia pod korcem, ale na świeczniku,
 aby świeciło wszystkim, którzy są w domu. Tak niech świeci wasze światło
 przed ludźmi, aby widzieli wasze dobre uczynki i chwalili Ojca waszego,
 który jest w niebie.
 Antyfona do pieśni Zachariasza:
 Najdostojniejsza Królowo świata, * Maryjo, zawsze Dziewico, / Ty porodziłaś Chrystusa, naszego Pana i Zbawiciela.
-Prośby
+\starthourpart[title={Prośby}]
 Oddając cześć naszemu Zbawicielowi, który narodził się z Maryi Dziewicy,
 zanośmy do Niego pokorne błagania:
 Niech Twoja Matka wstawia się za nami.
@@ -1997,14 +2430,15 @@ od wszelkiej zmazy grzechu,
 Nasz Odkupicielu, Ty sprawiłeś, że Maryja Dziewica stała się godnym Ciebie mieszkaniem i przybytkiem Ducha Świętego,
 – daj, abyśmy byli na wieki świątynią Twego Ducha.
 Ojcze nasz.
-Modlitwa:
+\starthourpart[title={Modlitwa}]
 Boże, Ty miłujesz ludzi, pokornie Cię błagamy, ześlij na nas obﬁtą łaskę
 Ducha Świętego q i spraw, abyśmy postępując zgodnie z naszym powołaniem, dawali świadectwo Ewangelii * i dążyli z ufnością i w pokoju do zjednoczenia wszystkich wierzących. Przez naszego Pana Jezusa Chrystusa,
 Twojego Syna, q który z Tobą żyje i króluje w jedności Ducha Świętego, *
 Bóg, przez wszystkie wieki wieków.
 
+%}}}1
 
-
+%{{{1 nieporządek
 Antyfony do pieśni Zachariasza
 na niedziele zwykłe w okresie wakacyjnym
 13 niedziela zwykła
@@ -2085,7 +2519,9 @@ Piękna i pełna blasku jesteś, Maryjo, * jak jutrzenka wznosisz się do nieba.
 Wigilia modlitewna
 przed Zesłaniem Ducha świętego
 Hymn: O Stworzycielu Duchu przyjdź („Otwórzcie serca” nr 352)
-Psalmodia
+
+\starthourpart[title={Psalmodia}]
+
 Ant. 1: Pan jest naszym Bogiem, * na wieki pamięta o swoim przymierzu
 Psalm 105(104), 1-22
 I
@@ -2117,9 +2553,6 @@ Wędrujących od plemienia do plemienia *
 od królestwa do jeszcze innego ludu
 Nikomu nie pozwolił ich uciskać *
 karał z ich powodu królów
-
-
-
 „Nie dotykajcie moich pomazańców *
 i moim prorokom nie czyńcie krzywdy”
 Potem głód przywołał na ziemię *
@@ -2136,65 +2569,57 @@ Ustanowił go panem nad swoim domem *
 władcą całej swojej posiadłości
 By według swej myśli pouczał dostojników *
 a jego doradców uczył mądrości
-Chwała Ojcu i Synowi *
-i Duchowi Świętemu
-Jak była na początku, teraz i zawsze *
-i na wieki wieków. Amen
 Ant. 1: Pan jest naszym Bogiem, na wieki pamięta o swoim przymierzu
 Ant 2.: Pan Bóg pamięta * o swym świętym słowie
-II
-Potem Izrael wkroczył do Egiptu *
-Jakub był gościem w kraju Chama
-Bóg swój naród bardzo rozmnożył *
-uczynił go mocniejszym od jego wrogów
-Ich serce odmienił, aby znienawidzili lud Jego *
-i wobec sług Jego postępowali zdradziecko
-Posłał wtedy sługę swojego Mojżesza *
-i Aarona wybranego przez siebie
-Okazali wśród nich znaki *
-i cuda w krainie Chama
-Zesłał ciemności i mrok nastał *
-lecz oni buntowali się przeciw Jego słowom
-W krew zamienił ich wody *
-i pozabijał ryby
-Od żab zaroiła się ich ziemia *
-nawet w komnatach królewskich
 
-
-Rzekł i pojawiło się robactwo *
-i w całym kraju ich komary
-Zamiast deszczu grad zesłał *
-palący ogień na ich ziemię
-Powalił ich winnice i ﬁgi *
-i drzewa połamał w ich kraju
-Rzekł i nadciągnęła szarańcza *
-nieprzeliczone roje świerszczy
-Pożarły całą trawę w ich kraju *
-i zjadły płody ich ziemi
-Pobił wszystkich pierworodnych w ich kraju *
-cały kwiat ich potęgi
-A lud swój wyprowadził ze srebrem i złotem *
-i nikt nie był słaby w jego pokoleniach
-Egipcjanie cieszyli się z ich wyjścia *
-bo ogarnął ich lęk przed nimi
-Chmurę rozpostarł jako przykrycie *
-i ogień, by świecił wśród nocy
-Prosili i zesłał im przepiórki *
-nasycił ich chlebem z nieba
-Rozdarł skałę i trysnęła woda *
-popłynęła pustynią jak rzeka
-Pamiętał bowiem o swym świętym słowie *
-danym Abrahamowi, swojemu słudze
-I wyprowadził swój lud wśród radości *
-z weselem swoich wybranych
-Darował im ziemie narodów *
-i zawładnęli dorobkiem ludów
-By strzegli jego przykazań *
-i zachowali prawa
-Chwała Ojcu i Synowi *
-i Duchowi Świętemu
-Jak była na początku, teraz i zawsze *
-i na wieki wieków. Amen
+\startpsalmus[title={II}]
+Potem Izrael wkroczył do Egiptu\pmed
+Jakub był gościem w~kraju Chama\pfin
+Bóg swój naród bardzo rozmnożył\pmed
+uczynił go mocniejszym od jego wrogów\pfin
+Ich serce odmienił, aby znienawidzili lud Jego\pmed
+i~wobec sług Jego postępowali zdradziecko\pfin
+Posłał wtedy sługę swojego Mojżesza\pmed
+i~Aarona wybranego przez siebie\pfin
+Okazali wśród nich znaki\pmed
+i~cuda w~krainie Chama\pfin
+Zesłał ciemności i~mrok nastał\pmed
+lecz oni buntowali się przeciw Jego słowom\pfin
+W~krew zamienił ich wody\pmed
+i~pozabijał ryby\pfin
+Od żab zaroiła się ich ziemia\pmed
+nawet w~komnatach królewskich\pfin
+Rzekł i~pojawiło się robactwo\pmed
+i~w~całym kraju ich komary\pfin
+Zamiast deszczu grad zesłał\pmed
+palący ogień na ich ziemię\pfin
+Powalił ich winnice i~ﬁgi\pmed
+i~drzewa połamał w~ich kraju\pfin
+Rzekł i~nadciągnęła szarańcza\pmed
+nieprzeliczone roje świerszczy\pfin
+Pożarły całą trawę w~ich kraju\pmed
+i~zjadły płody ich ziemi\pfin
+Pobił wszystkich pierworodnych w~ich kraju\pmed
+cały kwiat ich potęgi\pfin
+A~lud swój wyprowadził ze srebrem i~złotem\pmed
+i~nikt nie był słaby w~jego pokoleniach\pfin
+Egipcjanie cieszyli się z~ich wyjścia\pmed
+bo ogarnął ich lęk przed nimi\pfin
+Chmurę rozpostarł jako przykrycie\pmed
+i~ogień, by świecił wśród nocy\pfin
+Prosili i~zesłał im przepiórki\pmed
+nasycił ich chlebem z~nieba\pfin
+Rozdarł skałę i~trysnęła woda\pmed
+popłynęła pustynią jak rzeka\pfin
+Pamiętał bowiem o~swym świętym słowie\pmed
+danym Abrahamowi, swojemu słudze\pfin
+I~wyprowadził swój lud wśród radości\pmed
+z~weselem swoich wybranych\pfin
+Darował im ziemie narodów\pmed
+i~zawładnęli dorobkiem ludów\pfin
+By strzegli jego przykazań\pmed
+i~zachowali prawa\pfin
+\stoppsalmus
 Ant. 2: Pan Bóg pamięta o swym świętym słowie
 Ant. 3: Śpiewajcie Panu pieśń dziękczynną, * On gromadzi Izraela
 
@@ -2246,10 +2671,6 @@ Oznajmił swoje słowo Jakubowi *
 Izraelowi ustawy swe i wyroki
 Nie uczynił tego dla innych narodów *
 nie oznajmił im swoich wyroków
-Chwała Ojcu i Synowi *
-i Duchowi Świętemu
-Jak była na początku, teraz i zawsze *
-i na wieki wieków. Amen
 Ant. 3: Śpiewajcie Panu pieśń dziękczynną, On gromadzi Izraela
 Responsorium
 K: Pan mówi: Oto ja jestem z wami
@@ -2279,5 +2700,8 @@ Hymn: „Ciebie Boga wysławiamy” („Otwórzcie serca” nr 113)
 K: Błogosławmy Panu
 W: Bogu niech będą dzięki
 
+%}}}1
 
 \stoptext
+
+% vim: fdm=marker ts=4 sts=4 sw=4 et

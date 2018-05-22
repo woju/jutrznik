@@ -1,21 +1,6 @@
 - Hymny jutrzni
-   1. Otwórz się, niebo, pokryte chmurami
-   2. Prorocy pełni natchnienia
-   3. Zakwitnął korzeń Jessego
-   4. Przystrój, Syjonie, swiątynię
-   5. Gdy Jan wypełniał swe zadanie
-   6. Dałeś nam przykład, o Jezu
-   7. Padnijmy twarzą na ziemię
-   8. Przed Tobą, Ojcze, stajemy skruszeni
-   9. Chryste, Tyś dniem pełnym blasku
-  10. Zbawicielu wszystkich ludzi
-  11. Minęły cienie i mroki nocy
-  12. Z nieba zstąpiło Słowo Ojca
-  13. -
-  14. Słońca promienie jak szatę Cię stroją
-  15. Po mrokach nocy nowy dzień nastaje
+- referencje z notatek Kacpra/brewiarz.pl
 - Syr 51 (patrz Documentation/; chyba 6 dzień na celebrację?)
-- Napisać rubrykę „albo piosenka dnia” pod hymnami
 - Napisać znak dnia, temat/nazwa dnia
 - czytanki dnia (przed każdym dniem)
 - rzeczy dziwne we wprowadzeniu w znak (np. akt pokuty), pilnować kiedy to
@@ -24,4 +9,37 @@
 - wkładka latająca, łatwo dorabialna
 - w którymś brakowało psalmu; to jest zrobione?
 - gdzieś jest jakoś psalm podzielony?, też by trzeba naprawić
+
+technikalia:
+- fonty (linux libertine, futura)
+- plusik do przeniesienia antyfony (i czerwony w antyfonie)
+- przerwa po \antr
+- mniejszy odstęp po \starthour
+- BW mode (obecnie działa tylko na niektóre rzeczy)
 - README
+
+hymny jutrzni:
+--- Otwórz się, niebo, pokryte chmurami
+--- Prorocy pełni natchnienia
+--- Zakwitnął korzeń Jessego
+ 4. Przystrój, Syjonie, swiątynię (2.02?)
+--- Gdy Jan wypełniał swe zadanie
+--- Dałeś nam przykład, o Jezu
+--- Padnijmy twarzą na ziemię
+--- Przed Tobą, Ojcze, stajemy skruszeni
+--- Chryste, Tyś dniem pełnym blasku
+--- Zbawicielu wszystkich ludzi
+--- Minęły cienie i mroki nocy
+12. Z nieba zstąpiło Słowo Ojca
+13. -
+14. Słońca promienie jak szatę Cię stroją
+15. Po mrokach nocy nowy dzień nastaje
+
+korekta:
+- ujednolicić kropki na końcach antyfon
+
+varia:
+- może można trochę poscrapować brewiarz.pl (ciekawe co się da zrobić numerkami)
+  - http://brewiarz.pl/indeksy/pokaz.php3?id=3&nr=004
+
+vim: ts=2 sts=2 sw=2 et
