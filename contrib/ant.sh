@@ -5,10 +5,12 @@
 # Licence: GPL-3 or later. No warranty.
 #
 # krótki skrypcior do hurtowego poprawiania psalmów
-# używany z vima: zaznaczyć od "Psalm <NR>" a potem :'<,'>!./psalm.sh
+# używany z vima: zaznaczyć tekst, a potem :'<,'>!./whitesp.sh
 #
 
-sed \
-    -e 's: q :\~\\flexas :' \
-    -e 's: \* :\~\\mediatios :' \
+exec sed \
     -e 's:\(\<\w\>\) :\1\~:g' \
+    -e 's: \([/*]\):\~\1:g' \
+    -e 's: *q$:\~\\cont:g' \
+
+# vim: ts=4 sts=4 sw=4 et

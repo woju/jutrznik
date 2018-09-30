@@ -8,4 +8,7 @@
 # używany z vima: zaznaczyć od "Psalm <NR>" a potem :'<,'>!./psalm.sh
 #
 
-exec sed -e 's:\(\<\w\>\) :\1\~:g'
+sed \
+    -e 's: [q†] :\~\\flxs :g' \
+    -e 's: \* :\~\\meds :g' \
+    -e 's:\(\<\w\>\) :\1\~:g' \

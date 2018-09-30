@@ -1,6 +1,12 @@
 userdata = userdata or {}
 userdata.ant = userdata.ant or {}
 
+function print_table(t)
+    for key, value in pairs(t) do
+        print(string.format('[%s] → %s', tostring(key), tostring(value)))
+    end
+end
+
 function userdata.ant.get_title(h)
     h = utilities.parsers.settings_to_hash(h)
 
@@ -17,6 +23,7 @@ function userdata.ant.printcolor(text)
     text = text
         :gsub('/', '\\rubrum{/}')
         :gsub('%*', '\\rubrum{*}')
+--      :gsub('+', '\\rubrum{†}')
     tex.print(text)
 end
 
@@ -25,16 +32,17 @@ function userdata.ant.doant(h, s, text)
     userdata.ant.printcolor(text)
     tex.print('\\par')
 
+--  print_table(utilities.parsers.settings_to_set(s))
     join = utilities.parsers.settings_to_set(s)['join']
 
-    if join then
-        userdata.ant.text = text:gsub('~*%*', '')
-    else
-        userdata.ant.text = text:gsub('%*', '/')
-    end
+    text = join and text:gsub('~*%*', '') or text:gsub('%*', '/')
+    text = text:gsub('~*\\cont', '')
+    userdata.ant.text = text
 end
 
 function userdata.ant.doantr()
     tex.print('\\rubrum{Ant.}')
     userdata.ant.printcolor(userdata.ant.text)
 end
+
+-- vim: ts=4 sts=4 sw=4 et

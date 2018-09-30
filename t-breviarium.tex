@@ -38,9 +38,11 @@
     \doifmodeelse{bw}{#1}{\color[red]{#1}}%
 }
 \def\flexa{\rubrum{†}}
-\def\flexas{\flexa\space}
+\def\flxs{\flexa\space}
+\def\flexas{\flxs}
 \def\mediatio{\rubrum{*}}
-\def\mediatios{\mediatio\space}
+\def\meds{\mediatio\space}
+\def\mediatios{\meds}
 
 \doifmodeelse{bw}{%
     \definestartstop[rubrica][style=\tfx\bf,before={\blank[small]},after={\blank[small]}]%
@@ -48,26 +50,33 @@
     \definestartstop[rubrica][style=\tfx,color=red,before={\blank[small]},after={\blank[small]}]%
 }
 
+\defineitemgroup[dialog]
+\setupitemgroup[dialog][1][9][
+    color=red,
+    stopper=,
+    style=,
+    inbetween=,
+    after=,
+]
+
 % nagłówki {{{1
 
 % NUMBERED          UNNUMBERED
-% \part             -
-% \chapter          \title
-% \section          \subject
-% \subsection       \subsubject
-% \subsubsection    \subsubsubject
+% part              -
+% chapter           title
+% section           subject
+% subsection        subsubject
+% subsubsection     subsubsubject
 % ...               ...
 
 % całość: booktitle
+%   dodatek: booktitle
 % dni: chapter
+%   załączniki: title
 % godzina: subject
 % część godziny: subsubject
 
 \definehead[booktitle][title]
-\definehead[day][chapter]
-\definehead[hour][title]
-\definehead[hourpart][subject]
-
 \setuphead[booktitle][
     align=middle,
     style={\switchtobodyfont[48pt]\ss\bf},
@@ -75,31 +84,45 @@
     page=no,
 ]
 
-\setuplabeltext[pl][day=dzień~]
-\setuphead[day][
-    sectionstopper=:,
-    bodypartlabel=day,
+\setuphead[chapter,title][
     style=\tfb\ss\bf,
     align=middle,
     header=empty,
 ]
+\definehead[day][chapter]
+\setuphead[day][
+    sectionstopper=:,
+    bodypartlabel=day,
+]
+\setuplabeltext[pl][day=dzień~]
 
-\setuphead[hour][
+\setuphead[subject][
     style=\bf,
     deeptextcommand=\WORD,
     align=middle,
     page=no,
 ]
+\definehead[hour][subject]
+\setuphead[hour][
+    deeptextcommand=\WORD,
+    after=\blank,
+]
 
-\setuphead[hourpart][
+\setuphead[subsubject][
     style={\sc},
     color=red,
     page=no,
+    before={\blank[line]},
+    after={\blank[small]},
 ]
+\definehead[hourpart][subsubject]
 \def\hourpartx#1#2{\rubrum{\sc #1} #2}
+
 
 % hymny {{{1
 \definelines[hymnusn][
+    before=,
+    after=,
     option=packed,
 ]
 \defineitemgroup[hymnus]
@@ -108,28 +131,33 @@
     stopper=,
     before={\starthymnusn},
     after={\stophymnusn},
+    inbetween={\blank[small]},
 ]
 
 % psalmy {{{1
 \newcount\psalmusverse
-\definehead[psalmus][subsubject]
+\definehead[psalmus][subsubsubject]
 \setuphead[psalmus][
     color=red,
     style=,
     align=middle,
     page=no,
+    before=\blank,
     beforesection={\startlines\psalmusverse=0\relax\startnarrower[0mm]},
+    after=\blank,
 ]
 \setuphead[psalmus][
     aftersection={%
-Chwała Ojcu i Synowi,\pmed\par
-i Duchowi Świętemu.\pfin\par
-Jak była na początku, teraz i zawsze,\pmed\par
-i na wieki wieków. Amen.\pfin\stopnarrower\stoplines},
+Chwała Ojcu i~Synowi,\pmed\par
+i~Duchowi Świętemu.\pfin\par
+Jak była na początku, teraz i~zawsze,\pmed\par
+i~na wieki wieków. Amen.\pfin\stopnarrower\stoplines},
 ]
 \definehead[psalmusx][psalmus]
 \setuphead[psalmusx][beforesection=,aftersection=]
 
+% \unexpanded is needed for finding in antiphona, so it can be stripped in \antr
+\unexpanded\def\cont{\rubrum{†}}
 \def\pflx{~†\page[no]}
 \def\pmed{~*\page[no]}
 \def\pfin{%
@@ -161,6 +189,7 @@ i na wieki wieków. Amen.\pfin\stopnarrower\stoplines},
 }
 
 \def\!ant[#1][#2]#3\par{%
+    \blank
     \ctxlua{userdata.ant.doant(\!!bs#1\!!es, \!!bs#2\!!es, \!!bs#3\!!es)}
 }
 \def\antr{
