@@ -7,6 +7,7 @@ niezwiązanych z&nbsp;projektem raczej nie będą rozpatrywane.
 
 ```sh
 apt install texlive-context texlive-fonts-extra make
+apt install -t stretch-backports lilypond
 ```
 (cała reszta jest w repo)
 

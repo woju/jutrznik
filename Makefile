@@ -1,10 +1,16 @@
 DEPS = t-breviarium.tex breviarium.lua
-all: jutrznik.pdf
+DEPS_LIB = $(wildcard lib/*.tex)
 
-%.pdf: %.tex $(DEPS)
+all: jutrznik.pdf
+.PHONY: all
+
+%.pdf: %.tex lilypond $(DEPS) $(DEPS_LIB)
 	context --batch $<
+
+lilypond:
+	$(MAKE) -C lilypond
+.PHONY: lilypond
 
 clean:
 	$(RM) *.log *.tuc *.pdf
-
-.PHONY: all clean
+.PHONY: clean

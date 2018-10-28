@@ -118,6 +118,17 @@
 \definehead[hourpart][subsubject]
 \def\hourpartx#1#2{\rubrum{\sc #1} #2}
 
+\setuphead[subsubsubject][
+    color=red,
+    style=,
+    align=middle,
+    page=no,
+    before=\blank,
+    after=\blank,
+]
+
+\def\datesubtitle#1{%
+    \blank[back]\startalignment[center]\rubrum{#1}\stopalignment}
 
 % hymny {{{1
 \definelines[hymnusn][
@@ -138,15 +149,7 @@
 \newcount\psalmusverse
 \definehead[psalmus][subsubsubject]
 \setuphead[psalmus][
-    color=red,
-    style=,
-    align=middle,
-    page=no,
-    before=\blank,
     beforesection={\startlines\psalmusverse=0\relax\startnarrower[0mm]},
-    after=\blank,
-]
-\setuphead[psalmus][
     aftersection={%
 Chwała Ojcu i~Synowi,\pmed\par
 i~Duchowi Świętemu.\pfin\par
