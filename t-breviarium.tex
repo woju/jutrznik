@@ -59,13 +59,19 @@
     after=,
 ]
 
-% nagłówki {{{1
+\setupparagraphnumbering[color=red]
+
+% nagłówki i spis treści{{{1
 
 % NUMBERED          UNNUMBERED
 % part              -
+%                       booktitle
 % chapter           title
+%     day
 % section           subject
+%                       hour
 % subsection        subsubject
+%                       hourpart
 % subsubsection     subsubsubject
 % ...               ...
 
@@ -76,25 +82,22 @@
 % godzina: subject
 % część godziny: subsubject
 
-\definehead[booktitle][title]
+\definehead[booktitle][part]
 \setuphead[booktitle][
-    align=middle,
-    style={\switchtobodyfont[48pt]\ss\bf},
-    deeptextcommand=\WORD,
-    page=no,
-]
+    number=no]
 
 \setuphead[chapter,title][
     style=\tfb\ss\bf,
     align=middle,
     header=empty,
 ]
+\definehead[specialtitle][title]
 \definehead[day][chapter]
 \setuphead[day][
+    sectionstarter={Dzień\space},
     sectionstopper=:,
-    bodypartlabel=day,
+    sectionsegments=day,
 ]
-\setuplabeltext[pl][day=dzień~]
 
 \setuphead[subject][
     style=\bf,
@@ -129,6 +132,30 @@
 
 \def\datesubtitle#1{%
     \blank[back]\startalignment[center]\rubrum{#1}\stopalignment}
+
+% spis treści
+
+\setupcombinedlist[content][
+    list={booktitle,day,title,specialtitle},
+    alternative=c,
+    criterium=all,
+]
+\setuplist[interaction=all,color=black,pagecolor=red]
+\setuphead[booktitle,title,specialtitle][
+    incrementnumber=list]
+\setuphead[chapter][
+    incrementnumber=yes]
+%\setuphead[booktitle,title][
+%    number=no]
+
+\setuplist[day][margin=5mm,width=15mm,before=]
+\setuplist[title][headnumber=no,margin=5mm]
+\setuplist[specialtitle,booktitle][
+    margin=0mm,
+    before={\blank[2.5mm]},
+    after={\blank[2.5mm]},
+]
+\setuplist[day,title][before={\blank[1mm]}]
 
 % hymny {{{1
 \definelines[hymnusn][

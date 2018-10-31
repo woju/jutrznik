@@ -17,7 +17,35 @@ apt install -t stretch-backports lilypond
 
 ## tytuły i śródtytuły
 
-TBD, tymczasem popatrz sobie do `t-breviarium.tex`, sekcja „nagłówki”.
+`\start<stopień>[title={tytuł w tekście},list={tytuł w spisie treści}]
+
+Do liturgii:
+
+- `day`: dzień oazy; sam sobie dopisuje "Dzień N" na początku; duży czytelny
+  krój pisma na poczatku strony
+- `hour`: godzina liturgiczna („Wezwanie”, „Jutrznia”, &hellip;); czarne
+  półgrube pismo na środku
+- `hourpart`: część godziny, np. „Hymn” albo „Psalmodia”; pisze się czerwonymi
+  kapitalikami po lewej
+- `psalmus` teoretycznie też jest tytułem
+
+Ogólnotechniczne:
+
+- `booktitle`: na stronie tytułowej i&nbsp;na stronie tytułowej dodatku; sam
+  w&nbsp;sobie nie daje żadnego tekstu (nie jestem pewien, czemu), tekst trzeba
+  dać z&nbsp;ręki
+
+- `title` i `specialtitle`: tytuł podobny do dnia, tylko nim nie jest i&nbsp;się
+  nie numeruje razem z&nbsp;nimi; różnica jest w&nbsp;spisie treści
+  (`specialtitle` wygląda jakby był ważniejszy)
+- `subject`: jak godzina liturgiczna (czarne półgrube na środku)
+- `subsubject` jak część godziny (czerwone kapitaliki po lewej)
+- `\datesubtitle{}` (uwaga, inna składnia): podtytuły do antyfon w&nbsp;dodatku
+- `subsubsubject`: jak psalm albo antyfona
+
+W&nbsp;spisie treści są, wg stopnia:
+1. `booktitle`, `specialtitle`
+1. `day`, `title`
 
 ## gwiazdki, krzyżyki, ukośniki
 

@@ -1,6 +1,8 @@
-% {{{1 prefacja
 \enablemode[preprint]
+
+% {{{1 prefacja
 \usemodule[breviarium]
+
 \enableregime[utf]
 \setuplanguage[pl][date={year,-,mm,-,dd}]
 \mainlanguage[pl]
@@ -20,7 +22,8 @@
 ]
 
 \setupstructure[state=start,method=auto]
-\placebookmarks[booktitle,day,title][force=yes]
+\placebookmarks[booktitle,day,title,specialtitle][force=yes]
+
 \doifmodeelse{preprint}{
     \setuppapersize[A5]
 }{
@@ -41,7 +44,7 @@
 \setuppagenumbering[location=footer,style=\tfx\bf\ss]
 \startsetups[header]
 \framed[frame=off,bottomframe=on,width=\makeupwidth]{%
-    \tfx\rubrum{dzień~\getmarking[daynumber]~\getmarking[day]}%
+    \tfx\rubrum{\getmarking[daynumber]~\getmarking[day]}%
 }
 \stopsetups
 \startsetups[header2]
@@ -58,10 +61,12 @@
 % strona tytułowa %{{{1
 \setupheader[state=high]
 \setupfooter[state=high]
+\startbooktitle[title={Jutrznia},list={Strona tytułowa}]
 \dontleavehmode{\vfill}
-\startbooktitle[title={Ju\kern 0pt trznia},list={Jutrznia}]
 
 \startalignment[middle]
+\switchtobodyfont[48pt]\ss\bf
+JU\kern 0pt TRZNIA
 \switchtobodyfont[20pt]\ss\bf
 \blank[50mm]
 w~Oazie Nowego Życia 2°
@@ -76,7 +81,7 @@ Diecezjalna Diakonia Liturgiczna\crlf
 Archidiecezji Warszawskiej}
 \stopalignment
 
-% 1 Niewola {{{1
+% Dzień  1: Niewola {{{1
 \page[even]
 \setupheader[state=high]
 \setupfooter[state=high]
@@ -268,7 +273,7 @@ Wszechmogący Boże, od dawna przygniata nas jarzmo grzechów,~\meds spraw, aby 
 wyzwoliło upragnione nowe narodzenie Twojego Syna. Który z~Tobą żyje i~króluje
 w~jedności Ducha Świętego,~\meds Bóg, przez wszystkie wieki wieków.
 
-% 2 Bóg Wybawiciel {{{1
+% Dzień  2: Bóg Wybawiciel {{{1
 \page[even]
 \setupheader[state=high]
 \setupfooter[state=high]
@@ -499,7 +504,7 @@ i~niebezpieczeństw grożących nam wskutek naszych grzechów,~\meds a~Twoja
 moc niech nas zbawi. Który żyjesz i~królujesz z~Bogiem Ojcem w~jedności
 Ducha Świętego,~\meds Bóg, przez wszystkie wieki wieków.
 
-% 3 Bóg z nami {{{1
+% Dzień  3: Bóg z nami {{{1
 \page[even]
 \setupheader[state=high]
 \setupfooter[state=high]
@@ -710,7 +715,7 @@ sposób odnowiłeś jego godność,~\flxs daj nam uczestniczyć w~bóstwie Twoje
 Syna,~\meds który przyjął naszą ludzką naturę. Który z~Tobą żyje i~króluje
 w~jedności Ducha Świętego,~\meds Bóg, przez wszystkie wieki wieków.
 
-% 4 Bóg wzywa {{{1
+% Dzień  4: Bóg wzywa {{{1
 \page[even]
 \setupheader[state=high]
 \setupfooter[state=high]
@@ -906,7 +911,7 @@ służbę przy ołtarzu oraz mężnie i~pokornie głosili Ewangelię. Przez nasz
 Jezusa Chrystusa, Twojego Syna,~\flxs który z~Tobą żyje i~króluje w~jedności
 Ducha Świętego,~\meds Bóg, przez wszystkie wieki wieków.
 
-% 5 Bóg posyła {{{1
+% Dzień  5: Bóg posyła {{{1
 \page[even]
 \setupheader[state=high]
 \setupfooter[state=high]
@@ -1121,7 +1126,7 @@ Słowo Życia i~pokrzepiony mocą sakramentów kroczy drogą zbawienia i~miłoś
 Przez naszego Pana Jezusa Chrystusa, Twojego Syna który z~Tobą żyje i~króluje
 w~jedności Ducha Świętego,~\meds Bóg, przez wszystkie wieki wieków.
 
-% 6 Bóg walczy {{{1
+% Dzień  6: Bóg walczy {{{1
 \page[even]
 \setupheader[state=high]
 \setupfooter[state=high]
@@ -1296,7 +1301,7 @@ naszego Pana Jezusa Chrystusa, Twojego Syna,~\flxs który z~Tobą żyje
 i~króluje w~jedności Ducha Świętego,~\meds Bóg, przez wszystkie wieki
 wieków.
 
-% 7 Plagi {{{1
+% Dzień  7: Plagi {{{1
 \page[even]
 \setupheader[state=high]
 \setupfooter[state=high]
@@ -1506,7 +1511,7 @@ posiadania Ciebie. Przez naszego Pana Jezusa Chrystusa Twojego Syna,~\flxs
 który z~Tobą żyje i~króluje w~jedności Ducha Świętego,~\meds Bóg, przez
 wszystkie wieki wieków.
 
-% 8 Obłok {{{1
+% Dzień  8: Obłok {{{1
 \page[even]
 \setupheader[state=high]
 \setupfooter[state=high]
@@ -1725,7 +1730,7 @@ i~zmartwychwstanie Chrystusa,~\meds spraw, abyśmy stale doznawali wzrostu Twoje
 żyje i~króluje w~jedności Ducha Świętego,~\meds Bóg, przez wszystkie wieki
 wieków.
 
-% 9 Baranek {{{1
+% Dzień  9: Baranek {{{1
 \page[even]
 \setupheader[state=high]
 \setupfooter[state=high]
@@ -1938,7 +1943,7 @@ naśladowali miłość Twojego Syna,~\meds który oddał własne życie za zbawi
 żyje i~króluje w~jedności Ducha Świętego,~\meds Bóg, przez wszystkie wieki
 wieków.
 
-% 10 Pascha {{{1
+% Dzień 10: Pascha {{{1
 \page[even]
 \setupheader[state=high]
 \setupfooter[state=high]
@@ -2134,7 +2139,7 @@ podobieństwo do Adama. Przez naszego Pana Jezusa Chrystusa, Twojego Syna,~\flxs
 który z~Tobą żyje i~króluje w~jedności Ducha Świętego,~\meds Bóg, przez
 wszystkie wieki wieków.
 
-% 11 Zwycięstwo {{{1
+% Dzień 11: Zwycięstwo {{{1
 \page[even]
 \setupheader[state=high]
 \setupfooter[state=high]
@@ -2175,7 +2180,7 @@ wszystkie wieki wieków.
 %Niech będzie chwała przez wszystkie wieki
 %Ojcu i~Tobie w~jedności Ducha. Amen.\stophymnus
 
-% 12 Manna {{{1
+% Dzień 12: Manna {{{1
 \page[even]
 \setupheader[state=high]
 \setupfooter[state=high]
@@ -2388,7 +2393,7 @@ obietnicą odczuwali, że pozostaje z~nami aż do skończenia świata. Przez nas
 Pana Jezusa Chrystusa, Twojego Syna,~\flxs który z~Tobą żyje i~króluje
 w~jedności Ducha Świętego,~\meds Bóg, przez wszystkie wieki wieków.
 
-% 13 Przymierze {{{1
+% Dzień 13: Przymierze {{{1
 \page[even]
 \setupheader[state=high]
 \setupfooter[state=high]
@@ -2630,7 +2635,7 @@ Wszystkim zaś objawia się Duch dla wspólnego dobra, Alleluja
 \sym{W.} Wszystkim zaś objawia się Duch dla wspólnego dobra, Alleluja
 \stopdialog
 
-Ewangelia
+\starthourpart[title={Ewangelia}]
 
 \starthourpart[title={Hymn Ciebie, Boże, chwalimy}]
 \startlines\psalmusverse=0\relax
@@ -2710,7 +2715,7 @@ przez wszystkie wieki wieków.
 \sym{W.} Bogu niech będą dzięki
 \stopdialog
 
-% 14 Ziemia obiecana {{{1
+% Dzień 14: Ziemia obiecana {{{1
 \page[even]
 \setupheader[state=high]
 \setupfooter[state=high]
@@ -2900,7 +2905,7 @@ Chrystusa,~\meds przez Jej prośby mogli wejść do wiecznej chwały. Przez nasz
 Pana Jezusa Chrystusa, Twojego Syna,~\flxs który z~Tobą żyje i~króluje
 w~jedności Ducha Świętego,~\meds Bóg, przez wszystkie wieki wieków.
 
-% 15 Droga przez pustynię {{{1
+% Dzień 15: Droga przez pustynię {{{1
 \page[even]
 \setupheader[state=high]
 \setupfooter[state=high]
@@ -3089,13 +3094,18 @@ wszystkich wierzących. Przez naszego Pana Jezusa Chrystusa, Twojego Syna,~\flxs
 który z~Tobą żyje i~króluje w~jedności Ducha Świętego,~\meds Bóg, przez
 wszystkie wieki wieków.
 
+%}}}1
+
 % Dodatek {{{1
 
 \page[odd]
 \setupheader[state=high]
 \setupfooter[state=high]
-\dontleavehmode\vfill
 \startbooktitle[title={Dodatek}]
+\dontleavehmode\vfill
+\startalignment[middle]
+\switchtobodyfont[36pt]\ss\bf Dodatek
+\stopalignment
 \vfill
 \setupheadertexts[\setups{header2}]
 \page[empty,odd]
@@ -3415,6 +3425,10 @@ i~błogosławił imieniu Pańskiemu.\pfin
 
 \startsubsubject[title={Ojcze nasz}]
 \externalfigure[lilypond/ojcze-nasz]
+
+\starttitle[title={Spis rzeczy}] %{{{1
+
+\placecontent
 
 \starttitle[title={Pieśń Zachariasza}] %{{{1
 
