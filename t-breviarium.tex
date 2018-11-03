@@ -6,24 +6,24 @@
 \unprotect
 
 % fonty {{{1
-\definefontfeature[default][default][protrusion=quality,expansion=quality,script=latn]
+\definefontfeature[default][default][
+    protrusion=quality,expansion=quality,script=latn]
 \enabletrackers[fonts.missing]
-\starttypescript[sans][futura]
-    % niestety, ciężko znaleźć dobrą futurę na githubie, więc zadowolimy się
-    % amerykańską podróbką futury, spartanem
-    \definefontsynonym[Futura-Bold][file:fonts/LeagueSpartan-Bold.otf]
-\stoptypescript
-\starttypescript[sans][futura][name]
-    \setups[font:fallback:sans]
-    \definefontsynonym[SansBold][Futura-Bold][features=default]
-    \definefontsynonym[SansCaps][Futura-Bold][features=smallcaps]
-\stoptypescript
+
 \starttypescript[jutrznik]
     \definetypeface[jutrznik][rm][serif][libertine][default]
-    \definetypeface[jutrznik][ss][sans] [futura]   [default]
+    \definetypeface[jutrznik][ss][sans] [biolinum] [default]
 %   \definetypeface[jutrznik][tt][mono] [iosevka]  [default]
 %   \definetypeface[jutrznik][mm][math] [junicode] [default]
+
+    % tutaj są dorzucone versiculus i responsum
     \definefontsynonym[Serif][file:fonts/LinLibertine_R.otf]
+
+    \definefont[apropal][file:fonts/Apropal-Bold.otf]
+    % niestety, ciężko znaleźć dobrą futurę na githubie, więc zadowolimy się
+    % amerykańską podróbką futury, spartanem
+    \definefont[futura][file:fonts/LeagueSpartan-Bold.otf]
+
 \stoptypescript
 
 % varia {{{1
@@ -253,4 +253,5 @@ i~na wieki wieków. Amen.\pfin\stopnarrower\stoplines},
 % }}}
 
 \protect
-% vim: fdm=marker ts=4 sts=4 sw=4 et
+
+% vim: fdm=marker tw=80 ts=4 sts=4 sw=4 et

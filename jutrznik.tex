@@ -41,7 +41,7 @@
 ]
 %\showframe
 \setupbodyfont[jutrznik,10.5pt]
-\setuppagenumbering[location=footer,style=\tfx\bf\ss]
+\setuppagenumbering[location=footer,style={\switchtobodyfont[8pt]\futura}]
 \startsetups[header]
 \framed[frame=off,bottomframe=on,width=\makeupwidth]{%
     \tfx\rubrum{\getmarking[daynumber]~\getmarking[day]}%
@@ -62,23 +62,22 @@
 \setupheader[state=high]
 \setupfooter[state=high]
 \startbooktitle[title={Jutrznia},list={Strona tytułowa}]
-\dontleavehmode{\vfill}
+\dontleavehmode\vfill
 
 \startalignment[middle]
-\switchtobodyfont[48pt]\ss\bf
-JU\kern 0pt TRZNIA
-\switchtobodyfont[20pt]\ss\bf
-\blank[50mm]
-w~Oazie Nowego Życia 2°
-
-\blank[10mm]
-i~Oazie Rodzin 2°
+\switchtobodyfont[48pt]\apropal Jutrznia
+\blank[40mm]
+\switchtobodyfont[20pt]\apropal w~Oazie Nowego Życia 2°
 
 \vfill
-\switchtobodyfont[16pt]\rubrum{\uppercase{wersja robocza \currentdate}}\blank[10mm]
-\switchtobodyfont[10pt]\ss\bf\uppercase{%
+\switchtobodyfont[10.5pt]\futura
+\rubrum{\uppercase{wersja robocza \currentdate}}\blank[10mm]
+\uppercase{%
 Diecezjalna Diakonia Liturgiczna\crlf
-Archidiecezji Warszawskiej}
+Archidiecezji Warszawskiej
+
+\blank[5mm]
+Warszawa 2018}
 \stopalignment
 
 % Dzień  1: Niewola {{{1
@@ -3130,7 +3129,7 @@ wszystkie wieki wieków.
 \startbooktitle[title={Dodatek}]
 \dontleavehmode\vfill
 \startalignment[middle]
-\switchtobodyfont[36pt]\ss\bf Dodatek
+\switchtobodyfont[36pt]\apropal Dodatek
 \stopalignment
 \vfill
 \setupheadertexts[\setups{header2}]
