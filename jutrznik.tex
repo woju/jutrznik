@@ -80,8 +80,66 @@ Archidiecezji Warszawskiej
 Warszawa 2018}
 \stopalignment
 
-% Dzień  1: Niewola {{{1
+% strona redakcyjna %{{{1
 \page[even]
+\setupheader[state=high]
+\setupfooter[state=high]
+\dontleavehmode\vfill
+
+Wydawca
+
+Teksty liturgiczne wg
+
+ISBN
+
+\vfill
+{\tfx
+Kroje pisma:
+\startnarrower[5mm]
+Linux Libertine i~Biolinum,
+Apropal,
+League Spartan
+\stopnarrower
+
+Korzystaliśmy z~wolnego i~otwartego oprogramowania:
+\startnarrower[5mm]
+\ConTeXt\space 2016.05.17,
+LilyPond 2.18.2,
+Krita 4.1,
+GNU Make,
+git,
+Debian~9,
+Qubes~OS~R4
+\stopnarrower
+}
+
+% ogólne wskazania %{{{1
+\page[odd]
+\startspecialtitle[title={Ogólne wskazania dla~animatorów i~nie tylko}]
+
+\setupparagraphnumbering[state=start]
+\setupwhitespace[1mm]
+
+\usemodule[ipsum]
+\ipsum[alternative=paragraph,after=\par]
+\ipsum[alternative=paragraph,after=\par]
+\ipsum[alternative=paragraph,after=\par]
+\ipsum[alternative=paragraph,after=\par]
+
+\setupparagraphnumbering[state=stop]
+\setupwhitespace[none]
+
+\blank[2mm]
+\startalignment[flushright]
+\it
+godność i~podpis tego\crlf
+co się pod tym podpisze
+\stopalignment
+
+%}}}1
+
+% Dzień  1: Niewola {{{1
+\page[empty,even]
 \setupheader[state=high]
 \setupfooter[state=high]
 \externalfigure[d01-wzniesione-rece][width=\textwidth]
