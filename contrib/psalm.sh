@@ -12,12 +12,11 @@ read title
 printf '\\startpsalmus[title={%s}]\n' "$title"
 
 sed \
-    -e 's: q$:\\pflx:' \
+    -e 's: [q†]$:\\pflx:' \
     -e 's: \*$:\\pmed:' \
     -e 's:^[^\\]*$:&\\pfin:' \
     -e 's:\(\<\w\>\) :\1\~:g' \
-    -e 's:„:\\startquote :g' \
-    -e 's:” :\\stopquote\space :g' \
-    -e 's:”:\\stopquote:g'
+    -e 's:\( \|^\)":\1„:g' \
+    -e 's:":”:g'
 
 printf '\\stoppsalmus\n'
